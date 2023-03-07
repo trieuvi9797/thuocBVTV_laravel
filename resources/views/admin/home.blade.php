@@ -3,15 +3,18 @@
 <head>
     @include('admin.head')
 </head> 
-
 <body class="app">   	
     
     @include('admin.header')
     
-    @include('admin.main')
-    
+    @extends('admin.main')
+
+    @section('content')
+        Noi dung ne
+    @endsection
+
     @include('admin.footer')
-	
+
 </body>
 </html> 
 
