@@ -3,8 +3,7 @@
     <div class="sidepanel-inner d-flex flex-column">
         <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
         <div class="app-branding">
-            {{-- <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="/public/backend/admin/assets/images/Logo-VTNN.png" alt="logo"><span class="logo-text">VTNN-KHAI-MAI</span></a> --}}
-            <a class="app-logo" href="index.html"><span class="logo-text">VTNN-KHAI-MAI</span></a>
+            <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="{{ asset('backend/admin/assets/images/Logo-VTNN.png') }}" alt="logo"><span class="logo-text">VTNN-KHAI-MAI</span></a>
         </div><!--//app-branding-->  
         
         <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
@@ -40,8 +39,8 @@
                     </a><!--//nav-link-->
                     <div id="submenu-1" class="collapse submenu submenu-1" data-bs-parent="#menu-accordion">
                         <ul class="submenu-list list-unstyled">
-                            <li class="submenu-item"><a class="submenu-link" href="/admin/menus/list">Danh sách danh mục</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href="/admin/menus/add">Thêm danh mục</a></li>
+                            <li class="submenu-item"><a class="submenu-link" href="">Danh sách danh mục</a></li>
+                            <li class="submenu-item"><a class="submenu-link" href="">Thêm danh mục</a></li>
                         </ul>
                     </div>
                 </li><!--//nav-item-->
@@ -67,8 +66,8 @@
                     </a><!--//nav-link-->
                     <div id="submenu-2" class="collapse submenu submenu-2" data-bs-parent="#menu-accordion">
                         <ul class="submenu-list list-unstyled">
-                            <li class="submenu-item"><a class="submenu-link" href="notifications.html">Danh sách sản phẩm</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href="account.html">Thêm sản phẩm</a></li>
+                            <li class="submenu-item"><a class="submenu-link" href="/admin/product/list">Danh sách sản phẩm</a></li>
+                            <li class="submenu-item"><a class="submenu-link" href="/admin/product/add">Thêm sản phẩm</a></li>
                             <li class="submenu-item"><a class="submenu-link" href="settings.html">Settings</a></li>
                         </ul>
                     </div>
@@ -118,7 +117,8 @@
                     </a><!--//nav-link-->
                     <div id="submenu-4" class="collapse submenu submenu-4" data-bs-parent="#menu-accordion">
                         <ul class="submenu-list list-unstyled">
-                            <li class="submenu-item"><a class="submenu-link" href="#">Menu</a></li>
+                            <li class="submenu-item"><a class="submenu-link" href="/admin/menus/list">Menu</a></li>
+                            <li class="submenu-item"><a class="submenu-link" href="/admin/menus/add">Thêm danh mục</a></li>
                             <li class="submenu-item"><a class="submenu-link" href="#">Trang chủ</a></li>
                             <li class="submenu-item"><a class="submenu-link" href="#">Tang giới thiệu</a></li>
                             <li class="submenu-item"><a class="submenu-link" href="#">Trang tin tức</a></li>

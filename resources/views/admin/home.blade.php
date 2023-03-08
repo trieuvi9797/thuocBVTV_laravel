@@ -7,7 +7,7 @@
     
     @include('admin.header')
     
-    @extends('admin.main')
+    @extends('admin.dashboard')
 
     @section('content')
         Noi dung ne

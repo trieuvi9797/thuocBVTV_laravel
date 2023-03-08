@@ -16,4 +16,6 @@
 <link id="theme-style" rel="stylesheet" href="/backend/admin/assets/css/portal.css">
 
 <!-- App CKeditor -->  
-<script src="https://cdn.ckbox.io/ckbox/1.3.2/ckbox.js"></script>
+{{-- <script src="https://cdn.ckbox.io/ckbox/1.3.2/ckbox.js"></script> --}}
+<script src="../ckeditor.js"></script>
+@yield('head')
