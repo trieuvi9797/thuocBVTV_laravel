@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\MainController;
-use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
@@ -31,15 +31,16 @@ Route::middleware('auth')->group(function(){
         Route::get('/main', [MainController::class, 'index']);
 
         #menu
-        Route::prefix('menus')->group(function(){
-            Route::get('add', [MenuController::class, 'create']);
-            Route::get('list', [MenuController::class, 'index']);
+        Route::prefix('categories')->group(function(){
+            Route::get('index', [CategoryController::class, 'index']);
+            Route::get('create', [CategoryController::class, 'create']);
+            Route::post('create', [CategoryController::class, 'store']);
         });
 
         #product
         Route::prefix('product')->group(function(){
-            Route::get('add', [ProductController::class, 'create']);
-            Route::get('list', [ProductController::class, 'index']);
+            Route::get('create', [ProductController::class, 'create']);
+            Route::get('index', [ProductController::class, 'index']);
         });
 
         #Upload

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,14 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name',255);
-            $table->integer('parent_id');
-            $table->text('description');
-            $table->longText('centent');
-            $table->string('slug', 255)->unique();
-            $table->integer('active');
+            $table->string('name');
+            $table->longText('description');
+            $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
+            $table->double('price');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('products');
     }
 };
