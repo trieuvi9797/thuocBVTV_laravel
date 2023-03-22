@@ -63,6 +63,7 @@
                                     <th>#</th>
                                     <th>Tên danh mục</th>
                                     <th>Danh mục cha</th>
+                                    <th>Ngày cập nhật</th>
                                     <th style="width:150px">Sửa | Xóa &nbsp;</th>
                                 </tr>
                             </thead>

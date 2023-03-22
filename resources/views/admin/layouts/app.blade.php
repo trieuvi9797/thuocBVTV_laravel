@@ -23,7 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         
     <!-- App CKeditor -->  
-    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <script src="/ckeditor/ckeditor.js"></script>
 
     <script src="{{ asset('admin/assets/js/main.js') }}"></script> 
     <meta name="csrf-token" content="{{ csrf_token() }}">

@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/users/login/store', [LoginController::class, 'store']);
 
-Route::middleware('auth')->group(function(){
+Route::middleware(['auth'])->group(function(){
     Route::prefix('admin')->group(function(){
         // Route::get('/', [MainController::class, 'index'])->name('admin');
         Route::get('/main', [MainController::class, 'index'])->name('admin');

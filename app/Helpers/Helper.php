@@ -17,13 +17,14 @@ class Helper
                 <tr>
                     <td>'. $categories->id .'</td>                                        
                     <td>'. $char . $categories->name .'</td>                                        
-                    <td>'. $categories->name .'</td>                                        
+                    <td>'. $categories->parent_id .'</td>                                        
+                    <td>'. $categories->updated_at.'</td>                                        
                     <td>
                         <a href="/admin/categories/edit/'. $categories->id.'" class="btn app-btn-primary">
                             <i class="fas fa-edit"></i>
                         </a>
                     
-                        <a href="" class="btn app-btn-danger" onclick="removeRow('. $categories->id .', \' /admin/categories/destroy\')">
+                        <a href="/admin/categories/index" class="btn app-btn-danger" onclick="removeRow('. $categories->id .', \' /admin/categories/destroy\')">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>                                     

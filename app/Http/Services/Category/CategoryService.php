@@ -23,7 +23,6 @@ class CategoryService
             ->orderbyDesc('id')
             ->get();
     }
-
     public function getAll()
     {
         return Category::orderbyDesc('id')->paginate(20);

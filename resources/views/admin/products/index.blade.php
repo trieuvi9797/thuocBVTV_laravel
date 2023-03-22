@@ -96,7 +96,7 @@
                         </table>
                     </div><!--//table-responsive-->                  
                 </div><!--//app-card-body-->
-                {!! $item->links() !!}		
+                {!! $products->links() !!}		
             </div><!--//app-card-->
         </div><!--//tab-content-->
     </div><!--//container-fluid-->

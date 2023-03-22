@@ -11,7 +11,7 @@ function removeRow(id, url){
             data:{id},
             url: url,
             success:function(result){
-                if(result.error() == false){
+                if(result.error == false){
                     alert(result.message);
                     location.reload();
                 }else{

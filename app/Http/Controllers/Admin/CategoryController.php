@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Menu\CreateFormRequest;
-use App\Http\Services\Category\CategoryService as CategoryCategoryService;
+use App\Http\Services\Category\CategoryService;
 use App\Models\Category;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class CategoryController extends Controller
     protected $categoryService;
     protected $category;
 
-    public function __construct(CategoryCategoryService $categoryService)
+    public function __construct(CategoryService $categoryService)
     {
         $this->categoryService = $categoryService;
     }

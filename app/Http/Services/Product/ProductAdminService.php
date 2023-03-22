@@ -11,7 +11,7 @@ class ProductAdminService
 {
     public function getCategory()
     {
-        return Category::where('parent_id', 1)->get();
+        return Category::where('parent_id', 0)->get();
     }
 
     protected function isValidPrice($request)

@@ -35,10 +35,14 @@
 	    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
     		<div class="row g-0 app-auth-wrappfcontent-end">
 			    <div class="app-auth-body mx-auto">	
-				    <div class="app-auth-branding mb-4"><a class="app-logo" href="#"><img class="logo-icon me-2" src="{{ asset('/Logo-VTNN.png') }}" alt="logo"></a></div>
+				    <div class="app-auth-branding mb-4">
+						<a class="app-logo" href="#">
+							<img class="logo-icon me-2" src="{{ asset('/Logo-VTNN.png') }}" alt="logo">
+						</a>
+					</div>
 					<h2 class="auth-heading text-center mb-5">Đăng nhập</h2>
-			        <div class="auth-form-container text-start">
-                        {{-- @include('admin/alert') --}}
+			        <div class="auth-form-container text-start">	
+                        @include('admin/layouts/alert')
                         <form class="auth-form login-form" action="/admin/users/login/store" method="POST">         
 							<div class="email mb-3">
 								<label class="sr-only" for="signin-email">Email</label>
