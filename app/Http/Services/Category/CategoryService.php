@@ -48,17 +48,14 @@ class CategoryService
     }
 
 
-    public function update($request, $categories): bool
+    public function update($request, $category): bool
     {
-        if ($request->input('parent_id') != $categories->id) {
-            $categories->parent_id = (int)$request->input('parent_id');
+        if ($request->input('parent_id') != $category->id) {
+            $category->parent_id = (int)$request->input('parent_id');
         }
 
-        $categories->name = (string)$request->input('name');
-        $categories->description = (string)$request->input('description');
-        $categories->content = (string)$request->input('content');
-        $categories->active = (string)$request->input('active');
-        $categories->save();
+        $category->name = (string)$request->input('name');
+        $category->save();
 
         Session::flash('success', 'Cập nhật thành công Danh mục');
         return true;

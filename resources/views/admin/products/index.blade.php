@@ -40,7 +40,7 @@
                             </select>
                         </div>
                         <div class="col-auto">						    
-                            <a class="btn app-btn-primary" href="{{ route('products.create') }}">
+                            <a class="btn app-btn-primary" href="/admin/products/create">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -64,39 +64,40 @@
                                     <th>#</th>
                                     <th>Tên sản phẩm</th>
                                     <th>Hình ảnh</th>
+                                    <th>Danh mục</th>
                                     <th>Mô tả</th>
                                     <th>Giá</th>
                                     <th>Khuyến mãi</th>
                                     <th colspan="2"></th>
                                 </tr>
                             </thead>
-                            @foreach ($products as $item)
+                            @foreach ($products as $key => $item)
                             <tbody>
                                 <tr>
                                     <td>{{ $item->id }}</td>                                        
                                     <td>{{ $item->name }}</td>                                        
-                                    <td><img src="{{ $item->images->count() > 0 ? asset('upload/'.$item->images->first()->url) : '/upload/default.png' }}" width="80px" height="80px" alt=""></td>                                        
+                                    <td></td>                                        
+                                    <td>{{ $item->category->name }}</td>                                        
+                                    {{-- <td><img src="{{ $item->images->count() > 0 ? asset('upload/'.$item->images->first()->url) : '/upload/default.png' }}" width="80px" height="80px" alt=""></td>                                         --}}
                                     <td>{{ $item->description }}</td>  
                                     <td>{{ $item->price }}</td>  
                                     <td>{{ $item->sale }}</td>  
                                     <td>
-                                        <a href="{{ route('products.edit', $item->id) }}" class="btn btn-outline-warning" style="float: right">Sửa</a>
+                                        <a href="/admin/products/edit/{{ $item->id }}" class="btn app-btn-warning" style="float: right">Sửa</a>
                                     </td>
                                     <td>
-                                        <form action="{{ route('products.destroy', $item->id) }}" id="form-delete{{ ($item->id) }}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-outline-danger" type="submit">Xóa</button>
-                                        </form>
+                                        <a href="" class="btn app-btn-danger" onclick="removeRow({{ $item->id }},'/admin/products/destroy')">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
                                     </td>                                     
                                 </tr>
                             </tbody>
                             @endforeach
                         </table>
                     </div><!--//table-responsive-->                  
-                </div><!--//app-card-body-->		
+                </div><!--//app-card-body-->
+                {!! $item->links() !!}		
             </div><!--//app-card-->
-            {{ $products->links() }}
         </div><!--//tab-content-->
     </div><!--//container-fluid-->
  

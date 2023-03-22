@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\UploadService;
+use Illuminate\Http\JsonResponse;
 
 class UploadController extends Controller
 {
@@ -15,16 +16,16 @@ class UploadController extends Controller
         $this->upload = $upload;
     }
 
-    public function store(Request $request){
-        // $url = $this->upload->store($request);
-        // if($url != false){
-        //     rerturn response()->json([
-        //         'error' => false;
-        //         'url' => $url;
-        //     ]);
+    public function store(Request $request)
+    {
+        $url = $this->upload->store($request);
+        if($url != false){
+            rerturn response()->json([
+                'error' => false,
+                'url' => $url
+            ]);
 
-        // }
-        // return response()->json(['error' => true]);
-
+        }
+        return response()->json(['error' => true]);
     }
 }

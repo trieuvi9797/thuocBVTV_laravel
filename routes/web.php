@@ -27,20 +27,23 @@ Route::post('admin/users/login/store', [LoginController::class, 'store']);
 
 Route::middleware('auth')->group(function(){
     Route::prefix('admin')->group(function(){
-        Route::get('/', [MainController::class, 'index'])->name('admin');
-        Route::get('/main', [MainController::class, 'index']);
+        // Route::get('/', [MainController::class, 'index'])->name('admin');
+        Route::get('/main', [MainController::class, 'index'])->name('admin');
 
-        #menu
         Route::prefix('categories')->group(function(){
             Route::get('index', [CategoryController::class, 'index']);
             Route::get('create', [CategoryController::class, 'create']);
             Route::post('create', [CategoryController::class, 'store']);
+            Route::get('edit/{category}', [CategoryController::class, 'show']);
+            Route::post('edit/{category}', [CategoryController::class, 'update']);
+            Route::DELETE('destroy', [CategoryController::class, 'destroy']);
         });
 
         #product
-        Route::prefix('product')->group(function(){
-            Route::get('create', [ProductController::class, 'create']);
+        Route::prefix('products')->group(function(){
             Route::get('index', [ProductController::class, 'index']);
+            Route::get('create', [ProductController::class, 'create']);
+            Route::post('create', [ProductController::class, 'store']);
         });
 
         #Upload

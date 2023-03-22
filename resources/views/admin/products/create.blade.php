@@ -7,26 +7,30 @@
     <h1 class="app-page-title">Thêm sản phẩm</h1>
     <div class="app-card app-card-settings shadow-sm p-4">
         <div class="app-card-body">
-            <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST" enctype="multipart/form-data">
             @csrf
-                <div class="col-5">
-                    <img src="" id="show-image" alt="" width="465px" height="100px">   
+            <div class="mb-3">
+                <label for="name" class="form-label">Tên sản phẩm:</label>
+                <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}" required>
+                @error('name')
+                    <span class="text-danger"> {{ $message }}</span>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="upload" class="form-label">Hình ảnh</label>
+                <input type="file" name="image" id="upload" class="form-control">
+                <div id="show_image">
+
                 </div>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Tên sản phẩm:</label>
-                    <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}" required>
-                    @error('name')
-                        <span class="text-danger"> {{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="image" class="form-label">Hình ảnh</label>
-                    <input type="file" accept="image/*" name="image" id="image-input" class="form-control">
-                    @error('image')
-                        <span class="text-danger"> {{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="mb-3">
+                <input type="hidden" name="image" id="image">
+                @error('image')
+                <span class="text-danger"> {{ $message }}</span>
+                @enderror
+            </div>
+            <div class="col-5">
+                <img src="" id="image_show" alt="" width="465px" height="100px">   
+            </div>
+            <div class="mb-3">
                     <label class="form-label">Danh mục:</label>
                     <select name="category_ids[]" class="form-control">
                         <option value="">-- Chọn danh mục --</option>
@@ -67,19 +71,7 @@
                         <span class="text-danger"> {{ $message }}</span>
                     @enderror
                 </div>   
-                <script>
-                    ClassicEditor
-                        .create( document.querySelector( '#description' ) )
-                        .then(description => {
-                            console.log(description);
-                        })
-                        .catch( error => {
-                            console.error( error );
-                        } );
-                </script> 
-                {{-- <script>
-                    CKEDITOR.replace( 'description' );
-                </script>                 --}}
+                
                 <button type="submit" class="btn app-btn-primary" >Lưu</button>
             </form>
         </div><!--//app-card-->

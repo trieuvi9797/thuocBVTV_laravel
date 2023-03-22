@@ -12,7 +12,9 @@
     <script src="{{ asset('admin/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>  
 
     <!-- Page Specific JS -->
-    <script src="{{ asset('admin/assets/js/app.js') }}"></script> 
+    {{-- <script src="{{ asset('admin/assets/js/app.js') }}"></script>  --}}
+    <script src="{{ asset('admin/assets/js/main.js') }}"></script> 
+
     
 </body>
 </html> 

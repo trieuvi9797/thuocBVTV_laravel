@@ -94,21 +94,21 @@ searchMobileTrigger.addEventListener('click', () => {
 });
 
 /* ====== upload ======= */
-$('#upload').change(function(){
-	const from = new FormData();
-	from.append('file', $(this)[0].file[0]);
+// $('#upload').change(function(){
+// 	const from = new FormData();
+// 	from.append('file', $(this)[0].file[0]);
 
-	$.ajax({
-		processData: false,
-		contentType: false,
-		type: 'POST',
-		dataType: 'JSON',
-		data: from,
-		url: '/admin/upload/services',
-		success: function(results){
-			console.log(results);
-			// if(results.error === false){
-			// }
-		}
-	})
-})
+// 	$.ajax({
+// 		processData: false,
+// 		contentType: false,
+// 		type: 'POST',
+// 		dataType: 'JSON',
+// 		data: from,
+// 		url: '/admin/upload/services',
+// 		success: function(results){
+// 			console.log(results);
+// 			// if(results.error === false){
+// 			// }
+// 		}
+// 	})
+// })
