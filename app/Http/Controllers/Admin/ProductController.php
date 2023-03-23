@@ -33,14 +33,33 @@ class ProductController extends Controller
             'categories' => $this->productService->getCategory()
         ]);
     }
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
-        $dataCreate = $request->all();
-        $product = Product::create($dataCreate);
-        $dataCreate['image'] = $this->product->saveImage($request); 
-        $product->images()->create(['url'=> $dataCreate['image']]);
-        $product->categories()->attach($dataCreate['category_ids']);
         // $this->productService->insert($request);
         return redirect()->back();
+    }
+
+    public function edit(Product $product)
+    {
+        return view('admin.products.edit', [
+            'title' => 'Thêm Sản Phẩm Mới',
+            'categories' => $this->productService->getCategory()
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Product $product)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Product $product)
+    {
+        //
     }
 }

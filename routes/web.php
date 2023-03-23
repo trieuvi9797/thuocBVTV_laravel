@@ -27,8 +27,8 @@ Route::post('admin/users/login/store', [LoginController::class, 'store']);
 
 Route::middleware(['auth'])->group(function(){
     Route::prefix('admin')->group(function(){
-        // Route::get('/', [MainController::class, 'index'])->name('admin');
-        Route::get('/main', [MainController::class, 'index'])->name('admin');
+        Route::get('/', [MainController::class, 'index'])->name('admin');
+        Route::get('/main', [MainController::class, 'index']);
 
         Route::prefix('categories')->group(function(){
             Route::get('index', [CategoryController::class, 'index']);
@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function(){
             Route::get('index', [ProductController::class, 'index']);
             Route::get('create', [ProductController::class, 'create']);
             Route::post('create', [ProductController::class, 'store']);
+            Route::get('edit{product}', [ProductController::class, 'edit']);
         });
 
         #Upload

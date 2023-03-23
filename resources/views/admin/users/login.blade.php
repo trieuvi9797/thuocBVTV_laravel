@@ -11,13 +11,13 @@
 
     <meta name="description" content="Admin Dashboard VTNN Khai Mai">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
-    <link rel="shortcut icon" href="/admin/assets/images/LogoVTNN.jpg'"> 
+    <link rel="shortcut icon" href="{{ asset('/LogoVTNN.jpg') }}"> 
 
     <!-- FontAwesome JS-->
-    <script defer src="{{ asset('/admin/assets/plugins/fontawesome/js/all.min.js') }}"></script>
+    <script defer src="{{ asset('/admins/assets/plugins/fontawesome/js/all.min.js') }}"></script>
 
     <!-- App CSS -->  
-    <link id="theme-style" rel="stylesheet" href="{{ asset('/admin/assets/css/portal.css') }}">
+    <link id="theme-style" rel="stylesheet" href="{{ asset('/admins/assets/css/portal.css') }}">
 
     <!-- alert Jquery-->  
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>

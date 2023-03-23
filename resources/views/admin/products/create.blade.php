@@ -14,9 +14,9 @@
                         <div class="mb-3">
                             <label for="name" class="form-label">Tên sản phẩm:</label>
                             <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}" required>
-                            @error('name')
+                            {{-- @error('name')
                                 <span class="text-danger"> {{ $message }}</span>
-                            @enderror
+                            @enderror --}}
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Danh mục:</label>
@@ -26,9 +26,9 @@
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>        
                                 @endforeach
                             </select>
-                            @error('category_ids')
+                            {{-- @error('category_ids')
                             <span class="text-danger"> {{ $message }}</span>
-                            @enderror
+                            @enderror --}}
                         </div>
                         
                     </div>
@@ -36,17 +36,17 @@
                         <div class="mb-3">
                             <label for="price" class="form-label">Giá:</label>
                             <input type="number" name="price" class="form-control" id="price" value="{{ old('price') }}" required>
-                            @error('email')
+                            {{-- @error('email')
                             <span class="text-danger"> {{ $message }}</span>
-                            @enderror
+                            @enderror --}}
                         </div>                         
                         
                         <div class="mb-3">
-                            <label for="phone" class="form-label">Khuyến mãi:</label>
+                            <label for="sale" class="form-label">Khuyến mãi:</label>
                             <input type="text" name="sale" class="form-control" id="sale" value="{{ old('sale') }}" required>
-                            @error('phone')
+                            {{-- @error('sale')
                             <span class="text-danger"> {{ $message }}</span>
-                            @enderror
+                            @enderror --}}
                         </div>  
                     </div>
                 </div>  
@@ -65,9 +65,9 @@
                     <div class="mb-3">
                         <label for="description" class="form-label">Mô tả:</label>
                         <textarea name="description" id="description" rows="30" cols="80" class="form-control">{{ old('description') }}</textarea>
-                        @error('description')
+                        {{-- @error('description')
                             <span class="text-danger"> {{ $message }}</span>
-                        @enderror
+                        @enderror --}}
                     </div>   
                     <button type="submit" class="btn app-btn-primary" >Lưu</button>
             </form>

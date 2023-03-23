@@ -8,12 +8,12 @@
 
 
     <!-- Javascript -->          
-    <script src="/admin/assets/plugins/popper.min.js"></script>
-    <script src="/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    <script src="/admins/assets/plugins/popper.min.js"></script>
+    <script src="/admins/assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
 
     <!-- Page Specific JS -->
-    {{-- <script src="{{ asset('admin/assets/js/app.js') }}"></script>  --}}
-    <script src="/admin/assets/js/main.js"></script> 
+    {{-- <script src="{{ asset('admins/assets/js/app.js') }}"></script>  --}}
+    <script src="/admins/assets/js/main.js"></script> 
 @yield('footer')
 </body>
 </html> 
