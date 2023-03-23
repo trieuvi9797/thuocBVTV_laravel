@@ -52,11 +52,11 @@
                 </div>  
                     <div class="mb-3">
                         <label for="upload" class="form-label">Hình ảnh</label>
-                        <input type="file" name="image" id="upload" class="form-control">
-                        <div id="show_image">
+                        <input type="file" accept="image/*" name="image" id="upload" class="form-control">
+                        <div id="image_show">
         
                         </div>
-                        <input type="hidden" name="image" id="image">
+                        <input type="hidden"  id="image">
                         @error('image')
                         <span class="text-danger"> {{ $message }}</span>
                         @enderror

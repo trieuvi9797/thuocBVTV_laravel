@@ -11,7 +11,7 @@ class UploadController extends Controller
 {
     protected $upload;
 
-    public function __construct(UploadController $upload)
+    public function __construct(UploadService $upload)
     {
         $this->upload = $upload;
     }
@@ -20,11 +20,10 @@ class UploadController extends Controller
     {
         $url = $this->upload->store($request);
         if($url != false){
-            rerturn response()->json([
+            return response()->json([
                 'error' => false,
                 'url' => $url
             ]);
-
         }
         return response()->json(['error' => true]);
     }

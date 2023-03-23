@@ -19,4 +19,8 @@ class Product extends Model
     public function category(){
         return $this->hasOne(Category::class, 'id', 'category_id')->withDefault(['name' => '']);
     }
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

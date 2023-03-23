@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\ProductRequest;
 use App\Http\Services\Product\ProductAdminService;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     protected $productService;
+    protected $product;
 
-    public function __construct(ProductAdminService $productService)
+    public function __construct(Product $product, ProductAdminService $productService)
     {
         $this->productService = $productService;
+        $this->product = $product;
     }
 
     public function index()
@@ -32,7 +35,12 @@ class ProductController extends Controller
     }
     public function store(ProductRequest $request)
     {
-        $this->productService->insert($request);
+        $dataCreate = $request->all();
+        $product = Product::create($dataCreate);
+        $dataCreate['image'] = $this->product->saveImage($request); 
+        $product->images()->create(['url'=> $dataCreate['image']]);
+        $product->categories()->attach($dataCreate['category_ids']);
+        // $this->productService->insert($request);
         return redirect()->back();
     }
 }
