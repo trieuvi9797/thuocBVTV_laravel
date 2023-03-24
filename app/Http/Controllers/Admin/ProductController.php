@@ -33,9 +33,9 @@ class ProductController extends Controller
             'categories' => $this->productService->getCategory()
         ]);
     }
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        // $this->productService->insert($request);
+        $this->productService->insert($request);
         return redirect()->back();
     }
 

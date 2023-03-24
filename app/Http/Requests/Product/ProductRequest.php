@@ -35,7 +35,9 @@ class ProductRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Vui lòng nhập vào sản phẩm',
+            'name.required' => 'Vui lòng nhập tên vào sản phẩm',
+            'category_ids.required' => 'Vui lòng chọn danh mục sản phẩm',
+            'price.required' => 'Vui lòng nhập giá sản phẩm',
             'image.required' => 'Hình ảnh không được bỏ trống!'
         ];
     }

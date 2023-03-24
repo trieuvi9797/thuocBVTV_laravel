@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('description');
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
             $table->double('price');
+            $table->double('sale');
             $table->timestamps();
         });
     }

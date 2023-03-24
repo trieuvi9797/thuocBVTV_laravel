@@ -22,23 +22,24 @@ function removeRow(id, url){
     }
 }
 
+// Upload file
 $('#upload').change(function(){
     const form = new FormData();
-    form.append('file', $(this)[0].file[0]);
+    form.append('image', $(this)[0].files[0]);
 
     $.ajax({
         processData: false,
         contentType: false,
         type: 'POST',
-        datatype: 'JSON',
+        dataType: 'JSON',
         data: form,
         url: '/admin/upload/services',
         success: function(results){
-            if(results.error == false){
+            if (results.error == false) {
                 $('#image_show').html('<a href="' + results.url + '" target="_blank">' + '<img src="' + results.url + '" width="100px"></a>');
                 $('#image').val(results.url);
             }else{
-                alert('Tải hình ảnh không thành công!');
+                alert('Tải hình ảnh lên không thành công!');
             }
         }
     })
