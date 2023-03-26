@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Menu\CreateFormRequest;
+use App\Http\Requests\Category\CreateFormRequest;
 use App\Http\Services\Category\CategoryService;
 use App\Models\Category;
 use Illuminate\Http\JsonResponse;
@@ -35,8 +35,8 @@ class CategoryController extends Controller
 
     public function store(CreateFormRequest $request){
         $this->categoryService->create($request);
+        return redirect('/admin/categories/index');
 
-        return redirect()->back();
     }
 
     public function show(Category $category)

@@ -5,13 +5,15 @@ namespace App\Http\Services\Product;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Traits\UploadImageTrait;
 use Illuminate\Support\Facades\Session;
 
 class ProductAdminService
 {
+    // use UploadImageTrait;
     public function getCategory()
     {
-        return Category::where('parent_id', 0)->get();
+        return Category::all();
     }
 
     protected function isValidPrice($request)
@@ -32,9 +34,9 @@ class ProductAdminService
         $isValidPrice = $this->isValidPrice($request);
         if ($isValidPrice === false) return false;
         try {
+            dd($request);
             $request->except('_token');
             Product::create($request->all());
-
             Session::flash('success', 'Thêm sản phẩm thành công.');
         } catch (\Exception $err) {
             Session::flash('error', 'Thêm sản phẩm lỗi!');
@@ -46,8 +48,8 @@ class ProductAdminService
 
     public function get()
     {
-        return Product::with('category')
-            ->orderByDesc('id')->paginate(15);
+        return Product::with('category')->
+            orderByDesc('id')->paginate(15);
     }
 
     public function update($request, $product)

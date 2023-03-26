@@ -15,10 +15,12 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image');
             $table->longText('description');
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
             $table->double('price');
             $table->double('sale');
+            $table->bigInteger('quantity');
             $table->timestamps();
         });
     }

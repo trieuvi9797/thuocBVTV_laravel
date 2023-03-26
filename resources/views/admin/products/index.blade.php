@@ -71,7 +71,7 @@
                                     <th colspan="2"></th>
                                 </tr>
                             </thead>
-                            @foreach ($products as $key => $item)
+                            @foreach ($products as $item)
                             <tbody>
                                 <tr>
                                     <td>{{ $item->id }}</td>                                        

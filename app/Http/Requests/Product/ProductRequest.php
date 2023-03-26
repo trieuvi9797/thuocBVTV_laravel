@@ -23,8 +23,8 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'description' => 'require',
-            'category_ids' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
             'price' => 'required',
             'sale' => 'required',
             'quantity' => 'required',
@@ -38,7 +38,7 @@ class ProductRequest extends FormRequest
             'name.required' => 'Vui lòng nhập tên vào sản phẩm',
             'category_ids.required' => 'Vui lòng chọn danh mục sản phẩm',
             'price.required' => 'Vui lòng nhập giá sản phẩm',
-            'image.required' => 'Hình ảnh không được bỏ trống!'
+            // 'image.required' => 'Hình ảnh không được bỏ trống!'
         ];
     }
 }

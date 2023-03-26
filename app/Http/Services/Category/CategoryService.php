@@ -3,9 +3,8 @@
 
 namespace App\Http\Services\Category;
 
-use App\Http\Requests\Menu\CreateFormRequest;
+use App\Http\Requests\Category\CreateFormRequest;
 use App\Models\Category;
-use App\Models\Menu;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 

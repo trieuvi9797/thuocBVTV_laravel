@@ -11,17 +11,15 @@ class Product extends Model
 
     protected $fillable = [
         'name',
+        'image',
         'description',
         'category_id',
         'price',
-        'sale'
+        'sale',
+        'quantity'
     ];
-
-    public function category(){
-        return $this->hasOne(Category::class, 'id', 'category_id')->withDefault(['name' => '']);
-    }
-    public function images()
+    public function category()
     {
-        return $this->morphMany(Image::class, 'imageable');
+        return $this->belongsTo(Category::class);
     }
 }

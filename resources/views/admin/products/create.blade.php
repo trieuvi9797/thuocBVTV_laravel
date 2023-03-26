@@ -8,8 +8,8 @@
     <div class="app-card app-card-settings shadow-sm p-4">
         <div class="app-card-body">
             <form action="" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="row">
-                    @csrf
                     <div class="col-12 col-md-8">
                         <div class="mb-3">
                             <label for="name" class="form-label">Tên sản phẩm:</label>
@@ -20,10 +20,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="upload" class="form-label">Hình ảnh</label>
-                            <input type="file" accept="image/*"  id="upload" class="form-control">
+                            <input type="file" {{-- accept="image/*" --}}name="image"  id="upload" class="form-control" >
                             <div class="mb-3" id="image_show">            
-                                <input type="hidden" name="image" id="image">
+                            
                             </div>
+                            <input type="hidden" name="image" id="image">
                             @error('image')
                             <span class="text-danger"> {{ $message }}</span>
                             @enderror
@@ -33,13 +34,13 @@
                     <div class="col-6 col-md-4">
                         <div class="mb-3">
                             <label class="form-label">Danh mục:</label>
-                            <select name="category_ids[]" class="form-control">
+                            <select name="category_id" class="form-control">
                                 <option value="">-- Chọn danh mục --</option>
                                 @foreach($categories as $item)
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>        
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>        
                                 @endforeach
                             </select>
-                            @error('category_ids')
+                            @error('category_id')
                             <span class="text-danger"> {{ $message }}</span>
                             @enderror
                         </div>
