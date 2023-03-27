@@ -1,6 +1,7 @@
 <?php
 namespace App\Traits;
 
+use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 
 trait UploadImageTrait
@@ -9,9 +10,11 @@ trait UploadImageTrait
     {
         if($request->hasFile($fileName)){
             try {
-                $name = $request->file($fileName)->getClientOriginalName();
+                $img = $request->$fileName;
+                $name = $request->$img->getClientOriginalName();
                 $pathFull = 'uploads/' . date("Y/m/d");
                 $request->file($fileName)->storeAs('public/' . $pathFull , $name);
+                Image::make($request->file($fileName))->storeAs('public/' . $pathFull , $name);
                 return '/storage/' . $pathFull . '/' . $name;
             } catch (\Exception $error) {
                 return false;
@@ -22,7 +25,7 @@ trait UploadImageTrait
     public function StorageTraitUpload($request, $fieldName, $folderName)
     {
         if ($request->hasFile($fieldName)) {
-            $file = $request->$fieldName;
+            $file = $request->file($fieldName);
             $fileName = $file->getClientOriginalName();
             $filePath = $request->file($fieldName)->storeAs('public/' . $folderName . '/' . auth()->id(), $fileName);
             return Storage::url($filePath);

@@ -81,7 +81,7 @@
                                     {{-- <td><img src="{{ $item->images->count() > 0 ? asset('upload/'.$item->images->first()->url) : '/upload/default.png' }}" width="80px" height="80px" alt=""></td>                                         --}}
                                     <td>{{ $item->description }}</td>  
                                     <td>{{ $item->price }}</td>  
-                                    <td>{{ $item->sale }}</td>  
+                                    <td>{{ $item->price-($item->price*$item->sale/100) }}</td>  
                                     <td>
                                         <a href="/admin/products/edit/{{ $item->id }}" class="btn app-btn-warning" style="float: right">Sửa</a>
                                     </td>

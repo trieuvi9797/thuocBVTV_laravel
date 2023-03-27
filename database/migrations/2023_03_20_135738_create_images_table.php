@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('url');
             $table->string('image');
+            $table->foreignIdFor(Product::class)->constrained()->cascadeOnDelete()->after('image');
             $table->timestamps();
         });
     }

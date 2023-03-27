@@ -20,13 +20,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="upload" class="form-label">Hình ảnh</label>
-                            <input type="file" {{-- accept="image/*" --}}name="image"  id="upload" class="form-control" >
+                            <input type="file" name="image"  id="inputIMG" class="form-control">
                             <div class="mb-3" id="image_show">            
-                            
+                                <img src="" id="show-image" alt="" width="100px" height="100px">
                             </div>
-                            <input type="hidden" name="image" id="image">
                             @error('image')
-                            <span class="text-danger"> {{ $message }}</span>
+                                <span class="text-danger"> {{ $message }}</span>
                             @enderror
                         </div>
                         
@@ -36,7 +35,7 @@
                             <label class="form-label">Danh mục:</label>
                             <select name="category_id" class="form-control">
                                 <option value="">-- Chọn danh mục --</option>
-                                @foreach($categories as $item)
+                                @foreach($category as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>        
                                 @endforeach
                             </select>
@@ -53,17 +52,13 @@
                         </div>                         
                         <div class="mb-3">
                             <label for="sale" class="form-label">Khuyến mãi:</label>
-                            <input type="text" name="sale" class="form-control" id="sale" value="{{ old('sale') }}" required>
-                            @error('sale')
-                            <span class="text-danger"> {{ $message }}</span>
-                            @enderror
+                            <input type="number" name="sale" class="form-control" id="sale" value="{{ old('sale') }}" required min="0" max="100">
+                            
                         </div>  
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Số lượng:</label>
-                            <input type="text" name="quantity" class="form-control" id="quantity" value="{{ old('quantity') }}" required>
-                            {{-- @error('quantity')
-                            <span class="text-danger"> {{ $message }}</span>
-                            @enderror --}}
+                            <input type="number" name="quantity" class="form-control" id="quantity" value="{{ old('quantity') }}"  required>
+                            
                         </div>  
                     </div>
                 </div>                   
@@ -71,9 +66,9 @@
                     <div class="mb-3">
                         <label for="description" class="form-label">Mô tả:</label>
                         <textarea name="description" id="description" rows="30" cols="80" class="form-control">{{ old('description') }}</textarea>
-                        {{-- @error('description')
+                        @error('description')
                             <span class="text-dange r"> {{ $message }}</span>
-                        @enderror --}}
+                        @enderror 
                     </div>   
                     <button type="submit" class="btn app-btn-primary" >Lưu</button>
             </form>

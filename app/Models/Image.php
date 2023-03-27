@@ -13,7 +13,10 @@ class Image extends Model
         'url',
         'image',
     ];
-    
+    public function products()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 
 
 }
