@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function(){
             Route::get('create', [ProductController::class, 'create']);
             Route::post('create', [ProductController::class, 'store']);
             Route::get('edit{product}', [ProductController::class, 'edit']);
+            Route::DELETE('destroy', [ProductController::class, 'destroy']);
         });
 
         #Upload

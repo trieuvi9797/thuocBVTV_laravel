@@ -39,3 +39,19 @@ function removeRow(id, url){
             readURL(this);
         });
     });
+
+    $(() => {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#show-IMGs').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#inputIMGs").change(function() {
+            readURL(this);
+        });
+    });

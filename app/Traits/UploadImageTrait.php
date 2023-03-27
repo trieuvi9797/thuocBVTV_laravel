@@ -21,7 +21,8 @@ trait UploadImageTrait
             }
         }
         return null;
-    } 
+    }
+ 
     public function StorageTraitUpload($request, $fieldName, $folderName)
     {
         if ($request->hasFile($fieldName)) {

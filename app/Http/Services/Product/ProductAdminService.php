@@ -45,23 +45,8 @@ class ProductAdminService
         if ($isValidPrice === false) return false;
         try {
             $request->except('_token');
-                DB::beginTransaction();
-    
-                if ($request->hasFile('image')) 
-                    $img = $this->StorageTraitUpload($request, 'image', 'product');
-                $product = $this->product->create([
-                    'name' => trim($request->name),
-                    'image' => $img,
-                    'description' => $request->description,
-                    'category_id' => $request->category_id,
-                    'price' => $request->price,
-                    'sale' => $request->sale,
-                    'quantity' => $request->quantity,
-                ]);
-                DB::commit();
-
-
-            Session::flash('success', 'Thêm sản phẩm thành công.');
+            Product::create($request->all());
+            Session::flash('error', 'Thêm sản phẩm thành công!');
         } catch (\Exception $err) {
             Session::flash('error', 'Thêm sản phẩm lỗi!');
             \Log::info($err->getMessage());
@@ -95,12 +80,11 @@ class ProductAdminService
 
     public function delete($request)
     {
-        // $product = Product::where('id', $request->input('id'))->first();
-        // if ($product) {
-        //     $product->delete();
-        //     return true;
-        // }
-
-        // return false;
+        $product = Product::where('id', $request->input('id'))->first();
+        if($product){
+            $product->delete();
+            return false;
+        }
+        return false;
     }
 }

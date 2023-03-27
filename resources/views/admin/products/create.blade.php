@@ -21,12 +21,12 @@
                         <div class="mb-3">
                             <label for="upload" class="form-label">Hình ảnh</label>
                             <input type="file" name="image"  id="inputIMG" class="form-control">
-                            <div class="mb-3" id="image_show">            
-                                <img src="" id="show-image" alt="" width="100px" height="100px">
-                            </div>
                             @error('image')
-                                <span class="text-danger"> {{ $message }}</span>
+                            <span class="text-danger"> {{ $message }}</span>
                             @enderror
+                        </div>
+                        <div class="mb-3" id="image_show">            
+                            <img src="" id="show-image" alt="" width="150px" height="150px">
                         </div>
                         
                     </div>
@@ -45,19 +45,19 @@
                         </div>
                         <div class="mb-3">
                             <label for="price" class="form-label">Giá:</label>
-                            <input type="number" name="price" class="form-control" id="price" value="{{ old('price') }}" required>
+                            <input type="number" name="price" class="form-control" id="price" min="1000" value="{{ old('price') }}" required>
                             @error('price')
                             <span class="text-danger"> {{ $message }}</span>
                             @enderror
                         </div>                         
                         <div class="mb-3">
-                            <label for="sale" class="form-label">Khuyến mãi:</label>
-                            <input type="number" name="sale" class="form-control" id="sale" value="{{ old('sale') }}" required min="0" max="100">
+                            <label for="sale" class="form-label">Khuyến mãi (%):</label>
+                            <input type="number" name="sale" class="form-control" id="sale" min="0" max="100" value="{{ old('sale') }}" required >
                             
                         </div>  
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Số lượng:</label>
-                            <input type="number" name="quantity" class="form-control" id="quantity" value="{{ old('quantity') }}"  required>
+                            <input type="number" name="quantity" class="form-control" id="quantity" min="0" value="{{ old('quantity') }}"  required>
                             
                         </div>  
                     </div>
