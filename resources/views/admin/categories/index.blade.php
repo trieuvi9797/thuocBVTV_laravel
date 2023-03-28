@@ -88,9 +88,11 @@
                             {{-- @endforeach --}}
                         </table>
                     </div><!--//table-responsive-->                  
-                </div><!--//app-card-body-->		
+                </div><!--//app-card-body-->
             </div><!--//app-card-->
-            
+            <nav aria-label="Page navigation">
+                {!!  $list_category->links()  !!}
+            </nav>           
         </div><!--//tab-content-->
     </div><!--//container-fluid-->
  

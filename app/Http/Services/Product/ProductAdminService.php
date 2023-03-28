@@ -6,6 +6,7 @@ namespace App\Http\Services\Product;
 use App\Models\Category;
 use App\Models\Product;
 use App\Traits\UploadImageTrait;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -22,7 +23,7 @@ class ProductAdminService
 
     public function getCategory()
     {
-        return Category::all();
+        return Category::where('parent_id', '>' , 0)->get();
     }
 
     protected function isValidPrice($request)
@@ -63,7 +64,7 @@ class ProductAdminService
             Session::flash('error', 'Thêm sản phẩm thành công!');
         } catch (\Exception $err) {
             Session::flash('error', 'Thêm sản phẩm lỗi!');
-            \Log::info($err->getMessage());
+            Log::info($err->getMessage());
             return false;
         }
         return  true;
@@ -72,7 +73,7 @@ class ProductAdminService
 
     public function get()
     {
-        return Product::with('category')->orderByDesc('id')->paginate(15);
+        return Product::orderByDesc('id')->paginate(10);
     }
 
     public function update($request, $product)
@@ -84,24 +85,11 @@ class ProductAdminService
             $product->save();
             $request->except('_token');
 
-            // DB::beginTransaction();
-            // if ($request->hasFile('image')) 
-            //     $img = $this->StorageTraitUpload($request, 'image', 'product');
-            // $product = $this->product->create([
-            //     'name' => trim($request->name),
-            //     'image' => $img,
-            //     'description' => $request->description,
-            //     'category_id' => $request->category_id,
-            //     'price' => $request->price,
-            //     'sale' => $request->sale,
-            //     'quantity' => $request->quantity,
-            // ]);
-            // DB::commit();
-
+            
             Session::flash('error', 'Thêm sản phẩm thành công!');
         } catch (\Exception $err) {
             Session::flash('error', 'Thêm sản phẩm lỗi!');
-            \Log::info($err->getMessage());
+            Log::info($err->getMessage());
             return false;
         }
         return  true;

@@ -24,7 +24,7 @@ class CategoryService
     }
     public function getAll()
     {
-        return Category::orderbyDesc('id')->paginate(20);
+        return Category::orderbyDesc('id')->paginate(10);
     }
 
     public function create($request)

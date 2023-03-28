@@ -33,6 +33,7 @@ class Helper
                 $html .= self::categories($list_category, $categories->id, $char .'--');
             }
         }
+        
         return $html;
     }
 }

@@ -6,7 +6,6 @@
 <div class="app-content pt-3 p-md-3 p-lg-4">
     <div class="container-xl">
             
-
         @if (session('message'))
             <h4 class="text-primary">{{ session('message') }}</h4>
         @endif
@@ -40,7 +39,7 @@
                             </select>
                         </div>
                         <div class="col-auto">						    
-                            <a class="btn app-btn-primary" href="/admin/products/create">
+                            <a class="btn app-btn-primary" href="/admin/sliders/create">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -62,16 +61,14 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Tên sản phẩm</th>
+                                    <th>Tiêu đề</th>
+                                    <th>Link</th>
                                     <th>Hình ảnh</th>
-                                    <th>Danh mục</th>
-                                    <th>Mô tả</th>
-                                    <th>Giá</th>
-                                    <th>Khuyến mãi</th>
+                                    <th>Cập nhật</th>
                                     <th colspan="2"></th>
                                 </tr>
                             </thead>
-                            @foreach ($products as $item)
+                            {{-- @foreach ($products as $item)
                             <tbody>
                                 <tr>
                                     <td>{{ $item->id }}</td>                                        
@@ -80,7 +77,7 @@
                                     <td>{{ $item->category->name }}</td>                                        
                                     <td>{{ $item->description }}</td>  
                                     <td>{{ $item->price }}</td>  
-                                    <td>{{ $item->price-($item->price*$item->sale/100) }}</td>  {{-- gia-(gia*sale/100) --}}
+                                    <td>{{ $item->price-($item->price*$item->sale/100) }}</td> 
                                     <td>
                                         <a href="/admin/products/edit/{{ $item->id }}" class="btn app-btn-warning" style="float: right">Sửa</a>
                                     </td>
@@ -91,13 +88,13 @@
                                     </td>                                     
                                 </tr>
                             </tbody>
-                            @endforeach
+                            @endforeach --}}
                         </table>
                     </div><!--//table-responsive-->                  
                 </div><!--//app-card-body-->
             </div><!--//app-card-->
         <nav aria-label="Page navigation">
-            {!!  $products->links()  !!}
+            {{-- {!!  $products->links()  !!} --}}
         </nav><!--//tab-content-->
         </div><!--//tab-content-->
     </div><!--//container-fluid-->

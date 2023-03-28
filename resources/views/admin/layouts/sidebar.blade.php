@@ -89,7 +89,7 @@
                     </a><!--//nav-link-->
                     <div id="submenu-4" class="collapse submenu submenu-4" data-bs-parent="#menu-accordion">
                         <ul class="submenu-list list-unstyled">
-                            <li class="submenu-item"><a class="submenu-link" href="/admin/menus/list">Menu</a></li>
+                            <li class="submenu-item"><a class="submenu-link" href="/admin/sliders/index">Slider</a></li>
                             <li class="submenu-item"><a class="submenu-link" href="/admin/menus/add">Thêm danh mục</a></li>
                             <li class="submenu-item"><a class="submenu-link" href="#">Trang chủ</a></li>
                             <li class="submenu-item"><a class="submenu-link" href="#">Tang giới thiệu</a></li>
@@ -99,7 +99,7 @@
                 </li><!--//nav-item-->
 
                 <li class="nav-item has-submenu">        <!--Tai khoan-->             
-                    <a class="nav-link {{ '/admin/users/*' ? 'active' : '' }}" href="/admin/users/index" >
+                    <a class="nav-link" href="/admin/users/index" >
                         <span class="nav-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
                                 <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"/>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
+use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,8 +50,14 @@ Route::middleware(['auth'])->group(function(){
             Route::DELETE('destroy', [ProductController::class, 'destroy']);
         });
 
-        #Upload
-        Route::post('upload/services', [UploadController::class, 'store']);
-    });
+        #sliders
+        Route::prefix('sliders')->group(function(){
+            Route::get('index', [SliderController::class, 'index']);
+            Route::get('create', [SliderController::class, 'create']);
+            Route::post('create', [SliderController::class, 'store']);
+            Route::get('edit/{product}', [SliderController::class, 'edit']);
+            Route::post('edit/{product}', [SliderController::class, 'update']);
+            Route::DELETE('destroy', [SliderController::class, 'destroy']);
+        });    });
 
 });

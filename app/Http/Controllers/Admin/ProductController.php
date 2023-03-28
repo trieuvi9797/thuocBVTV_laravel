@@ -66,7 +66,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $result = $this->productService->insert($request);
+        $result = $this->productService->update($request, $product);
         if($result){
             return redirect('/admin/products/index');
         }
@@ -79,7 +79,7 @@ class ProductController extends Controller
     public function destroy(Request $request)
     {
         $result = $this->productService->delete($request);
-        if($request){
+        if($result){
             return response()->json([
                 'error' => false,
                 'message' => 'Xóa thành công sản phẩm.'
