@@ -22,7 +22,7 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique|max:255',
             'description' => 'required',
             'category_id' => 'required',
             'price' => 'required',

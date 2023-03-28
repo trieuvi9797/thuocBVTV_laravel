@@ -44,7 +44,8 @@ Route::middleware(['auth'])->group(function(){
             Route::get('index', [ProductController::class, 'index']);
             Route::get('create', [ProductController::class, 'create']);
             Route::post('create', [ProductController::class, 'store']);
-            Route::get('edit{product}', [ProductController::class, 'edit']);
+            Route::get('edit/{product}', [ProductController::class, 'edit']);
+            Route::post('edit/{product}', [ProductController::class, 'update']);
             Route::DELETE('destroy', [ProductController::class, 'destroy']);
         });
 

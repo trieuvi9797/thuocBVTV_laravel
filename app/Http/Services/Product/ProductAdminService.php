@@ -45,7 +45,21 @@ class ProductAdminService
         if ($isValidPrice === false) return false;
         try {
             $request->except('_token');
-            Product::create($request->all());
+
+            DB::beginTransaction();
+            if ($request->hasFile('image')) 
+                $img = $this->StorageTraitUpload($request, 'image', 'product');
+            $product = $this->product->create([
+                'name' => trim($request->name),
+                'image' => $img,
+                'description' => $request->description,
+                'category_id' => $request->category_id,
+                'price' => $request->price,
+                'sale' => $request->sale,
+                'quantity' => $request->quantity,
+            ]);
+            DB::commit();
+
             Session::flash('error', 'Thêm sản phẩm thành công!');
         } catch (\Exception $err) {
             Session::flash('error', 'Thêm sản phẩm lỗi!');
@@ -63,19 +77,34 @@ class ProductAdminService
 
     public function update($request, $product)
     {
-        // $isValidPrice = $this->isValidPrice($request);
-        // if ($isValidPrice === false) return false;
+        $isValidPrice = $this->isValidPrice($request);
+        if ($isValidPrice === false) return false;
+        try {
+            $product->fill($request->input());
+            $product->save();
+            $request->except('_token');
 
-        // try {
-        //     $product->fill($request->input());
-        //     $product->save();
-        //     Session::flash('success', 'Cập nhật thành công');
-        // } catch (\Exception $err) {
-        //     Session::flash('error', 'Có lỗi vui lòng thử lại');
-        //     \Log::info($err->getMessage());
-        //     return false;
-        // }
-        // return true;
+            // DB::beginTransaction();
+            // if ($request->hasFile('image')) 
+            //     $img = $this->StorageTraitUpload($request, 'image', 'product');
+            // $product = $this->product->create([
+            //     'name' => trim($request->name),
+            //     'image' => $img,
+            //     'description' => $request->description,
+            //     'category_id' => $request->category_id,
+            //     'price' => $request->price,
+            //     'sale' => $request->sale,
+            //     'quantity' => $request->quantity,
+            // ]);
+            // DB::commit();
+
+            Session::flash('error', 'Thêm sản phẩm thành công!');
+        } catch (\Exception $err) {
+            Session::flash('error', 'Thêm sản phẩm lỗi!');
+            \Log::info($err->getMessage());
+            return false;
+        }
+        return  true;
     }
 
     public function delete($request)

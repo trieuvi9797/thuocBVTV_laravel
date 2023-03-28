@@ -44,15 +44,11 @@ class ProductController extends Controller
     }
     public function store(CreateFormRequest $request)
     { 
-        try {
-            $this->productService->insert($request);
-            return view('admin.products.index', [
-                'title' => 'Danh Sách Sản Phẩm',
-                'products' => $this->productService->get()
-            ]);
-        } catch (\Exception $ex) {
-            return redirect()->back();
+        $result = $this->productService->insert($request);
+        if($result){
+            return redirect('/admin/products/index');
         }
+        return redirect()->back();
     }
 
 
@@ -60,7 +56,8 @@ class ProductController extends Controller
     {
         return view('admin.products.edit', [
             'title' => 'Thêm Sản Phẩm Mới',
-            'categories' => $this->productService->getCategory()
+            'product' => $product,
+            'category' => $this->productService->getCategory()
         ]);
     }
 
@@ -69,7 +66,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $result = $this->productService->insert($request);
+        if($result){
+            return redirect('/admin/products/index');
+        }
+        return redirect()->back();
     }
 
     /**

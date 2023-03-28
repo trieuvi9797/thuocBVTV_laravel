@@ -76,12 +76,11 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>                                        
                                     <td>{{ $item->name }}</td>                                        
-                                    <td></td>                                        
+                                    <td><img src="{{ $item->images->count() > 0 ? asset('storage/product/'.auth()->id().$item->images->first()->url) : '/upload/default.png' }}" width="80px" height="80px" alt=""></td>                                        
                                     <td>{{ $item->category->name }}</td>                                        
-                                    {{-- <td><img src="{{ $item->images->count() > 0 ? asset('upload/'.$item->images->first()->url) : '/upload/default.png' }}" width="80px" height="80px" alt=""></td>                                         --}}
                                     <td>{{ $item->description }}</td>  
                                     <td>{{ $item->price }}</td>  
-                                    <td>{{ $item->price-($item->price*$item->sale/100) }}</td>  
+                                    <td>{{ $item->price-($item->price*$item->sale/100) }}</td>  {{-- gia-(gia*sale/100) --}}
                                     <td>
                                         <a href="/admin/products/edit/{{ $item->id }}" class="btn app-btn-warning" style="float: right">Sửa</a>
                                     </td>
@@ -96,8 +95,10 @@
                         </table>
                     </div><!--//table-responsive-->                  
                 </div><!--//app-card-body-->
-                {!! $products->links() !!}		
             </div><!--//app-card-->
+        <div class="card-footer clearfix">
+            {!!  $products->links()  !!}
+        </div><!--//tab-content-->
         </div><!--//tab-content-->
     </div><!--//container-fluid-->
  
