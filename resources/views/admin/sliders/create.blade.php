@@ -1,5 +1,4 @@
 @extends('admin.layouts.app')
-@section('title')
 
 @section('content')          
             
@@ -7,7 +6,7 @@
     <h1 class="app-page-title">Thêm sliders</h1>
     <div class="app-card app-card-settings shadow-sm p-4">
         <div class="app-card-body">
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md">
@@ -22,13 +21,13 @@
                             <label for="upload" class="form-label">Hình ảnh</label>
                             <input type="file" name="image"  id="inputIMG" class="form-control">
                             @error('image')
-                            <span class="text-danger"> {{ $message }}</span>
+                                <span class="text-danger"> {{ $message }}</span>
                             @enderror
                         </div>
                     </div>
                     <div class="col-md">
                         <div class="mb-3">
-                            <label for="url" class="form-label">Đường dẫn: </label>
+                            <label for="url" class="form-label">Link: </label>
                             <input type="text" name="url" class="form-control" id="url" value="" required>
                             @error('url')
                                 <span class="text-danger"> </span>
@@ -51,9 +50,5 @@
         </div>
     </div>
 </div><!--//app-content-->
-@endsection
-@section('footer')
-<script>
-    CKEDITOR.replace( 'description' );
-</script>
+
 @endsection

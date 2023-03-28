@@ -7,6 +7,8 @@ use App\Traits\UploadImageTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class SliderService
 {
@@ -26,21 +28,16 @@ class SliderService
     public function insert($request)
     {
         try {
-            // Slider::create($request->input());
-
-            DB::beginTransaction();
-            if ($request->hasFile('image')) 
+            $slider = new Slider();
+            $slider->name = $request->name;
+            $slider->url = $request->url;
+            if($request->hasFile('image')){
                 $img = $this->StorageTraitUpload($request, 'image', 'slider');
-            $slider = $this->slider->create([
-                'name' => trim($request->name),
-                'url' => $request->url,
-                'image' => $img,
-                'sort_by' => $request->sort_by,
-            ]);
-            dd($slider);
-            DB::commit();
-
-
+            }
+            $slider->image = $img;
+            $slider->sort_by = $request->sort_by;
+    
+            $slider->save();
 
             Session::flash('success', 'Thêm slider thành công.');
         } catch (\Exception  $err) {
@@ -50,5 +47,22 @@ class SliderService
         }
         return true;
     }
+    
+    public function update($request, $slider)
+    {
+        $slider->fill($request->input());
+        $slider->save();    
+    }
 
+    public function destroy($request)
+    {
+        $slider = Slider::where('id', $request->input('id'))->first();
+        if($slider){
+            $path = str_replace('storage', 'slider', $slider->image);
+            Storage::delete($path);
+            $slider->delete();
+            return true;
+        }
+        return false;
+    }
 }

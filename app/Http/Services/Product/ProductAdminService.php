@@ -26,24 +26,9 @@ class ProductAdminService
         return Category::where('parent_id', '>' , 0)->get();
     }
 
-    protected function isValidPrice($request)
-    {
-
-        if($request->input('price') != 0 && $request->input('sale') != 0 && $request->input('sale') >= $request->input('price')){
-            Session::flash('error', 'Giá khuyến mãi phải nhỏ hơn giá gốc!');
-            return false;
-        }
-        if($request->input('sale') != 0 && (int)$request->input('price') == 0){
-            Session::flash('error', 'Vui lòng nhập giá sản phẩm!');
-            return false;
-        }
-        return  true;
-    }
 
     public function insert($request)
     {
-        $isValidPrice = $this->isValidPrice($request);
-        if ($isValidPrice === false) return false;
         try {
             $request->except('_token');
 
@@ -78,8 +63,6 @@ class ProductAdminService
 
     public function update($request, $product)
     {
-        $isValidPrice = $this->isValidPrice($request);
-        if ($isValidPrice === false) return false;
         try {
             $product->fill($request->input());
             $product->save();

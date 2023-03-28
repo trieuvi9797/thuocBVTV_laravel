@@ -76,7 +76,7 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>                                        
                                     <td>{{ $item->name }}</td>                                        
-                                    <td><img src="{{ $item->images->count() > 0 ? asset('storage/product/'.auth()->id().$item->images->first()->url) : '/upload/default.png' }}" width="80px" height="80px" alt=""></td>                                        
+                                    <td><img src="{{ $item->image }}" width="80px" height="80px" alt=""></td>                                        
                                     <td>{{ $item->category->name }}</td>                                        
                                     <td>{{ $item->description }}</td>  
                                     <td>{{ $item->price }}</td>  

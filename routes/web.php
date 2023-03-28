@@ -55,9 +55,10 @@ Route::middleware(['auth'])->group(function(){
             Route::get('index', [SliderController::class, 'index']);
             Route::get('create', [SliderController::class, 'create']);
             Route::post('create', [SliderController::class, 'store']);
-            Route::get('edit/{product}', [SliderController::class, 'edit']);
-            Route::post('edit/{product}', [SliderController::class, 'update']);
+            Route::get('edit/{slider}', [SliderController::class, 'edit']);
+            Route::post('edit/{slider}', [SliderController::class, 'update']);
             Route::DELETE('destroy', [SliderController::class, 'destroy']);
-        });    });
+        });    
+    });
 
 });

@@ -6,6 +6,7 @@ use App\Models\Slider;
 use App\Http\Services\Slider\SliderService;
 use Illuminate\Http\Request;
 
+
 class SliderController extends Controller
 {
     protected $slider;
@@ -17,9 +18,10 @@ class SliderController extends Controller
 
     public function index()
     {
+        $slider = Slider::orderByDesc('id')->paginate(10);
         return view('admin.sliders.index', [
             'title' => 'Danh sách slider',
-            'sliders' => $this->slider->get()
+            'sliders' => $slider
         ]);
     }
 
@@ -41,9 +43,14 @@ class SliderController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'url' => 'required',
-            'image' => 'required',
+            'image' => 'nullable|required|image|mimes:png,jpg,jpeg|max:2048',
+            'sort_by' => 'required'
         ]);
-        $this->slider->insert($request);
+        $result = $this->slider->insert($request);
+        
+        if($result){
+            return redirect('/admin/sliders/index');
+        }
         return redirect()->back();
     }
 
@@ -60,7 +67,10 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        //
+        return view('admin.sliders.edit', [
+            'title' => 'Cập nhật slider',
+            'slider' => $slider
+        ]);
     }
 
     /**
@@ -68,14 +78,28 @@ class SliderController extends Controller
      */
     public function update(Request $request, Slider $slider)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'url' => 'required',
+            'image' => 'nullable|required|image|mimes:png,jpg,jpeg|max:2048',
+            'sort_by' => 'required'
+        ]);
+        $result = $this->slider->update($request, $slider);
+        if($result){
+            return redirect('/admin/sliders/index');
+        }
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Slider $slider)
+    public function destroy(Request $request)
     {
-        //
+        $result = $this->slider->destroy($request);
+        if($result){
+            return redirect('/admin/sliders/index');
+        }
+        return redirect()->back();
     }
 }

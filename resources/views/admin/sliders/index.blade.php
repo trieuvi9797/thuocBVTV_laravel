@@ -1,7 +1,4 @@
 @extends('admin.layouts.app')
-@section('title', 'Sản phẩm')
-
-    
 @section('content')
 <div class="app-content pt-3 p-md-3 p-lg-4">
     <div class="container-xl">
@@ -68,33 +65,31 @@
                                     <th colspan="2"></th>
                                 </tr>
                             </thead>
-                            {{-- @foreach ($products as $item)
+                            @foreach ($sliders as $item)
                             <tbody>
                                 <tr>
                                     <td>{{ $item->id }}</td>                                        
                                     <td>{{ $item->name }}</td>                                        
-                                    <td><img src="{{ $item->images->count() > 0 ? asset('storage/product/'.auth()->id().$item->images->first()->url) : '/upload/default.png' }}" width="80px" height="80px" alt=""></td>                                        
-                                    <td>{{ $item->category->name }}</td>                                        
-                                    <td>{{ $item->description }}</td>  
-                                    <td>{{ $item->price }}</td>  
-                                    <td>{{ $item->price-($item->price*$item->sale/100) }}</td> 
+                                    <td>{{ $item->url }}</td>                                        
+                                    <td><img src="{{ $item->image }}" width="80px" height="80px" alt=""></td>                                        
+                                    <td>{{ $item->updated_at }}</td>  
                                     <td>
-                                        <a href="/admin/products/edit/{{ $item->id }}" class="btn app-btn-warning" style="float: right">Sửa</a>
+                                        <a href="/admin/sliders/edit/{{ $item->id }}" class="btn app-btn-warning" style="float: right">Sửa</a>
                                     </td>
                                     <td>
-                                        <a href="" class="btn app-btn-danger" onclick="removeRow({{ $item->id }},'/admin/products/destroy')">
+                                        <a href="" class="btn app-btn-danger" onclick="removeRow({{ $item->id }},'/admin/sliders/destroy')">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>                                     
                                 </tr>
                             </tbody>
-                            @endforeach --}}
+                            @endforeach
                         </table>
                     </div><!--//table-responsive-->                  
                 </div><!--//app-card-body-->
             </div><!--//app-card-->
         <nav aria-label="Page navigation">
-            {{-- {!!  $products->links()  !!} --}}
+            {!!  $sliders->links()  !!}
         </nav><!--//tab-content-->
         </div><!--//tab-content-->
     </div><!--//container-fluid-->

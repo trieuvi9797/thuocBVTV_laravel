@@ -22,11 +22,11 @@
                             <label for="upload" class="form-label">Hình ảnh</label>
                             <input type="file" name="image"  id="inputIMG" class="form-control" value="{{ $product->image }}">
                             @error('image')
-                            <span class="text-danger"> {{ $message }}</span>
+                                <span class="text-danger"> {{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3" id="image_show">            
-                            <img src="{{ $product   ->image }}" id="show-image" alt="" width="150px" height="150px">
+                            <img src="{{ $product->image }}" id="show-image" alt="" width="150px" height="150px">
                         </div>
                         
                     </div>
