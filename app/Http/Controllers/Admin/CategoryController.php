@@ -20,9 +20,10 @@ class CategoryController extends Controller
         $this->categoryService = $categoryService;
     }
     public function index(){
+        
         return view('admin.categories.index', [
             'title' => 'Danh mục sản phẩm',
-            'list_category' => $this->categoryService->getAll()
+            'list_category' => $this->categoryService->getAll(),
         ]);
     }
 

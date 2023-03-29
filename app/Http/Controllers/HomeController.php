@@ -2,17 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\Category\CategoryService;
+use App\Http\Services\Product\ProductService;
+use App\Http\Services\Slider\SliderService;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    protected $slider;
+    protected $category;
+    protected $product;
+
+    public function __construct(SliderService $slider, CategoryService $category, ProductService $product)
+    {
+        $this->slider = $slider;
+        $this->product = $product;
+        $this->category = $category;
+    }
     public function index()
     {
+        $parentCategories = Category::where('parent_id', 0)->get();
         return view('client/home', [
-            'title' => 'VTNN Khai Mai'
+            'title' => 'VTNN Khai Mai',
+            'categories' => $this->category->show(),
+            'parentCategories' => $this->category->getParent(),
         ]);
     }
 

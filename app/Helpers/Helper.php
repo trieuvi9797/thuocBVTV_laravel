@@ -14,10 +14,9 @@ class Helper
             if($categories->parent_id == $parent_id)
             {
                 $html .= '
-                <tr>
-                    <td>'. $categories->id .'</td>                                        
+                <tr>                                      
                     <td>'. $char . $categories->name .'</td>                                        
-                    <td>'. $categories->parent_id .'</td>                                        
+                    <td>'. $categories->parentName .'</td>                                        
                     <td>'. $categories->updated_at.'</td>                                        
                     <td>
                         <a href="/admin/categories/edit/'. $categories->id.'" class="btn app-btn-primary">

@@ -13,9 +13,17 @@ class Category extends Model
         'parent_id',
         'slug',
     ];
-    public function subCategory()
-    {
-        return $this->belongsTo(Category::class, 'parent_id', 'id');
+    
+    protected $guarded = [];
+    
+    public function parent(){
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+    public function childrents(){
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+    public function getParentNameAttribute(){
+        return optional($this->parent)->name;
     }
     public function products()
     {

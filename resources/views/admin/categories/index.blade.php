@@ -60,7 +60,6 @@
                         <table class="table app-table-hover mb-0 text-left">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Tên danh mục</th>
                                     <th>Danh mục cha</th>
                                     <th>Ngày cập nhật</th>
@@ -68,6 +67,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                
                                 {!! \App\Helpers\Helper::categories($list_category) !!}
                                 {{-- <tr>
                                     <td></td>                                        
