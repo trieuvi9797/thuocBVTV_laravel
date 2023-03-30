@@ -14,8 +14,6 @@ class Category extends Model
         'slug',
     ];
     
-    protected $guarded = [];
-    
     public function parent(){
         return $this->belongsTo(Category::class, 'parent_id');
     }

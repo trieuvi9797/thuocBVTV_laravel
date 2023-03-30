@@ -35,4 +35,37 @@ class Helper
         
         return $html;
     }
+
+    public static function showCategory($categories, $parent_id = 0)
+    {
+        $html_category = '';
+        foreach ($categories as $item) {
+            // dd($item->parentName);
+            if ($item->parent_id == $parent_id) {
+                $html_category .= `
+                <li>
+                    <a href="/danh-muc/'. $item->id . '-' . Str::slug($item->name, '-') .'.html">
+                    '. $item->name .'
+                    </a>`;
+
+                if (self::isChild($categories, $item->id)) {
+                    $html_category .= `<ul>`;
+                    $html_category .= self::showCategory($categories, $item->id);
+                    $html_category .= `</ul>`;
+                }
+
+                $html_category .= `</li>`;
+            }
+            dd($html_category);
+        }
+    }
+    public static function isChild($categories, $id)
+    {
+        foreach ($categories as $item) {
+            if($item->parent_id == $id){
+                return true;
+            }
+        }
+        return false;
+    }
 }

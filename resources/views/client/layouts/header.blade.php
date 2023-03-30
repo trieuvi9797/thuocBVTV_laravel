@@ -68,7 +68,7 @@
                         <li><a href="./blog-details.html">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="">Tin nông nghiệp</a></li>
+                <li><a href="">Tin tức</a></li>
                 <li><a href="">Liên hệ</a></li>
             </ul>
         </nav>
@@ -143,7 +143,7 @@
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="">Tin nông nghiệp</a></li>
+                            <li><a href="">Tin tức</a></li>
                             <li><a href="">Liên hệ</a></li>
                         </ul>
                     </nav>
@@ -176,8 +176,7 @@
                             <span>Danh mục thuốc</span>
                         </div>
                         <ul>
-                            <li><a href="#">Trang chu</a></li>
-                            
+                            {!! \App\Helpers\Helper::showCategory($categories) !!}
                         </ul>
                     </div>
                 </div>
@@ -205,4 +204,3 @@
         </div>
     </section>
     <!-- Hero Section End -->
-    {{ dd($category) }}
