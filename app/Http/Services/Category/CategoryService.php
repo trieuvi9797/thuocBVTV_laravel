@@ -14,7 +14,10 @@ class CategoryService
     {
         return Category::where('parent_id', 0)->get();
     }
-
+    public function getChild()
+    {
+        return Category::where('parent_id', '>', 0)->get();
+    }
     public function show()
     {
         return Category::select('name', 'id')
@@ -71,10 +74,7 @@ class CategoryService
     }
 
 
-    public function getId($id)
-    {
-        return Category::where('id', $id)->where('active', 1)->firstOrFail();
-    }
+    
 
     // public function getProduct($categories, $request)
     // {

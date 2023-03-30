@@ -1,9 +1,9 @@
-@foreach($parentCategories as $category)
+@foreach($parent_categories as $category)
  
   {{ $category->name }}
 
-    @if(count($category->parent))
-        @include('client.categoryTree',['childrents' => $category->parent])
+    @if(count($category->subCategory))
+        @include('client.layouts.header',['subCategories' => $category->subCategory])
     @endif
  
 @endforeach

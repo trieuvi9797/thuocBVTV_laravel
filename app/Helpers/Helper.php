@@ -36,36 +36,43 @@ class Helper
         return $html;
     }
 
-    public static function showCategory($categories, $parent_id = 0)
+    public static function showCategory($cate, $parent_id = 0)
     {
-        $html_category = '';
-        foreach ($categories as $item) {
-            // dd($item->parentName);
-            if ($item->parent_id == $parent_id) {
-                $html_category .= `
+        $html = '';
+        foreach ($cate as $item) {
+            if($item->parent_id == $parent_id){
+                $html .= '
                 <li>
-                    <a href="/danh-muc/'. $item->id . '-' . Str::slug($item->name, '-') .'.html">
-                    '. $item->name .'
-                    </a>`;
-
-                if (self::isChild($categories, $item->id)) {
-                    $html_category .= `<ul>`;
-                    $html_category .= self::showCategory($categories, $item->id);
-                    $html_category .= `</ul>`;
-                }
-
-                $html_category .= `</li>`;
+                    <a href="/danh-muc/.html">
+                    abcessd
+                    </a>
+                    <ul>
+                        <li>
+                        <a href="/danh-muc/.html">
+                        
+                        </a>                  
+                        </li>
+                    </ul>
+                </li>';
             }
-            dd($html_category);
         }
+        dd($html);
     }
-    public static function isChild($categories, $id)
+    public static function isChild($child_Category, $id)
     {
-        foreach ($categories as $item) {
+        $html='';
+        foreach ($child_Category as $item) {
             if($item->parent_id == $id){
-                return true;
+                dd($item);
+                $html .= '
+                <ul>
+                    <li>
+                        <a>' . '$item->name' . '</a>
+                    </li>
+                </ul>
+                ';
             }
         }
-        return false;
+        // return false;
     }
 }

@@ -176,7 +176,31 @@
                             <span>Danh mục thuốc</span>
                         </div>
                         <ul>
-                            {!! \App\Helpers\Helper::showCategory($categories) !!}
+                        @foreach ($parentCategories as $parent_cate)
+                        @if ($parent_cate->childCategories != 0)
+                        <ul>
+                        <li>
+                                <a href="">{{ $parent_cate->name }}</a>
+                                @foreach ($parent_cate->childCategories as $sub_cate)
+                                @if ($sub_cate->parent_id == $sub_cate->id)
+                                    
+                                <ul>
+                                    <li>
+                                        <a href="">{{ $sub_cate->name }}</a>
+                                    </li>
+                                </ul>
+                                @endif
+                                @endforeach
+                            </li>    
+                        </ul>
+                        @else
+                            
+                        <li>
+                            <a href="">{{ $parent_cate->name }}</a>
+                            {{-- {!! \App\Helpers\Helper::isChild($categories, $parent_cate->id) !!} --}}
+                        </li>    
+                        @endif
+                        @endforeach
                         </ul>
                     </div>
                 </div>

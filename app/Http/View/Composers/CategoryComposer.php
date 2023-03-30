@@ -13,7 +13,7 @@ class CategoryComposer
     }
     public function compose(View $view)
     {
-        $categories = Category::select('id','name','parent_id')->orderByDesc('id')->get();
-        $view->with('categories', $categories);
+        $parent_categories = Category::select('id','name','parent_id')->where('parent_id',0)->orderByDesc('id')->get();
+        $view->with('parent_categories', $parent_categories);
     }
 }
