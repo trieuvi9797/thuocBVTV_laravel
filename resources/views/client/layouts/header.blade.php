@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/client/img/LogoVTNN.jpg"> 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
+    <title>{{ $title }}</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -175,33 +175,24 @@
                             <i class="fa fa-bars"></i>
                             <span>Danh mục thuốc</span>
                         </div>
+                        {{-- de quy cay danh muc menu --}}
+                        @foreach ($childCategories as $cate)
                         <ul>
-                        @foreach ($parentCategories as $parent_cate)
-                        @if ($parent_cate->childCategories != 0)
-                        <ul>
-                        <li>
-                                <a href="">{{ $parent_cate->name }}</a>
-                                @foreach ($parent_cate->childCategories as $sub_cate)
-                                @if ($sub_cate->parent_id == $sub_cate->id)
-                                    
-                                <ul>
+                            <li>
+                                 <a href="">{{ $cate->name }}</a> {{--Danh muc cha --}}
+                            </li>
+                            @if ($cate->childrents) {{--neu la Danh muc con --}}
+                            <ul>
+                                    @foreach ($cate->childrents as $sub_cate)
                                     <li>
-                                        <a href="">{{ $sub_cate->name }}</a>
+                                        <a href="">{{ $sub_cate->name }}</a> {{--Danh muc con --}}
                                     </li>
+                                    @endforeach
                                 </ul>
-                                @endif
-                                @endforeach
-                            </li>    
+                            @endif
                         </ul>
-                        @else
-                            
-                        <li>
-                            <a href="">{{ $parent_cate->name }}</a>
-                            {{-- {!! \App\Helpers\Helper::isChild($categories, $parent_cate->id) !!} --}}
-                        </li>    
-                        @endif
                         @endforeach
-                        </ul>
+                        {{-- de quy cay danh muc menu --}}
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -222,7 +213,14 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="hero__item set-bg" data-setbg="client/img/banner/may-bay-phun-thuoc.jpg">
+                        <div class="hero__text">
+                            <span>Cửa hàng Vật tư nông nghiệp</span>
+                            <h2>KHAI MAI</h2>
+                            <p>Tư vấn 24/7 - 0966884775</p>
+                            <a href="#" class="primary-btn">Mua ngay</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

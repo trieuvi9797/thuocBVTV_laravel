@@ -26,6 +26,10 @@ class SliderService
     {
         return Slider::orderByDesc('id')->paginate(10);
     }
+    public function show()
+    {
+        return Slider::orderByDesc('sort_by')->get();
+    }
     public function insert($request)
     {
         try {

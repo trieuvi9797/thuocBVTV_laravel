@@ -25,8 +25,9 @@ class HomeController extends Controller
         return view('client/home', [
             'title' => 'VTNN Khai Mai',
             'categories' => $this->category->show(),
+            'slider' => $this->slider->show(),
             'parentCategories' => $this->category->getParent(),
-            'childCategories' => $this->category->getChild(),
+            // 'childCategories' => $this->category->getChild(),
         ]);
     }
 

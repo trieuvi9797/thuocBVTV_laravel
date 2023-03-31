@@ -16,7 +16,7 @@ class CategoryService
     }
     public function getChild()
     {
-        return Category::where('parent_id', '>', 0)->get();
+        return Category::with('childrents')->where('parent_id', 0)->get();
     }
     public function show()
     {
