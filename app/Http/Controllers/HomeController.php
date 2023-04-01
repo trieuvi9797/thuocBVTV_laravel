@@ -27,7 +27,7 @@ class HomeController extends Controller
             'categories' => $this->category->show(),
             'slider' => $this->slider->show(),
             'parentCategories' => $this->category->getParent(),
-            // 'childCategories' => $this->category->getChild(),
+            'products' => $this->product->get(),
         ]);
     }
 

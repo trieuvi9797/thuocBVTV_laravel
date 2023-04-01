@@ -180,11 +180,7 @@
                         <ul>
                             <li class="dropdown" >
                                 <a href="/danh-muc/{{ $cate->id }}-{{ $cate->slug, '-' }}.html" class="dropbtn">{{ $cate->name }}</a> {{--Danh muc cha --}}
-                                {{-- <ul class="dropdown-content" style="left:0;">
-                                    <li><a href="">abc</a></li>
-                                    <li><a href="">edi</a></li>
-                                    <li><a href="">rger</a></li>
-                                </ul> --}}
+                                
                                 @if ($cate->childrents) {{--neu la Danh muc con --}}
                                     <ul class="dropdown-content" style="left:0;">
                                         @foreach ($cate->childrents as $sub_cate)
