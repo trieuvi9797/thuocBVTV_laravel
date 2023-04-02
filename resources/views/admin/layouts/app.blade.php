@@ -40,6 +40,6 @@
 
     @yield('content')
 
-    </div><!--//app-content-->
+    </div>
 
 @include('admin.layouts.footer')

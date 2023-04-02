@@ -51,6 +51,14 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    public function show(Product $product)
+    {
+        return view('admin.products.show', [
+            'title' => 'Chi tiết sản phẩm',
+            'product' => $product,
+            'category' => $this->productService->getCategory()
+        ]);
+    }
 
     public function edit(Product $product)
     {

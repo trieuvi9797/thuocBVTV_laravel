@@ -75,7 +75,11 @@
     <script src="{{ asset('client/js/owl.carousel.min.js')}}"></script>
     <script src="{{ asset('client/js/main.js')}}"></script>
 
-
+    {{-- mega- menu --}}
+    <script src="{{ asset('client/mega-menu/js/jquery.menu-2.1.1.js')}}"></script>
+    <script src="{{ asset('client/mega-menu/js/jquery.menu-aim.js')}}"></script> <!-- menu aim -->
+    <script src="{{ asset('client/mega-menu/js/mega-menu.js')}}"></script> <!-- Resource jQuery -->
+    {{-- mega- menu --}}
 
 </body>
 

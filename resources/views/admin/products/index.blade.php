@@ -65,10 +65,9 @@
                                     <th>Tên sản phẩm</th>
                                     <th>Hình ảnh</th>
                                     <th>Danh mục</th>
-                                    <th>Mô tả</th>
                                     <th>Giá</th>
                                     <th>Khuyến mãi</th>
-                                    <th colspan="2"></th>
+                                    <th colspan="3"></th>
                                 </tr>
                             </thead>
                             @foreach ($products as $item)
@@ -78,17 +77,25 @@
                                     <td>{{ $item->name }}</td>                                        
                                     <td><img src="{{ $item->image }}" width="80px" height="80px" alt=""></td>                                        
                                     <td>{{ $item->category->name }}</td>                                        
-                                    <td>{{ $item->description }}</td>  
-                                    <td>{{ $item->price }}</td>  
-                                    <td>{{ $item->price-($item->price*$item->sale/100) }}</td>  {{-- gia-(gia*sale/100) --}}
+                                    <td>{{ $item->price }} VNĐ</td>  
+                                    <td>{{ $item->price-($item->price*$item->sale/100) }} VNĐ</td>  {{-- gia-(gia*sale/100) --}}
                                     <td>
-                                        <a href="/admin/products/edit/{{ $item->id }}" class="btn app-btn-warning" style="float: right">Sửa</a>
+                                        <a class="btn btn-outline-info" href="/admin/products/show/{{ $item->id }}">Xem</a>
                                     </td>
                                     <td>
+                                        <a class="btn btn-outline-warning" href="/admin/products/edit/{{ $item->id }}">Sửa</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-outline-danger" href="" onclick="removeRow({{ $item->id }},'/admin/products/destroy')">Xóa</a>
+                                    </td>
+                                    {{-- <td>
+                                    <a href="/admin/products/edit/{{ $item->id }}" class="btn app-btn-warning" style="float: right">Sửa</a>
+                                </td>
+                                <td>
                                         <a href="" class="btn app-btn-danger" onclick="removeRow({{ $item->id }},'/admin/products/destroy')">
                                             <i class="fas fa-trash"></i>
                                         </a>
-                                    </td>                                     
+                                    </td>                                      --}}
                                 </tr>
                             </tbody>
                             @endforeach

@@ -22,6 +22,12 @@
     <link rel="stylesheet" href="{{ asset('client/css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{ asset('client/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{ asset('client/css/style.css')}}" type="text/css">
+
+    {{-- mega-menu --}}
+    <link rel="stylesheet" href="{{ asset('client/mega-menu/css/reset.css')}}"> <!-- CSS reset -->
+	<link rel="stylesheet" href="{{ asset('client/mega-menu/css/style.css')}}"> <!-- Resource style -->
+	<script src="{{ asset('client/mega-menu/js/modernizr.js')}}"></script> <!-- Modernizr -->
+    {{-- mega-menu --}}
 </head>
 
 <body>
@@ -170,31 +176,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>Danh mục thuốc</span>
-                        </div>
-                        {{-- de quy cay danh muc menu --}}
+                    <div class="cd-dropdown-wrapper">
+                        <a class="cd-dropdown-trigger" href="#0">Danh mục thuốc</a>
+                        <nav class="cd-dropdown">
+                            <h2>Danh mục thuốc</h2>
+                            <a href="#0" class="cd-close">Close</a>
+                            {{-- de quy cay danh muc menu  --}}
                         @foreach ($childCategories as $cate)
-                        <ul>
-                            <li class="dropdown" >
-                                <a href="/danh-muc/{{ $cate->id }}-{{ $cate->slug, '-' }}.html" class="dropbtn">{{ $cate->name }}</a> {{--Danh muc cha --}}
-                                
-                                @if ($cate->childrents) {{--neu la Danh muc con --}}
-                                    <ul class="dropdown-content" style="left:0;">
-                                        @foreach ($cate->childrents as $sub_cate)
-                                            <li>
-                                                <a href="/danh-muc/{{ $sub_cate->id }}-{{ $sub_cate->slug, '-' }}.html">{{ $sub_cate->name }}</a> {{--Danh muc con --}}
+                            <ul class="cd-dropdown-content">					
+                                <li class="has-children">
+                                    <a href="">{{ $cate->name }}</a>
+                                    @if ($cate->childrents) {{--neu la Danh muc con --}}
+                                        <ul class="cd-secondary-dropdown is-hidden">
+                                            <li class="see-all"><a href="">Sản phẩm khác</a></li>
+                                            <li class="has-children">
+                                                <ul class="is-hidden">
+                                                    <li class="go-back"><a href="#0"></a></li>
+                                                    @foreach ($cate->childrents as $sub_cate)
+                                                        <li><a href="">{{ $sub_cate->name }}</a></li>
+                                                    @endforeach
+                                                </ul>
                                             </li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </li>
-                        </ul>
+                                        </ul> <!-- .cd-secondary-dropdown -->
+                                    @endif
+                                </li> <!-- .has-children -->            
+                            </ul> <!-- .cd-dropdown-content -->
                         @endforeach
-                        {{-- de quy cay danh muc menu --}}
-                    </div>
+                        </nav> <!-- .cd-dropdown -->
+                    </div> <!-- .cd-dropdown-wrapper -->
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
