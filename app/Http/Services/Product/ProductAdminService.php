@@ -5,6 +5,7 @@ namespace App\Http\Services\Product;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Product_detai;
 use App\Traits\UploadImageTrait;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +26,10 @@ class ProductAdminService
     {
         return Category::where('parent_id', '>' , 0)->get();
     }
-
+    public function getNameCate(){
+        // return Category::with('nameCategories')->where('name')->get();
+        return Category::where('name')->get();
+    }
 
     public function insert($request)
     {
@@ -86,5 +90,9 @@ class ProductAdminService
             return false;
         }
         return false;
+    }
+    public function getDetail()
+    {
+        return Product_detai::select('view', 'sold', 'likes')->get();
     }
 }

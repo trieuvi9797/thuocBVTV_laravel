@@ -56,7 +56,9 @@ class ProductController extends Controller
         return view('admin.products.show', [
             'title' => 'Chi tiết sản phẩm',
             'product' => $product,
-            'category' => $this->productService->getCategory()
+            'category' => $this->productService->getCategory(),
+            'nameCategory' => $this->productService->getNameCate(),
+            'getDetail' => $this->productService->getDetail()
         ]);
     }
 

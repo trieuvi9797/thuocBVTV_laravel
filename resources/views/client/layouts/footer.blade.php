@@ -74,6 +74,7 @@
     <script src="{{ asset('client/js/mixitup.min.js')}}"></script>
     <script src="{{ asset('client/js/owl.carousel.min.js')}}"></script>
     <script src="{{ asset('client/js/main.js')}}"></script>
+    <script src="{{ asset('client/js/public.js')}}"></script>
 
     {{-- mega- menu --}}
     <script src="{{ asset('client/mega-menu/js/jquery.menu-2.1.1.js')}}"></script>

@@ -30,4 +30,8 @@ class Product extends Model
     {
         return $this->hasOne(Product_detai::class, 'product_id');
     }
+    public function nameCategories()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

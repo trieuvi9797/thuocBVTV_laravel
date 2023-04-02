@@ -27,10 +27,11 @@ class HomeController extends Controller
             'categories' => $this->category->show(),
             'slider' => $this->slider->show(),
             'parentCategories' => $this->category->getParent(),
-            'products' => $this->product->get(),
+            'products' => $this->product->show(),
         ]);
     }
 
+    
     /**
      * Show the form for creating a new resource.
      */

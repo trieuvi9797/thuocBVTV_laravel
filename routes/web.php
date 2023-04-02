@@ -66,3 +66,4 @@ Route::middleware(['auth'])->group(function(){
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/services/load-product', [HomeController::class, 'loadProduct']);

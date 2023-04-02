@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('client/css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{ asset('client/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{ asset('client/css/style.css')}}" type="text/css">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- mega-menu --}}
     <link rel="stylesheet" href="{{ asset('client/mega-menu/css/reset.css')}}"> <!-- CSS reset -->
 	<link rel="stylesheet" href="{{ asset('client/mega-menu/css/style.css')}}"> <!-- Resource style -->

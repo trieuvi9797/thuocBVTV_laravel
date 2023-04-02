@@ -36,4 +36,13 @@ class Helper
         return $html;
     }
 
+    public static function price($price = 0, $sale = 0)
+    {
+        if($sale != 0) 
+            return number_format($sale);
+
+        if($price != 0)
+            return number_format($price);
+        return '<a href="/lien-he.html">Liên hệ</a>';
+    }
 }

@@ -8,7 +8,7 @@ use App\Models\Product;
 
 class ProductService
 {
-    const LIMIT = 16;
+    const LIMIT = 12;
 
     public function get($page = null)
     {
@@ -17,6 +17,14 @@ class ProductService
         ->when($page != null, function($query) use ($page){
             $query->offset($page * self::LIMIT);
         })
+        ->limit(self::LIMIT)
+        ->get();
+    }
+
+    public function show()
+    {
+        return Product::select('id', 'name', 'price', 'sale', 'image')
+        ->orderByDesc('id')
         ->limit(self::LIMIT)
         ->get();
     }
