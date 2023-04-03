@@ -26,10 +26,7 @@ class ProductAdminService
     {
         return Category::where('parent_id', '>' , 0)->get();
     }
-    public function getNameCate(){
-        // return Category::with('nameCategories')->where('name')->get();
-        return Category::where('name')->get();
-    }
+    
 
     public function insert($request)
     {
@@ -91,8 +88,5 @@ class ProductAdminService
         }
         return false;
     }
-    public function getDetail()
-    {
-        return Product_detai::select('view', 'sold', 'likes')->get();
-    }
+    
 }

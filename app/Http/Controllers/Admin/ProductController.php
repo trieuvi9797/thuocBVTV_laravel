@@ -57,8 +57,6 @@ class ProductController extends Controller
             'title' => 'Chi tiết sản phẩm',
             'product' => $product,
             'category' => $this->productService->getCategory(),
-            'nameCategory' => $this->productService->getNameCate(),
-            'getDetail' => $this->productService->getDetail()
         ]);
     }
 

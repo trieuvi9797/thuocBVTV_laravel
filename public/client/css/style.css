@@ -800,6 +800,44 @@ ol {
 	margin-bottom: 35px;
 }
 
+.btn-sliders {
+	position: absolute;
+	bottom: 70px;
+	left: 50%;
+	display: flex;
+	transform: translateX(-50%);
+}
+.btn-sliders span{
+	height: 7px;
+	width: 30px;
+	border: 2px solid white;
+	margin:  0 3px;
+	cursor: pointer;
+}
+.btn-sliders span:hover{
+	background: white;
+}
+.slide-image{
+	position: absolute;
+	top: 55%;
+	transform: translateX(-195%);
+	width: 35px;
+	border: 2px solid white;
+	background: rgba(255, 255, 255, 0.1);
+	cursor: pointer;
+}
+.slide-image:hover{
+	background: rgba(255, 255, 255, 0.2);
+}
+.slide-image {
+	font-size: 50px;
+	color: white;
+	line-height: 40px;
+}
+.slide-right{
+	right: 0;
+	transform: translateX(-240%);
+}
 /*---------------------
   Categories
 -----------------------*/

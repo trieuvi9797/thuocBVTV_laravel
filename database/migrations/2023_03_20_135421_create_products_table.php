@@ -21,8 +21,12 @@ return new class extends Migration
             $table->double('price');
             $table->double('sale');
             $table->bigInteger('quantity');
+            $table->bigInteger('view')->nullable();
+            $table->bigInteger('sold')->nullable();
+            $table->bigInteger('likes')->nullable();
             $table->timestamps();
         });
+
     }
 
     /**

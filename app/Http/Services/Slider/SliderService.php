@@ -28,7 +28,7 @@ class SliderService
     }
     public function show()
     {
-        return Slider::orderByDesc('sort_by')->get();
+        return Slider::orderByDesc('id')->limit(1)->get();
     }
     public function insert($request)
     {

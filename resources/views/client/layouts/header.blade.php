@@ -11,8 +11,8 @@
     <title>{{ $title }}</title>
 
     <!-- Google Font -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('client/css/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{ asset('client/css/font-awesome.min.css')}}" type="text/css">
@@ -28,6 +28,7 @@
 	<link rel="stylesheet" href="{{ asset('client/mega-menu/css/style.css')}}"> <!-- Resource style -->
 	<script src="{{ asset('client/mega-menu/js/modernizr.js')}}"></script> <!-- Modernizr -->
     {{-- mega-menu --}}
+    
 </head>
 
 <body>
@@ -81,9 +82,9 @@
         <div id="mobile-menu-wrap"></div>
         <div class="header__top__right__social">
             <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+            <a href="#"><i class="fa fa-telegram" aria-hidden="true"></i></a>
         </div>
         <div class="humberger__menu__contact">
             <ul>
@@ -109,9 +110,9 @@
                         <div class="header__top__right">
                             <div class="header__top__right__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>                                
+                                <a href="#"><i class="fa fa-telegram" aria-hidden="true"></i></a>
                             </div>
                             <div class="header__top__right__language">
                                 <img src="/client/img/language.png" alt="">
@@ -223,16 +224,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hero__item set-bg" data-setbg="client/img/banner/may-bay-phun-thuoc.jpg">
-                        <div class="hero__text">
-                            <span>Cửa hàng Vật tư nông nghiệp</span>
-                            <h2>KHAI MAI</h2>
-                            <p>Tư vấn 24/7 - 0966884775</p>
-                            <a href="#" class="primary-btn">Mua ngay</a>
-                        </div>
-                    </div>
                 </div>
             </div>
+            @foreach($slider as $sliders)
+            <div class="hero__item set-bg" data-setbg="{{ $sliders->image }}">
+                <div class="hero__text">
+                    <span>Cửa hàng Vật tư nông nghiệp</span>
+                    <h2>KHAI MAI</h2>
+                    <p>Tư vấn 24/7 - 0966884775</p>
+                    <a href="/client/products.index" class="primary-btn">Mua ngay</a>
+                </div>
+            </div>
+            @endforeach
         </div>
     </section>
     <!-- Hero Section End -->

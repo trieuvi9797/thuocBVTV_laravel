@@ -17,6 +17,10 @@ class Product_detai extends Model
     ];
     public function products()
     {
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->belongsTo(Product::class, 'product_id', 'id')->withDefault([
+            'view' => '',
+            'sold' => '',
+            'likes' => ''
+        ]);
     }
 }
