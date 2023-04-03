@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\Category\CategoryService;
+use App\Http\Services\InfoPage\InfoPageService;
 use App\Http\Services\Product\ProductService;
 use App\Http\Services\Slider\SliderService;
 use App\Models\Category;
@@ -13,12 +14,14 @@ class HomeController extends Controller
     protected $slider;
     protected $category;
     protected $product;
+    protected $infoPage;
 
-    public function __construct(SliderService $slider, CategoryService $category, ProductService $product)
+    public function __construct(SliderService $slider, CategoryService $category, ProductService $product, InfoPageService $infoPage)
     {
         $this->slider = $slider;
         $this->product = $product;
         $this->category = $category;
+        $this->infoPage = $infoPage;
     }
     public function index()
     {
@@ -28,6 +31,7 @@ class HomeController extends Controller
             'slider' => $this->slider->show(),
             'parentCategories' => $this->category->getParent(),
             'products' => $this->product->show(),
+            'infoPage' => $this->infoPage->get()
         ]);
     }
 

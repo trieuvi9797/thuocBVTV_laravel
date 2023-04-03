@@ -36,20 +36,20 @@ class InfoPageService
         try {
             $fileImage = InfoPage::where('id', $request->input('id'))->first();
         if($fileImage){
-            Storage::disk('public')->delete('/storage/slider'.$fileImage['logo']);
+            Storage::disk('public')->delete('/storage/infoPage'.$fileImage['logo']);
             InfoPage::where('id', $infoPage)->delete();
 
         }
             $infoPage->fill($request->input());
             $infoPage->save();  
-
-            $infoPage->phone = $request->phone;
-            $infoPage->address = $request->address;
-
+            
             if($request->hasFile('logo')){
                 $img = $this->StorageTraitUpload($request, 'logo', 'infoPage');
             }
+                    
             $infoPage->logo = $img;
+            $infoPage->phone = $request->phone;
+            $infoPage->address = $request->address;
             $infoPage->email = $request->email;
             $infoPage->contentFirst = $request->contentFirst;
             $infoPage->facebook = $request->facebook;
@@ -59,9 +59,9 @@ class InfoPageService
     
             $infoPage->save();
 
-            Session::flash('success', 'Thêm thông tin trang thành công.');
+            Session::flash('success', 'Sửa thông tin trang thành công.');
         } catch (\Exception  $err) {
-            Session::flash('success', 'Thêm thông tin trang không thành công.');
+            Session::flash('success', 'Sửa thông tin trang không thành công.');
             Log::info($err->getMessage());
             return false;
         }

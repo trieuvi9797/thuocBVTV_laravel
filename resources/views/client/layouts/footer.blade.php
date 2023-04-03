@@ -7,32 +7,29 @@
                     <div class="footer__about">
                         <div class="footer__about__logo">
                             <a href="./index.html"><img src="/client/img/logo.png" alt=""></a>
-                        </div>
+                        </div>                        
+                        @foreach ($infoPage as $info)
                         <ul>
-                            <li>Địa chỉ: ấp Kinh Đào, xã Phú Thuận, huyện Thoại Sơn, tỉnh An Giang</li>
-                            <li>Số điện thoại: 0966884775</li>
-                            <li>Email: vtnn.khaimai@gmail.com</li>
+                            <li>Địa chỉ: {{ $info->address }}</li>
+                            <li>Số điện thoại: {{ $info->phone }}</li>
+                            <li>Email: {{ $info->email }}</li>
                         </ul>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
                     <div class="footer__widget">
                         <h6>Danh mục sản phẩm</h6>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About Our Shop</a></li>
-                            <li><a href="#">Secure Shopping</a></li>
-                            <li><a href="#">Delivery infomation</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
+                        @foreach ($parentCategories as $parentCate)
+                            <li><a href="#">{{ $parentCate->name }}</a></li>
+                            @endforeach
                         </ul>
                         <ul>
-                            <li><a href="#">Who We Are</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Innovation</a></li>
-                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Trang chủ</a></li>
+                            <li><a href="#">Sản phẩm</a></li>
+                            <li><a href="#">Tin Nông nghiệp</a></li>
+                            <li><a href="#">Liên hệ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -45,19 +42,19 @@
                             <button type="submit" class="site-btn">Subscribe</button>
                         </form>
                         <div class="footer__widget__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-telegram" aria-hidden="true"></i>
-                            </a>
+                            @foreach ($infoPage as $info)                                
+                                <a href="{{ $info->facebook }}"><i class="fa fa-facebook"></i></a>
+                                <a href="{{ $info->instagram }}"><i class="fa fa-instagram"></i></a>
+                                <a href="{{ $info->twitter }}"><i class="fa fa-twitter"></i></a>
+                                <a href="{{ $info->telegram }}"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        
+                    <div class="footer__copyright">                        
                         <div class="footer__copyright__payment"><img src="/client/img/payment-item.png" alt=""></div>
                     </div>
                 </div>

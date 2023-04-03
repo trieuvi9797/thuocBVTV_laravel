@@ -17,22 +17,22 @@ class InfoPageController extends Controller
 
     public function index()
     {
-        return view('admin.infoPgaes.index', [
+        return view('admin.infoPages.index', [
             'title' => 'Thông tin trang',
             'infoPage' => $this->infoPage->get()
         ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function edit(InfoPage $infoPage)
+    {
+        return view('admin.infoPages.edit', [
+            'title' => 'Cập nhật slider',
+            'infoPage' => $infoPage
+        ]);
+    }
     public function update(Request $request, InfoPage $infoPage)
     {
         $this->validate($request, [
-            'nullable' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
+            'logo' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
             'phone' => 'nullable',
             'address' => 'nullable',
             'email' => 'nullable',
@@ -55,19 +55,13 @@ class InfoPageController extends Controller
      */
     public function show(InfoPage $infoPage)
     {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(InfoPage $infoPage)
-    {
-        return view('admin.sliders.edit', [
-            'title' => 'Cập nhật slider',
-            'slider' => $this->infoPage
-        ]);
-    }
+    
 
 
     /**

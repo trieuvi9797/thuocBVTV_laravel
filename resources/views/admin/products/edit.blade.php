@@ -1,6 +1,4 @@
 @extends('admin.layouts.app')
-@section('title', 'Cập nhật sản phẩm')
-
 @section('content')
  
 <div class="app-content pt-3 p-md-3 p-lg-4">

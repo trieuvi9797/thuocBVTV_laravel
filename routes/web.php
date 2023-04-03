@@ -68,6 +68,14 @@ Route::middleware(['auth'])->group(function(){
             Route::post('edit/{infoPage}', [InfoPageController::class, 'update']);
             Route::DELETE('destroy', [InfoPageController::class, 'destroy']);
         });
+        Route::prefix('posts')->group(function(){
+            Route::get('index', [InfoPageController::class, 'index']);
+            Route::get('create', [SliderController::class, 'create']);
+            Route::post('create', [SliderController::class, 'store']);
+            Route::get('edit/{infoPage}', [InfoPageController::class, 'edit']);
+            Route::post('edit/{infoPage}', [InfoPageController::class, 'update']);
+            Route::DELETE('destroy', [InfoPageController::class, 'destroy']);
+        });
     });
 
 });

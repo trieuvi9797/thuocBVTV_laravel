@@ -1,7 +1,11 @@
 @extends('admin.layouts.app')
+@section('title', 'Danh mục')
+
+    
 @section('content')
 <div class="app-content pt-3 p-md-3 p-lg-4">
-    <div class="container-xl">          
+    <div class="container-xl">
+
         @if (session('message'))
             <h4 class="text-primary">{{ session('message') }}</h4>
         @endif
@@ -16,10 +20,10 @@
                         <div class="col-auto">
                             <form class="table-search-form row gx-1 align-items-center">
                                 <div class="col-auto">
-                                    <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Tìm kiếm...">
+                                    <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search">
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn app-btn-secondary">Tìm</button>
+                                    <button type="submit" class="btn app-btn-secondary">Search</button>
                                 </div>
                             </form>
                             
@@ -35,7 +39,7 @@
                             </select>
                         </div>
                         <div class="col-auto">						    
-                            <a class="btn app-btn-primary" href="/admin/infoPages/create">
+                            <a class="btn app-btn-primary" href="/admin/categories/create">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -56,51 +60,44 @@
                         <table class="table app-table-hover mb-0 text-left">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Logo</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Email</th>
-                                    <th>Nội dung</th>
-                                    <th>Link facebook</th>
-                                    <th>Link instagram</th>
-                                    <th>Link twitter</th>
-                                    <th>Link telegram</th>
-                                    <th colspan="2"></th>
+                                    <th>Tên danh mục</th>
+                                    <th>Danh mục cha</th>
+                                    <th>Ngày cập nhật</th>
+                                    <th style="width:150px">Sửa | Xóa &nbsp;</th>
                                 </tr>
                             </thead>
-                            @foreach ($infoPage as $item)
                             <tbody>
-                                <tr>
-                                    <td><img src="{{ $item->logo }}" width="262px" height="50px" alt=""></td>                                        
-                                    <td>{{ $item->phone }}</td>                                        
-                                    <td>{{ $item->address }}</td>                                        
-                                    <td>{{ $item->email }}</td>                                        
-                                    <td>{{ $item->contentFirst }}</td> 
-                                    <td>{{ $item->facebook }}</td> 
-                                    <td>{{ $item->instagram }}</td> 
-                                    <td>{{ $item->twitter }}</td> 
-                                    <td>{{ $item->telegram }}</td> 
+                                
+                                {!! \App\Helpers\Helper::categories($list_category) !!}
+                                {{-- <tr>
+                                    <td></td>                                        
+                                    <td></td>                                        
+                                    <td></td>  
                                     <td>
-                                        <a class="btn btn-outline-info" href="/admin/products/show/{{ $item->id }}">Xem</a>
+                                        <a href="" class="btn btn-outline-warning" style="float: right">Sửa</a>
                                     </td>
                                     <td>
-                                        <a class="btn btn-outline-warning" href="/admin/products/edit/{{ $item->id }}">Sửa</a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-outline-danger" href="" onclick="removeRow({{ $item->id }},'/admin/products/destroy')">Xóa</a>
-                                    </td>
-                                </tr>
+                                        <form action="" id="form-delete" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                        </form>
+                                        <button class="btn btn-outline-danger"  type="submit">Xóa</button>
+                                    </td>                                     
+                                </tr> --}}
                             </tbody>
-                            @endforeach
+                            {{-- @endforeach --}}
                         </table>
                     </div><!--//table-responsive-->                  
                 </div><!--//app-card-body-->
             </div><!--//app-card-->
-        <nav aria-label="Page navigation">
-            {!!  $infoPage->links()  !!}
-        </nav><!--//tab-content-->
+            <nav aria-label="Page navigation">
+                {!!  $list_category->links()  !!}
+            </nav>           
         </div><!--//tab-content-->
     </div><!--//container-fluid-->
  
+@endsection
+@section('script')
+
+
 @endsection

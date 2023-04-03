@@ -80,17 +80,19 @@
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
+        @foreach ($infoPage as $info)
         <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+            <a href="{{ $info->facebook }}"><i class="fa fa-facebook"></i></a>
+            <a href="{{ $info->instagram }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="{{ $info->twitter }}"><i class="fa fa-twitter"></i></a>
+            <a href="{{ $info->telegram }}"><i class="fa fa-telegram" aria-hidden="true"></i></a>
         </div>
         <div class="humberger__menu__contact">
             <ul>
-                <li>Giờ làm việc: Thứ 2 - Chủ Nhật: 06:00 - 19:30 (Cửa hàng). (Online - 24/7)</li>
+                <li>{{ $info->contentFirst }}</li>
             </ul>
         </div>
+        @endforeach
     </div>
     <!-- Humberger End -->
 
@@ -99,20 +101,21 @@
         <div class="header__top">
             <div class="container">
                 <div class="row">
+                    @foreach ($infoPage as $info)
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li>Giờ làm việc: Thứ 2 - Chủ Nhật: 06:00 - 19:30 (Cửa hàng). (Online - 24/7)</li>
+                                <li>{{ $info->contentFirst }}</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
                             <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>                                
-                                <a href="#"><i class="fa fa-telegram" aria-hidden="true"></i></a>
+                                <a href="{{ $info->facebook }}"><i class="fa fa-facebook"></i></a>
+                                <a href="{{ $info->instagram }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="{{ $info->twitter }}"><i class="fa fa-twitter"></i></a>                                
+                                <a href="{{ $info->telegram }}"><i class="fa fa-telegram" aria-hidden="true"></i></a>
                             </div>
                             <div class="header__top__right__language">
                                 <img src="/client/img/language.png" alt="">
@@ -128,15 +131,18 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
+                    @foreach ($infoPage as $info)
                     <div class="header__logo">
-                        <a href="./index.html"><img src="/client/img/logo.png" alt=""></a>
+                        <a href=""><img src="{{ $info->logo }}" alt=""></a>
                     </div>
+                    @endforeach
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
@@ -218,10 +224,12 @@
                             <div class="hero__search__phone__icon">
                                 <i class="fa fa-phone"></i>
                             </div>
+                            @foreach ($infoPage as $info)                                
                             <div class="hero__search__phone__text">
-                                <h5>0966884775</h5>
+                                <h5>{{ $info->phone }}</h5>
                                 <span>Tư vấn 24/7</span>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
