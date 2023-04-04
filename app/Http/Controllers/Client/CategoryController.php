@@ -1,19 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
+use App\Http\Services\Category\CategoryService;
+use App\Http\Services\InfoPage\InfoPageService;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    protected $categoryService;
+    protected $infoPageService;
+    public function __construct(CategoryService $categoryService, InfoPageService $infoPageService)
     {
-        return view('admin.categories.index', [
-            'title' => 'Danh sách danh mục',
+        $this->categoryService = $categoryService;
+        $this->infoPageService = $infoPageService;
+    }
+    public function index(Request $request, $id, $slug = '')
+    {
+        $parentCategories = $this->categoryService->getParent();
+        $infoPageService = $this->infoPageService->show();
+        $category = $this->categoryService->getId($id);
+        $products = $this->categoryService->getProduct($category);
+        return view('client.products.index', [
+            'title' => $category->name,
+            'products' => $products,
+            'category'=> $category,
+            'infoPage' => $infoPageService,
+            'parentCategories' => $parentCategories
         ]);
     }
 

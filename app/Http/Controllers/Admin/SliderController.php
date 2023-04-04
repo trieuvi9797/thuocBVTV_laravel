@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use App\Http\Services\Slider\SliderService;
 use Illuminate\Http\Request;

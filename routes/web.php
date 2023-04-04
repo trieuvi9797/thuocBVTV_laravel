@@ -1,14 +1,15 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\InfoPageController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\UploadController;
-use App\Http\Controllers\Admin\Users\LoginController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InfoPageController;
-use App\Http\Controllers\SliderController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Client\CategoryController as ClientCategoryController;
+use App\Http\Controllers\Client\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -82,3 +83,5 @@ Route::middleware(['auth'])->group(function(){
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/services/load-product', [HomeController::class, 'loadProduct']);
+
+Route::get('danh-muc/{id}-{slug}.html', [ClientCategoryController::class, 'index']);

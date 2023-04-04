@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
 use App\Http\Services\Category\CategoryService;
 use App\Http\Services\InfoPage\InfoPageService;
 use App\Http\Services\Product\ProductService;
@@ -14,14 +15,12 @@ class HomeController extends Controller
     protected $slider;
     protected $category;
     protected $product;
-    protected $infoPage;
 
-    public function __construct(SliderService $slider, CategoryService $category, ProductService $product, InfoPageService $infoPage)
+    public function __construct(SliderService $slider, CategoryService $category, ProductService $product)
     {
         $this->slider = $slider;
         $this->product = $product;
         $this->category = $category;
-        $this->infoPage = $infoPage;
     }
     public function index()
     {
@@ -31,7 +30,6 @@ class HomeController extends Controller
             'slider' => $this->slider->show(),
             'parentCategories' => $this->category->getParent(),
             'products' => $this->product->show(),
-            'infoPage' => $this->infoPage->get()
         ]);
     }
 

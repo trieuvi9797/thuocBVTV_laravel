@@ -192,7 +192,7 @@
                         @foreach ($childCategories as $cate)
                             <ul class="cd-dropdown-content">					
                                 <li class="has-children">
-                                    <a href="">{{ $cate->name }}</a>
+                                    <a href="/danh-muc/{{ $cate->id }}-{{ Str::slug($cate->name), '-'}}.html">{{ $cate->name }}</a>
                                     @if ($cate->childrents) {{--neu la Danh muc con --}}
                                         <ul class="cd-secondary-dropdown is-hidden">
                                             <li class="see-all"><a href="">Sản phẩm khác</a></li>
@@ -200,7 +200,11 @@
                                                 <ul class="is-hidden">
                                                     <li class="go-back"><a href="#0"></a></li>
                                                     @foreach ($cate->childrents as $sub_cate)
-                                                        <li><a href="">{{ $sub_cate->name }}</a></li>
+                                                        <li>
+                                                            <a href="/danh-muc/{{ $sub_cate->id }}-{{ Str::slug($sub_cate->name), '-'}}.html">
+                                                                {{ $sub_cate->name }}
+                                                            </a>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </li>
@@ -234,16 +238,7 @@
                     </div>
                 </div>
             </div>
-            @foreach($slider as $sliders)
-            <div class="hero__item set-bg" data-setbg="{{ $sliders->image }}">
-                <div class="hero__text">
-                    <span>Cửa hàng Vật tư nông nghiệp</span>
-                    <h2>KHAI MAI</h2>
-                    <p>Tư vấn 24/7 - 0966884775</p>
-                    <a href="/client/products.index" class="primary-btn">Mua ngay</a>
-                </div>
-            </div>
-            @endforeach
+            
         </div>
     </section>
     <!-- Hero Section End -->

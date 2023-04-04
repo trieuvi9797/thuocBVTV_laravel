@@ -1,7 +1,16 @@
 @extends('client.layouts.app')
 
 @section('content')
-    
+@foreach($slider as $sliders)
+<div class="hero__item set-bg" data-setbg="{{ $sliders->image }}">
+    <div class="hero__text">
+        <span>Cửa hàng Vật tư nông nghiệp</span>
+        <h2>KHAI MAI</h2>
+        <p>Tư vấn 24/7 - 0966884775</p>
+        <a href="/client/products.index" class="primary-btn">Mua ngay</a>
+    </div>
+</div>
+@endforeach
     <!-- Categories Section Begin -->
     <section class="categories">
         <div class="container">

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Services\InfoPage\InfoPageService;
 use App\Models\InfoPage;
 use Illuminate\Http\Request;

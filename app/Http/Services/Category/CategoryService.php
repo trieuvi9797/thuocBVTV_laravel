@@ -5,6 +5,7 @@ namespace App\Http\Services\Category;
 
 use App\Http\Requests\Category\CreateFormRequest;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
@@ -30,6 +31,15 @@ class CategoryService
         return Category::orderbyDesc('id')->paginate(30);
     }
 
+    public function getId($id)
+    {
+        return Category::where('id', $id)->firstOrFail();
+    }
+    public function getProduct($category)
+    {
+        return $category->products()->select('id', 'name', 'price', 'sale', 'image')
+                                    ->orderByDesc('id')->paginate(12);
+    }
     public function create($request)
     {
         try {
