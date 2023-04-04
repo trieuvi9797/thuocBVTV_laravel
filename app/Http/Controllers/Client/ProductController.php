@@ -21,10 +21,11 @@ class ProductController extends Controller
     public function index()
     {
         $products = $this->productService->getAll();
-        
+        $productSale = $this->productService->getProductSale();
         return view('client.products.index', [
             'title' => 'Sản phẩm',
             'products' => $products,
+            'productSale' => $productSale,
         ]);
     }
 

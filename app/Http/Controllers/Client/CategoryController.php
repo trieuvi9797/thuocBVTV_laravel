@@ -5,30 +5,29 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Category\CategoryService;
 use App\Http\Services\InfoPage\InfoPageService;
+use App\Http\Services\Product\ProductService;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     protected $categoryService;
-    // protected $infoPageService; , InfoPageService $infoPageService
-    public function __construct(CategoryService $categoryService)
+    protected $productService;
+    public function __construct(CategoryService $categoryService, ProductService $productService)
     {
         $this->categoryService = $categoryService;
-        // $this->infoPageService = $infoPageService;
+        $this->productService = $productService;
     }
     public function index(Request $request, $id, $slug = '')
     {
-        $parentCategories = $this->categoryService->getParent();
-        // $infoPageService = $this->infoPageService->show();
         $category = $this->categoryService->getId($id);
         $products = $this->categoryService->getProduct($category);
-        return view('client.products.index', [
+        $productSale = $this->productService->getProductSale();
+        return view('client.category', [
             'title' => $category->name,
             'products' => $products,
             'category'=> $category,
-            // 'infoPage' => $infoPageService,
-            'parentCategories' => $parentCategories
+            'productSale' => $productSale
         ]);
     }
 

@@ -3,7 +3,7 @@
 
 namespace App\Http\Services\Product;
 
-
+use App\Models\Category;
 use App\Models\Product;
 
 class ProductService
@@ -20,6 +20,7 @@ class ProductService
     //     ->limit(self::LIMIT)
     //     ->get();
     // }
+
     public function getAll()
     {
         return Product::select('id', 'name', 'price', 'sale', 'image')
@@ -30,15 +31,21 @@ class ProductService
     {
         return Product::select('id', 'name', 'price', 'sale', 'image')
                         ->orderByDesc('id')
-                        ->paginate(3);
+                        ->get();
     }
     public function getProductSold()
     {
         return Product::select('id', 'name', 'price', 'sale', 'image')
                         ->orderByDesc('sold')
-                        ->paginate(3);
+                        ->get();
     }
-
+    public function getProductSale()
+    {
+        return Product::select('id', 'name', 'price', 'sale', 'image')
+                        ->where('sale', '>', 0)
+                        ->orderByDesc('sale')
+                        ->get();
+    }
     public function show()
     {
         return Product::select('id', 'name', 'price', 'sale', 'image')
