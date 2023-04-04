@@ -22,13 +22,10 @@ class InfoPageService
         $this->infoPage = $infoPage;
     }
 
-    public function get()
-    {
-        return InfoPage::orderByDesc('id')->paginate(10);
-    }
+    
     public function show()
     {
-        return InfoPage::orderByDesc('id')->limit(1)->get();
+        return InfoPage::all();
     }
     
     public function update($request, $infoPage)

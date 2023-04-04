@@ -28,8 +28,9 @@ class HomeController extends Controller
             'title' => 'VTNN Khai Mai',
             'categories' => $this->category->show(),
             'slider' => $this->slider->show(),
-            'parentCategories' => $this->category->getParent(),
             'products' => $this->product->show(),
+            'productsNew' => $this->product->getProductNew(),
+            'productSold' => $this->product->getProductSold()
         ]);
     }
 

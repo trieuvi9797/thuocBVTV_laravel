@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Client\CategoryController as ClientCategoryController;
 use App\Http\Controllers\Client\HomeController;
-
+use App\Http\Controllers\Client\ProductController as ClientProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +82,6 @@ Route::middleware(['auth'])->group(function(){
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/services/load-product', [HomeController::class, 'loadProduct']);
-
+Route::get('/trang-chu.html', [HomeController::class, 'index'])->name('home');
+Route::get('san-pham.html', [ClientProductController::class, 'index']);
 Route::get('danh-muc/{id}-{slug}.html', [ClientCategoryController::class, 'index']);

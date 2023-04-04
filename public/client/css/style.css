@@ -1749,6 +1749,7 @@ ol {
 .product__pagination a:last-child,
 .blog__pagination a:last-child {
 	margin-right: 0;
+	padding: 0;
 }
 
 /*---------------------

@@ -1,15 +1,21 @@
 @extends('client.layouts.app')
-@section('title', 'Chi tiết sản phẩm')
 @section('content')
+
+{{--  --}}
+</div>
+</section>
+<!-- Hero Section End -->
+
+
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="/client/img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                         <h2>Chi tiết sản phẩm</h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Trang chủ</a>
+                            <a href="trang-chu.html">Trang chủ</a>
                             <a href="./index.html">Cửa hàng</a>
                             <span></span>
                         </div>

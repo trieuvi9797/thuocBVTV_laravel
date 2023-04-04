@@ -61,7 +61,7 @@
                 </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <a href="#"><i class="fa fa-user"></i>Đăng nhập</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -147,8 +147,8 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="">Trang chủ</a></li>
-                            <li><a href="">Sản phẩm</a>
+                            <li class="active"><a href="/trang-chu.html">Trang chủ</a></li>
+                            <li><a href="/san-pham.html">Sản phẩm</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="">Shop Details</a></li>
                                     <li><a href="./shoping-cart.html">Shoping Cart</a></li>
@@ -237,8 +237,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-        </div>
-    </section>
+            </div> 
+    {{-- </div>
+    </section> --}}
     <!-- Hero Section End -->
+    

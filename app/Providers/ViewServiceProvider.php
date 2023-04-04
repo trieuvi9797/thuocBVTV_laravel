@@ -21,5 +21,6 @@ class ViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('client.layouts.header', CategoryComposer::class);
+        View::composer('client.layouts.footer', CategoryComposer::class);
     }
 }

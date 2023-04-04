@@ -11,23 +11,23 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     protected $categoryService;
-    protected $infoPageService;
-    public function __construct(CategoryService $categoryService, InfoPageService $infoPageService)
+    // protected $infoPageService; , InfoPageService $infoPageService
+    public function __construct(CategoryService $categoryService)
     {
         $this->categoryService = $categoryService;
-        $this->infoPageService = $infoPageService;
+        // $this->infoPageService = $infoPageService;
     }
     public function index(Request $request, $id, $slug = '')
     {
         $parentCategories = $this->categoryService->getParent();
-        $infoPageService = $this->infoPageService->show();
+        // $infoPageService = $this->infoPageService->show();
         $category = $this->categoryService->getId($id);
         $products = $this->categoryService->getProduct($category);
         return view('client.products.index', [
             'title' => $category->name,
             'products' => $products,
             'category'=> $category,
-            'infoPage' => $infoPageService,
+            // 'infoPage' => $infoPageService,
             'parentCategories' => $parentCategories
         ]);
     }

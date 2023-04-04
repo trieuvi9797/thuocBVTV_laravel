@@ -20,7 +20,7 @@ class InfoPageController extends Controller
     {
         return view('admin.infoPages.index', [
             'title' => 'Thông tin trang',
-            'infoPage' => $this->infoPage->get()
+            'infoPage' => $this->infoPage->show()
         ]);
     }
     public function edit(InfoPage $infoPage)

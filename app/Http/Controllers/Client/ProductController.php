@@ -3,17 +3,29 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Category\CategoryService;
+use App\Http\Services\Product\ProductService;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    Protected $categoryService;
+    Protected $productService;
+    public function __construct(CategoryService $categoryService, ProductService $productService)
+    {
+        $this->categoryService = $categoryService;
+        $this->productService = $productService;
+    }
+
     public function index()
     {
-        //
+        $products = $this->productService->getAll();
+        
+        return view('client.products.index', [
+            'title' => 'Sản phẩm',
+            'products' => $products,
+        ]);
     }
 
     /**

@@ -1,16 +1,21 @@
 @extends('client.layouts.app')
 
 @section('content')
-@foreach($slider as $sliders)
-<div class="hero__item set-bg" data-setbg="{{ $sliders->image }}">
-    <div class="hero__text">
-        <span>Cửa hàng Vật tư nông nghiệp</span>
-        <h2>KHAI MAI</h2>
-        <p>Tư vấn 24/7 - 0966884775</p>
-        <a href="/client/products.index" class="primary-btn">Mua ngay</a>
+
+        @foreach($slider as $sliders)
+        <div class="hero__item set-bg" data-setbg="{{ $sliders->image }}">
+            <div class="hero__text">
+                <span>Cửa hàng Vật tư nông nghiệp</span>
+                <h2>KHAI MAI</h2>
+                <p>Tư vấn 24/7 - 0966884775</p>
+                <a href="/client/products.index" class="primary-btn">Mua ngay</a>
+            </div>
+        </div>
+        @endforeach
     </div>
-</div>
-@endforeach
+</section>
+<!-- Hero Section End -->
+
     <!-- Categories Section Begin -->
     <section class="categories">
         <div class="container">
@@ -36,6 +41,7 @@
                 <h2>Sản phẩm nổi bật</h2>
             </div>                    
             <div class="row featured__filter">
+                {{-- {{ dd($products) }} --}}
                 @foreach ($products as $product)                    
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                     <div class="featured__item">
@@ -94,8 +100,8 @@
                     <div class="latest-product__text">
                         <h4>Sản phẩm mới nhất</h4>
                         <div class="latest-product__slider owl-carousel">
-                            @foreach ($products as $product)
                             <div class="latest-prdouct__slider__item">
+                                @foreach ($productsNew as $product)
                                 <a href="" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="{{ $product->image }}" alt="">
@@ -105,9 +111,8 @@
                                         <span>{!! \App\Helpers\Helper::price($product->price) !!} VNĐ</span>
                                     </div>
                                 </a>
-                                                               
+                                @endforeach
                             </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -116,8 +121,8 @@
                         <h4>Sản phẩm bán chạy</h4>
                         
                         <div class="latest-product__slider owl-carousel">
-                            @foreach ($products as $product)
                             <div class="latest-prdouct__slider__item">
+                                @foreach ($productSold as $product)
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="{{ $product->image }}" alt="">
@@ -127,26 +132,9 @@
                                         <span>$30.00</span>
                                     </div>
                                 </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="{{ $product->image }}" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>CHITO-M55</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="{{ $product->image }}" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>CHITO-M55</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
+                                
+                                @endforeach
                             </div>                            
-                            @endforeach
                         </div>
                     </div>
                 </div>
