@@ -35,22 +35,15 @@
             <div class="col-lg-3 col-md-5">
                 <div class="sidebar">
                     <div class="sidebar__item">
-                        <h4>Department</h4>
+                        <h4>Danh mục thuốc</h4>
+                        @foreach ($parentCategory as $parentCate)                            
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
+                            <li><a href="/danh-muc/{{ $parentCate->id }}-{{ Str::slug($parentCate->name), '-'}}.html">{{ $parentCate->name }}</a></li>
                         </ul>
+                        @endforeach
                     </div>
                     <div class="sidebar__item">
-                        <h4>Price</h4>
+                        <h4>Giá</h4>
                         <div class="price-range-wrap">
                             <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
                                 data-min="10" data-max="540">
@@ -68,66 +61,39 @@
                     </div>
                     <div class="sidebar__item">
                         <div class="latest-product__text">
-                            <h4>Latest Products</h4>
+                            <h4>Sản phẩm mới nhất</h4>
                             <div class="latest-product__slider owl-carousel">
+                                @foreach ($productNew as $New)                                    
                                 <div class="latest-prdouct__slider__item">
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-1.jpg" alt="">
+                                            <img src="{{ $New->image }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
+                                            <h6>{{ $New->name }}</h6>
+                                            <span>{!! \App\Helpers\Helper::price($New->price) !!} VNĐ</span>
                                         </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-2.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-3.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
+                                    </a>                                    
                                 </div>
+                                @endforeach                                
+                            </div>
+                        </div>
+                        <div class="latest-product__text">
+                            <h4>Sản phẩm bán chạy</h4>
+                            <div class="latest-product__slider owl-carousel">
+                                @foreach ($productSold as $sold)                                    
                                 <div class="latest-prdouct__slider__item">
                                     <a href="#" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-1.jpg" alt="">
+                                            <img src="{{ $sold->image }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
+                                            <h6>{{ $sold->name }}</h6>
+                                            <span>{!! \App\Helpers\Helper::price($sold->price) !!} VNĐ</span>
                                         </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-2.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-3.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
+                                    </a>                                    
                                 </div>
+                                @endforeach                                
                             </div>
                         </div>
                     </div>
@@ -154,7 +120,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    @if ($products)                        
+                    @if ($products )                        
                     @foreach ($products as $product)
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">

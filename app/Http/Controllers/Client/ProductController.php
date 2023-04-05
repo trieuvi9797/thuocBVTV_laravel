@@ -20,12 +20,18 @@ class ProductController extends Controller
 
     public function index()
     {
+        $category = $this->categoryService->getParent();
         $products = $this->productService->getAll();
         $productSale = $this->productService->getProductSale();
+        $productNew = $this->productService->getProductNew();
+        $productSold = $this->productService->getProductSold();
         return view('client.products.index', [
             'title' => 'Sản phẩm',
             'products' => $products,
             'productSale' => $productSale,
+            'productSold' => $productSold,
+            'productNew' => $productNew,
+            'category' => $category
         ]);
     }
 

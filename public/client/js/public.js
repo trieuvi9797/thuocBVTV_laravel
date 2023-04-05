@@ -18,3 +18,12 @@ function loadMore()
     })
 
 }
+
+// ---------price range slider----------
+$(document).ready(function(e){
+    $('.price-range').on('.ui-slider-handle', function(){
+        alert();
+    });
+
+})
+// ---------price range slider----------

@@ -30,7 +30,8 @@ class HomeController extends Controller
             'slider' => $this->slider->show(),
             'products' => $this->product->show(),
             'productsNew' => $this->product->getProductNew(),
-            'productSold' => $this->product->getProductSold()
+            'productSold' => $this->product->getProductSold(),
+            'productSale' => $this->product->getProductSale()
         ]);
     }
 

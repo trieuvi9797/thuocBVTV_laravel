@@ -21,13 +21,19 @@ class CategoryController extends Controller
     public function index(Request $request, $id, $slug = '')
     {
         $category = $this->categoryService->getId($id);
+        $parentCategory =$this->categoryService->getParent();
         $products = $this->categoryService->getProduct($category);
         $productSale = $this->productService->getProductSale();
+        $productNew = $this->productService->getProductNew();
+        $productSold = $this->productService->getProductSold();
         return view('client.category', [
             'title' => $category->name,
             'products' => $products,
             'category'=> $category,
-            'productSale' => $productSale
+            'productSale' => $productSale,
+            'productNew' => $productNew,
+            'productSold' => $productSold,
+            'parentCategory' => $parentCategory
         ]);
     }
 
