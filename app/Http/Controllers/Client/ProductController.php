@@ -35,6 +35,16 @@ class ProductController extends Controller
         ]);
     }
 
+    public function productDetail($id = '', $slug = '')
+    {
+        $productDetails = $this->productService->getDetails($id);
+        $products = $this->productService->more($id);
+        return view('client.products.detail', [
+            'title' => $productDetails->name,
+            'products' => $products,
+            'productDetails' => $productDetails,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */

@@ -69,10 +69,10 @@
                 <li class="active"><a href="">Trang chủ</a></li>
                 <li><a href="">Sản phẩm</a>
                     <ul class="header__menu__dropdown">
-                        <li><a href="">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
+                        <li><a href="">SP mới nhất</a></li>
+                        <li><a href="">SP bán chạy</a></li>
+                        <li><a href="">SP Khuyến mãi</a></li>
+                        <li><a href="">Kiểm tra đơn hàng</a></li>
                     </ul>
                 </li>
                 <li><a href="">Tin tức</a></li>
@@ -150,10 +150,10 @@
                             <li class="active"><a href="/trang-chu.html">Trang chủ</a></li>
                             <li><a href="/san-pham.html">Sản phẩm</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="">SP mới nhất</a></li>
+                                    <li><a href="">SP bán chạy</a></li>
+                                    <li><a href="">SP Khuyến mãi</a></li>
+                                    <li><a href="">Kiểm tra đơn hàng</a></li>
                                 </ul>
                             </li>
                             <li><a href="">Tin tức</a></li>
@@ -189,30 +189,30 @@
                             <h2>Danh mục thuốc</h2>
                             <a href="#0" class="cd-close">Close</a>
                             {{-- de quy cay danh muc menu  --}}
-                        @foreach ($childCategories as $cate)
-                            <ul class="cd-dropdown-content">					
-                                <li class="has-children">
-                                    <a href="/danh-muc/{{ $cate->id }}-{{ Str::slug($cate->name), '-'}}.html">{{ $cate->name }}</a>
-                                    @if ($cate->childrents) {{--neu la Danh muc con --}}
-                                        <ul class="cd-secondary-dropdown is-hidden">
-                                            <li class="see-all"><a href="">Sản phẩm khác</a></li>
-                                            <li class="has-children">
-                                                <ul class="is-hidden">
-                                                    <li class="go-back"><a href="#0"></a></li>
-                                                    @foreach ($cate->childrents as $sub_cate)
-                                                        <li>
-                                                            <a href="/danh-muc/{{ $sub_cate->id }}-{{ Str::slug($sub_cate->name), '-'}}.html">
-                                                                {{ $sub_cate->name }}
-                                                            </a>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                        </ul> <!-- .cd-secondary-dropdown -->
-                                    @endif
-                                </li> <!-- .has-children -->            
-                            </ul> <!-- .cd-dropdown-content -->
-                        @endforeach
+                            @foreach ($childCategories as $cate)
+                                <ul class="cd-dropdown-content">					
+                                    <li class="has-children">
+                                        <a href="/danh-muc/{{ $cate->id }}-{{ Str::slug($cate->name), '-'}}.html">{{ $cate->name }}</a>
+                                        @if ($cate->childrents) {{--neu la Danh muc con --}}
+                                            <ul class="cd-secondary-dropdown is-hidden">
+                                                <li class="see-all"><a href="">Sản phẩm khác</a></li>
+                                                <li class="has-children">
+                                                    <ul class="is-hidden">
+                                                        <li class="go-back"><a href="#0"></a></li>
+                                                        @foreach ($cate->childrents as $sub_cate)
+                                                            <li>
+                                                                <a href="/danh-muc/{{ $sub_cate->id }}-{{ Str::slug($sub_cate->name), '-'}}.html">
+                                                                    {{ $sub_cate->name }}
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
+                                            </ul> <!-- .cd-secondary-dropdown -->
+                                        @endif
+                                    </li> <!-- .has-children -->            
+                                </ul> <!-- .cd-dropdown-content -->
+                            @endforeach
                         </nav> <!-- .cd-dropdown -->
                     </div> <!-- .cd-dropdown-wrapper -->
                 </div>

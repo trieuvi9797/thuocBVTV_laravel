@@ -8,7 +8,6 @@ use App\Models\Product;
 
 class ProductService
 {
-    const LIMIT = 12;
 
     // public function get($page = null)
     // {
@@ -21,6 +20,11 @@ class ProductService
     //     ->get();
     // }
 
+    public function getDetails($id)
+    {
+        return Product::where('id', $id)->with('category')->firstOrFail();
+    }
+    
     public function getAll()
     {
         return Product::select('id', 'name', 'price', 'sale', 'image')
@@ -31,12 +35,14 @@ class ProductService
     {
         return Product::select('id', 'name', 'price', 'sale', 'image')
                         ->orderByDesc('id')
+                        ->limit(6)
                         ->get();
     }
     public function getProductSold()
     {
         return Product::select('id', 'name', 'price', 'sale', 'image')
                         ->orderByDesc('sold')
+                        ->limit(6)
                         ->get();
     }
     public function getProductSale()
@@ -44,13 +50,22 @@ class ProductService
         return Product::select('id', 'name', 'price', 'sale', 'image')
                         ->where('sale', '>', 0)
                         ->orderByDesc('sale')
+                        ->limit(6)
                         ->get();
     }
     public function show()
     {
         return Product::select('id', 'name', 'price', 'sale', 'image')
         ->orderByDesc('id')
-        ->limit(self::LIMIT)
+        ->limit(8)
+        ->get();
+    }
+    public function more($id)
+    {
+        return Product::select('id', 'name', 'price', 'sale', 'image')
+        ->where('id', '!=', $id)
+        ->orderByDesc('id')
+        ->limit(8)
         ->get();
     }
 

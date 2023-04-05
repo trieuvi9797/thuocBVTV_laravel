@@ -2,6 +2,7 @@
 
 @section('content')
 
+
         @foreach($slider as $sliders)
         <div class="hero__item set-bg" data-setbg="{{ $sliders->image }}">
             <div class="hero__text">
@@ -21,12 +22,12 @@
         <div class="container">
             <div class="row">
                 <div class="categories__slider owl-carousel">
-                        @foreach ($categories as $nameCategory)
-                        <div class="col-lg-3">
-                            <div class="categories__item set-bg" data-setbg="/client/img/product/CHITO-M55.jpg">
-                                <h5><a href="/danh-muc/{{ Str::slug($nameCategory->name), '-'}}.html">{{ $nameCategory->name }}</a></h5>
-                            </div>
+                    @foreach ($categories as $nameCategory)
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="/client/img/product/CHITO-M55.jpg">
+                            <h5><a href="/danh-muc/{{ Str::slug($nameCategory->name), '-'}}.html">{{ $nameCategory->name }}</a></h5>
                         </div>
+                    </div>
                     @endforeach
                 </div>
             </div>
@@ -106,7 +107,9 @@
                                         <img src="{{ $product->image }}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>{{ $product->name }}</h6>
+                                        <span>
+                                            <a href="/san-pham/{{ $product->id }}-{{ \Str::slug($product->name, '-') }}.html">{{ $product->name }}</a>
+                                        </span>
                                         <span>{!! \App\Helpers\Helper::price($product->price) !!} VNĐ</span>
                                     </div>
                                 </a>
@@ -127,7 +130,9 @@
                                         <img src="{{ $sold->image }}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>{{ $sold->name }}</h6>
+                                        <h6 style="text-align:center">
+                                            <a href="/san-pham/{{ $sold->id }}-{{ \Str::slug($sold->name, '-') }}.html">{{ $sold->name }}</a>
+                                        </h6>
                                         <span>{!! \App\Helpers\Helper::price($sold->price) !!} VNĐ</span>
                                     </div>
                                 </a>
@@ -148,7 +153,9 @@
                                             <img src="{{ $sale->image }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>{{ $sale->name }}</h6>
+                                            <h6 style="text-align:center">
+                                                <a href="/san-pham/{{ $sale->id }}-{{ \Str::slug($sale->name, '-') }}.html">{{ $sale->name }}</a>
+                                            </h6>
                                             <span>{!! \App\Helpers\Helper::price($sale->price) !!} VNĐ</span>
                                         </div>
                                     </a>                                    

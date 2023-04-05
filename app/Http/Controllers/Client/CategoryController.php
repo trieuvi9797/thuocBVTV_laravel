@@ -36,7 +36,7 @@ class CategoryController extends Controller
             'parentCategory' => $parentCategory
         ]);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */

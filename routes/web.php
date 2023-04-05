@@ -83,5 +83,8 @@ Route::middleware(['auth'])->group(function(){
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/trang-chu.html', [HomeController::class, 'index'])->name('home');
-Route::get('san-pham.html', [ClientProductController::class, 'index']);
 Route::get('danh-muc/{id}-{slug}.html', [ClientCategoryController::class, 'index']);
+Route::get('danh-muc/{id}-{slug}.html', [ClientCategoryController::class, 'categoryProduct']);
+
+Route::get('san-pham.html', [ClientProductController::class, 'index']);
+Route::get('san-pham/{id}-{slug}.html', [ClientProductController::class, 'productDetail']);
