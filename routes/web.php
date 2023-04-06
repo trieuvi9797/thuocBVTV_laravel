@@ -92,4 +92,5 @@ Route::get('san-pham.html', [ClientProductController::class, 'index']);
 Route::get('san-pham/{id}-{slug}.html', [ClientProductController::class, 'productDetail']);
 
 Route::post('add-cart', [CartController::class, 'index']);
-Route::post('/cart', [CartController::class, 'show']);
+Route::get('/carts', [CartController::class, 'show']);
+Route::post('/update-cart', [CartController::class, 'update']);

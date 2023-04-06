@@ -24,12 +24,12 @@ class CartService
         
         $exists = Arr::exists($carts, $product_id);
         if($exists){
-            $qtyNew = $carts[$product_id] + $qty;
-            Session::put('carts', [$product_id => $qtyNew]);
+            $carts[$product_id] = $carts[$product_id] + $qty;
+            Session::put('carts', $carts[$product_id]);
             return true;
         }
-
-        Session::put('carts', [$product_id => $qty]);
+        $carts[$product_id] = $qty;
+        Session::put('carts', $carts);
     }
     public function getProduct()
     {
@@ -40,5 +40,11 @@ class CartService
         return Product::select('id','name','price','sale','image')
                     ->whereIn('id', $productId)
                     ->get();
+    }
+
+    public function update($request)
+    {
+        Session::put('carts', $request->input('num_product'));
+        return true;
     }
 }

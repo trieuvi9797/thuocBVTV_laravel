@@ -41,6 +41,7 @@ class ProductService
     public function getProductSold()
     {
         return Product::select('id', 'name', 'price', 'sale', 'image')
+                        ->where('sold','>',0)
                         ->orderByDesc('sold')
                         ->limit(6)
                         ->get();

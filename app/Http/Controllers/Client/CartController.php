@@ -33,6 +33,14 @@ class CartController extends Controller
             'carts' => Session::get('carts')
         ]);
     }
+    public function update(Request $request)
+    {
+        $result = $this->cartService->update($request);
+        if($result === false){
+            return redirect()->back();
+        }
+        return redirect('/carts');
+    }
     public function create()
     {
         //
@@ -61,10 +69,7 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cart $cart)
-    {
-        //
-    }
+    
 
     /**
      * Remove the specified resource from storage.
