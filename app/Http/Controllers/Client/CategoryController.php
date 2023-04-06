@@ -40,10 +40,29 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function parentCategory(Request $request, $id, $slug ='')
     {
-        return view('admin.categories.create', [
-            'title' => 'Thêm danh mục',
+        $category = $this->categoryService->getId($id);
+        dd($category);
+        if (count($category) > 0) {
+            foreach ($category as $value)
+                $id_cate[] = $value->id;
+        } else
+            $id_cate = [];
+        $parentCategory =$this->categoryService->getIDparent($id_cate);
+
+        $products = $this->categoryService->getProduct($category);
+        $productSale = $this->productService->getProductSale();
+        $productNew = $this->productService->getProductNew();
+        $productSold = $this->productService->getProductSold();
+        return view('client.products.index', [
+            'title' => $category->name,
+            'products' => $products,
+            'category'=> $category,
+            'productSale' => $productSale,
+            'productNew' => $productNew,
+            'productSold' => $productSold,
+            'parentCategory' => $parentCategory
         ]);
     }
 

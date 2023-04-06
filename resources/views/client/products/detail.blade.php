@@ -52,17 +52,24 @@
                             <span>(18 reviews)</span>
                         </div>
                         <div class="product__details__price">{!! \App\Helpers\Helper::price($productDetails->price) !!} VNĐ</div>
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
+                        <form action="/add-cart" method="post">
+                            @csrf
+
+                            <div class="product__details__quantity">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input type="text" name="quantity_Products" value="1">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <a href="#" class="primary-btn">Thêm vào giỏ hàng</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            <button type="submit">Thêm vào giỏ hàng
+                                {{-- <a href="#" class="primary-btn"></a> --}}
+                            </button>
+                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            <input type="hidden" name="product_id" value="{{ $productDetails->id }}">
+                        </form>
                         <ul>
-                            <li><b>Số lượng</b> 
+                            <li><b>Số lượng kho</b> 
                                 @if (($productDetails->quantity) >0)
                                     <span>{{ $productDetails->quantity }}</span>
                                 @else    

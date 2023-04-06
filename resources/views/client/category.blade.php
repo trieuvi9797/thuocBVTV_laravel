@@ -38,7 +38,7 @@
                         <h4>Danh mục thuốc</h4>
                         @foreach ($parentCategory as $parentCate)                            
                         <ul>
-                            <li><a href="/danh-muc/{{ $parentCate->id }}-{{ Str::slug($parentCate->name), '-'}}.html">{{ $parentCate->name }}</a></li>
+                            <li><a href="/danh-muc/{{ $parentCate->id }}-{{ Str::slug($parentCate->name), '-'}}">{{ $parentCate->name }}</a></li>
                         </ul>
                         @endforeach
                     </div>

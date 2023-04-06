@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\InfoPageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\CategoryController as ClientCategoryController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ProductController as ClientProductController;
@@ -83,8 +84,12 @@ Route::middleware(['auth'])->group(function(){
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/trang-chu.html', [HomeController::class, 'index'])->name('home');
+
 Route::get('danh-muc/{id}-{slug}.html', [ClientCategoryController::class, 'index']);
-Route::get('danh-muc/{id}-{slug}.html', [ClientCategoryController::class, 'categoryProduct']);
+Route::get('danh-muc/{id}-{slug}', [ClientCategoryController::class, 'parentCategory']);
 
 Route::get('san-pham.html', [ClientProductController::class, 'index']);
 Route::get('san-pham/{id}-{slug}.html', [ClientProductController::class, 'productDetail']);
+
+Route::post('add-cart', [CartController::class, 'index']);
+Route::post('/cart', [CartController::class, 'show']);

@@ -102,14 +102,12 @@
                         <div class="latest-product__slider owl-carousel">
                             @foreach ($productsNew as $product)
                             <div class="latest-prdouct__slider__item">
-                                <a href="" class="latest-product__item">
+                                <a href="/san-pham/{{ $product->id }}-{{ \Str::slug($product->name, '-') }}.html" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="{{ $product->image }}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <span>
-                                            <a href="/san-pham/{{ $product->id }}-{{ \Str::slug($product->name, '-') }}.html">{{ $product->name }}</a>
-                                        </span>
+                                            <h6>{{ $product->name }}</h6>
                                         <span>{!! \App\Helpers\Helper::price($product->price) !!} VNĐ</span>
                                     </div>
                                 </a>
@@ -121,18 +119,15 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="latest-product__text">
                         <h4>Sản phẩm bán chạy</h4>
-                        
                         <div class="latest-product__slider owl-carousel">
                             @foreach ($productSold as $sold)
                             <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
+                                <a href="/san-pham/{{ $sold->id }}-{{ \Str::slug($sold->name, '-') }}.html" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="{{ $sold->image }}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6 style="text-align:center">
-                                            <a href="/san-pham/{{ $sold->id }}-{{ \Str::slug($sold->name, '-') }}.html">{{ $sold->name }}</a>
-                                        </h6>
+                                        <h6>{{ $sold->name }}</h6>
                                         <span>{!! \App\Helpers\Helper::price($sold->price) !!} VNĐ</span>
                                     </div>
                                 </a>
@@ -148,14 +143,12 @@
                         <div class="latest-product__slider owl-carousel">
                             @foreach ($productSale as $sale)
                                 <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
+                                    <a href="/san-pham/{{ $sale->id }}-{{ \Str::slug($sale->name, '-') }}.html" class="latest-product__item">
                                         <div class="latest-product__item__pic">
                                             <img src="{{ $sale->image }}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6 style="text-align:center">
-                                                <a href="/san-pham/{{ $sale->id }}-{{ \Str::slug($sale->name, '-') }}.html">{{ $sale->name }}</a>
-                                            </h6>
+                                            <h6>{{ $sale->name }}</h6>
                                             <span>{!! \App\Helpers\Helper::price($sale->price) !!} VNĐ</span>
                                         </div>
                                     </a>                                    

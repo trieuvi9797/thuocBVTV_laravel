@@ -40,6 +40,11 @@ class CategoryService
         return $category->products()->select('id', 'name', 'price', 'sale', 'image')
                                     ->orderByDesc('id')->paginate(12);
     }
+    public function getIDparent($id)
+    {
+        return $id->products()->select('id', 'name', 'price', 'sale', 'image')
+        ->orderByDesc('id')->paginate(12);
+    }
     public function create($request)
     {
         try {
