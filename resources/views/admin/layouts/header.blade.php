@@ -13,8 +13,8 @@
                     <i class="search-mobile-trigger-icon fas fa-search"></i>
                 </div><!--//col-->
                 <div class="app-search-box col">
-                    <form class="app-search-form">   
-                        <input type="text" placeholder="Search..." name="search" class="form-control search-input">
+                    <form class="app-search-form" action="">   
+                        <input type="text" placeholder="Bạn cần tìm gì?" name="search" class="form-control search-input">
                         <button type="submit" class="btn search-btn btn-primary" value="Search"><i class="fas fa-search"></i></button> 
                     </form>
                 </div><!--//app-search-box-->

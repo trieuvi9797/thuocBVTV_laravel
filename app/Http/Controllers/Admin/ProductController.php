@@ -34,6 +34,15 @@ class ProductController extends Controller
             'products' => $this->productService->get()
         ]);
     }
+    public function search($request)
+    {
+        dd("ok");
+        $search = $this->productService->search($request);
+        return view('admin.products.index', [
+            'title' => 'Danh Sách Sản Phẩm',
+            'products' => $search
+        ]);
+    }
     public function create()
     {
         return view('admin.products.create', [

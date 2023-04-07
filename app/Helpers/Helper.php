@@ -45,4 +45,19 @@ class Helper
             return number_format($price);
         return '<a href="/lien-he.html">Liên hệ</a>';
     }
+    public static function categoryMENU($category, $parent_id = 0, $char = '')
+    {
+        $html = '';
+        foreach ($category as $key => $categories) {
+            if($categories->parent_id == $parent_id)
+            {
+                $html .= ''. $char . $categories->name .'                                      
+                    ';
+                unset($categories[$key]);
+                $html .= self::categories($category, $categories->id, $char .'--');
+            }
+        }
+        
+        return $html;
+    }
 }

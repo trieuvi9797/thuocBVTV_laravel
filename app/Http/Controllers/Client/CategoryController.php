@@ -43,13 +43,7 @@ class CategoryController extends Controller
     public function parentCategory(Request $request, $id, $slug ='')
     {
         $category = $this->categoryService->getId($id);
-        dd($category);
-        if (count($category) > 0) {
-            foreach ($category as $value)
-                $id_cate[] = $value->id;
-        } else
-            $id_cate = [];
-        $parentCategory =$this->categoryService->getIDparent($id_cate);
+        $parentCategory =$this->categoryService->getIDparent($category);
 
         $products = $this->categoryService->getProduct($category);
         $productSale = $this->productService->getProductSale();

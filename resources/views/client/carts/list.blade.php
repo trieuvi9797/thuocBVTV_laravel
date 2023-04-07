@@ -48,7 +48,7 @@
                             <tbody>
                                 @foreach ($products as $product)
                                 @php
-                                    $priceSale = $product->sale > 0 ? $product->price-($product->price*$product->sale/100) : $product->price;
+                                    $priceSale = $product->sale > 0 ? $product->price-($product->price*$product->sale/100) : $product->price; 
                                     $price = $product->sale != 0 ? $priceSale : $product->price;
                                     $priceEnd = $price * $carts[$product->id];
                                     $total += $priceEnd;
@@ -72,7 +72,7 @@
                                         {!! number_format($priceEnd, 0, '', '.') !!}
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                        <a class="btn btn-outline-danger" href="/carts/delete">Xóa</a>
+                                        <a class="btn btn-outline-danger" href="/carts/delete/{{ $product->id }}">Xóa</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -82,7 +82,6 @@
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="shoping__checkout">
-                        {{-- <h5>Thành tiền</h5> --}}
                         <ul>
                             <li>Tổng tiền <span>{{ number_format($total, 0, '', '.') }} VNĐ</span></li>
                         </ul>
@@ -93,7 +92,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
+                        <a href="/san-pham.html" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
                         <input type="submit" value="Cập nhật giỏ hàng" class="primary-btn cart-btn cart-btn-right" formaction="/update-cart">
                         @csrf 
                     </div>
@@ -104,7 +103,10 @@
 </form>
 
 @else
-    <div class="text-center"><h2>Giỏ hàng trống</h2></div>
+<section class="shoping-cart spad">
+    <div class="text-center">
+            <h1>Chưa có sản phẩm nào trồng giỏ hàng</h1>
+    </div>
+</section>
 @endif
-    <!-- Shoping Cart Section End -->
-    @endsection
+@endsection

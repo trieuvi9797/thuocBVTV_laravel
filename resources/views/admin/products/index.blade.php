@@ -19,9 +19,9 @@
                  <div class="page-utilities">
                     <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
                         <div class="col-auto">
-                            <form class="table-search-form row gx-1 align-items-center">
+                            <form class="table-search-form row gx-1 align-items-center"  action="">
                                 <div class="col-auto">
-                                    <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Tìm kiếm...">
+                                    <input type="search" id="search-orders" name="search" class="form-control search-orders" placeholder="Tìm kiếm...">
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn app-btn-secondary">Tìm</button>
@@ -88,14 +88,6 @@
                                     <td>
                                         <a class="btn btn-outline-danger" href="" onclick="removeRow({{ $item->id }},'/admin/products/destroy')">Xóa</a>
                                     </td>
-                                    {{-- <td>
-                                    <a href="/admin/products/edit/{{ $item->id }}" class="btn app-btn-warning" style="float: right">Sửa</a>
-                                </td>
-                                <td>
-                                        <a href="" class="btn app-btn-danger" onclick="removeRow({{ $item->id }},'/admin/products/destroy')">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </td>                                      --}}
                                 </tr>
                             </tbody>
                             @endforeach
@@ -104,7 +96,7 @@
                 </div><!--//app-card-body-->
             </div><!--//app-card-->
         <nav aria-label="Page navigation">
-            {!!  $products->links()  !!}
+            {!!  $products->appends(request()->all())->links()  !!}
         </nav><!--//tab-content-->
         </div><!--//tab-content-->
     </div><!--//container-fluid-->

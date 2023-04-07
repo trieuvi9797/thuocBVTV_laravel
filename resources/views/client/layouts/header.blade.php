@@ -41,7 +41,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href=""><img src="/client/img/logo.png" alt=""></a>
+            <a href="/"><img src="/client/img/logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -147,7 +147,7 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="/trang-chu.html">Trang chủ</a></li>
+                            <li class="active"><a href="/">Trang chủ</a></li>
                             <li><a href="/san-pham.html">Sản phẩm</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="">SP mới nhất</a></li>

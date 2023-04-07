@@ -101,6 +101,9 @@
                         <h4>Sản phẩm mới nhất</h4>
                         <div class="latest-product__slider owl-carousel">
                             @foreach ($productsNew as $product)
+                            @php
+                                $priceSale = $product->sale > 0 ? $product->price-($product->price*$product->sale/100) : $product->price;
+                            @endphp
                             <div class="latest-prdouct__slider__item">
                                 <a href="/san-pham/{{ $product->id }}-{{ \Str::slug($product->name, '-') }}.html" class="latest-product__item">
                                     <div class="latest-product__item__pic">
@@ -108,7 +111,7 @@
                                     </div>
                                     <div class="latest-product__item__text">
                                             <h6>{{ $product->name }}</h6>
-                                        <span>{!! \App\Helpers\Helper::price($product->price) !!} VNĐ</span>
+                                            <span>{!! \App\Helpers\Helper::price($priceSale) !!} VNĐ</span>
                                     </div>
                                 </a>
                             </div>

@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group(function(){
             Route::get('edit/{product}', [ProductController::class, 'edit']);
             Route::post('edit/{product}', [ProductController::class, 'update']);
             Route::DELETE('destroy', [ProductController::class, 'destroy']);
+            Route::post('search', [ProductController::class, 'search']);
         });
 
         #sliders
@@ -94,3 +95,4 @@ Route::get('san-pham/{id}-{slug}.html', [ClientProductController::class, 'produc
 Route::post('add-cart', [CartController::class, 'index']);
 Route::get('/carts', [CartController::class, 'show']);
 Route::post('/update-cart', [CartController::class, 'update']);
+Route::get('/carts/delete/{id}', [CartController::class, 'destroy']);

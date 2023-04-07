@@ -41,6 +41,16 @@ class CartController extends Controller
         }
         return redirect('/carts');
     }
+
+    public function destroy($id = 0)
+    {
+        $result = $this->cartService->delete($id);
+        if($result === false){
+            return redirect()->back();
+        }
+        return redirect('/carts');
+    }
+    
     public function create()
     {
         //
@@ -74,8 +84,5 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cart $cart)
-    {
-        //
-    }
+    
 }

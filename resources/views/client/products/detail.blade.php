@@ -51,7 +51,13 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">{!! \App\Helpers\Helper::price($productDetails->price) !!} VNĐ</div>
+                        @php
+                            $priceSale = $productDetails->sale > 0 ? $productDetails->price-($productDetails->price*$productDetails->sale/100) : $productDetails->price;
+                        @endphp
+                        <div class="product__details__price">{!! \App\Helpers\Helper::price($priceSale) !!} VNĐ</div>
+                        @if ($productDetails->sale != 0) 
+                            <del>{{ $productDetails->price  }} VNĐ</del>
+                        @endif
                         <form action="/add-cart" method="post">
                             @csrf
 
@@ -62,7 +68,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit">Thêm vào giỏ hàng
+                            <button type="submit" class="primary-btn">Thêm vào giỏ hàng
                                 {{-- <a href="#" class="primary-btn"></a> --}}
                             </button>
                             <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
