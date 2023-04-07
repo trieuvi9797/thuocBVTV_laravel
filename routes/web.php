@@ -53,7 +53,6 @@ Route::middleware(['auth'])->group(function(){
             Route::get('edit/{product}', [ProductController::class, 'edit']);
             Route::post('edit/{product}', [ProductController::class, 'update']);
             Route::DELETE('destroy', [ProductController::class, 'destroy']);
-            Route::post('search', [ProductController::class, 'search']);
         });
 
         #sliders

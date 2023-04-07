@@ -30,4 +30,12 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class, 'category_id', 'id')->withDefault(['name' => '']);
     }
-}
+
+    public function scopeSearch($query) //them localScope
+    {
+        if($key = request()->key){
+            $query = $query->where('name', 'like', '%'.$key.'%');
+        }
+        return $query;
+    }//globalScope
+}   

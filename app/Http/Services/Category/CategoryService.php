@@ -38,7 +38,7 @@ class CategoryService
     public function getProduct($category)
     {
         return $category->products()->select('id', 'name', 'price', 'sale', 'image')
-                                    ->orderByDesc('id')->paginate(12);
+                        ->search()->orderByDesc('id')->paginate(12);
     }
     public function getIDparent($id)
     {

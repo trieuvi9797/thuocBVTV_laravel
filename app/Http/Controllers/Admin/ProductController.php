@@ -31,18 +31,10 @@ class ProductController extends Controller
     {
         return view('admin.products.index', [
             'title' => 'Danh Sách Sản Phẩm',
-            'products' => $this->productService->get()
+            'products' => Product::orderByDesc('id')->search()->paginate(10)
         ]);
     }
-    public function search($request)
-    {
-        dd("ok");
-        $search = $this->productService->search($request);
-        return view('admin.products.index', [
-            'title' => 'Danh Sách Sản Phẩm',
-            'products' => $search
-        ]);
-    }
+
     public function create()
     {
         return view('admin.products.create', [

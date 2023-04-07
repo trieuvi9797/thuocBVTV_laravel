@@ -219,8 +219,8 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">                               
-                                <input type="text" placeholder="Bạn muốn tìm gì?">
+                            <form action="">                               
+                                <input type="search" name="key" placeholder="Bạn muốn tìm gì?">
                                 <button type="submit" class="site-btn">Tìm</button>
                             </form>
                         </div>

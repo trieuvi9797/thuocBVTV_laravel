@@ -27,4 +27,11 @@ class Category extends Model
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
+    public function scopeSearch($query) //them localScope
+    {
+        if($key = request()->key){
+            $query = $query->where('name', 'like', '%'.$key.'%');
+        }
+        return $query;
+    }//globalScope
 }

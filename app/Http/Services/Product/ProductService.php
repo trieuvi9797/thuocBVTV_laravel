@@ -28,6 +28,7 @@ class ProductService
     public function getAll()
     {
         return Product::select('id', 'name', 'price', 'sale', 'image')
+                        ->search()
                         ->orderByDesc('id')
                         ->paginate(16);
     }

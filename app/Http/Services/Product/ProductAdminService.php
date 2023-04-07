@@ -88,8 +88,4 @@ class ProductAdminService
         }
         return false;
     }
-    public function search($request)
-    {
-        return Product::where('name', 'like', '%'.$request->search.'%')->orderByDesc('id')->paginate(15);
-    }
 }

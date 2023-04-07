@@ -19,14 +19,14 @@ class Helper
                     <td>'. $categories->parentName .'</td>                                        
                     <td>'. $categories->updated_at.'</td>                                        
                     <td>
-                        <a href="/admin/categories/edit/'. $categories->id.'" class="btn app-btn-primary">
-                            <i class="fas fa-edit"></i>
+                        <a href="/admin/categories/edit/'. $categories->id.'" class="btn btn-outline-warning">
+                            Sửa
                         </a>
                     
-                        <a href="/admin/categories/index" class="btn app-btn-danger" onclick="removeRow('. $categories->id .', \' /admin/categories/destroy\')">
-                            <i class="fas fa-trash"></i>
+                        <a href="/admin/categories/index" class="btn btn-outline-danger" onclick="removeRow('. $categories->id .', \' /admin/categories/destroy\')">
+                            Xóa 
                         </a>
-                    </td>                                     
+                    </td>                                   
                 </tr>';
                 unset($categories[$key]);
                 $html .= self::categories($list_category, $categories->id, $char .'--');

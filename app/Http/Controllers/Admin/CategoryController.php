@@ -23,7 +23,7 @@ class CategoryController extends Controller
         
         return view('admin.categories.index', [
             'title' => 'Danh mục sản phẩm',
-            'list_category' => $this->categoryService->getAll(),
+            'list_category' => Category::orderByDesc('id')->search()->paginate(30)
         ]);
     }
 
