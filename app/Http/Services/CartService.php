@@ -1,8 +1,11 @@
 <?php 
 namespace App\Http\Services;
 
+use App\Models\Cart;
+use App\Models\Customer;
 use App\Models\Product;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\Console\Input\Input;
 
@@ -54,5 +57,47 @@ class CartService
 
         Session::put('carts', $carts);
         return true;
+    }
+    public function addCart($request)
+    {
+        try {
+            DB::beginTransaction();
+            $carts = Session::get('carts');
+            if(is_null($carts))
+                return false;
+
+            $customer = Customer::create([
+                'name' => $request->input('name'),
+                'phone' => $request->input('phone'),
+                'email' => $request->input('email'),
+                'address' => $request->input('address'),
+                'note' => $request->input('note')
+            ]);
+            $this->getProduct($carts, $customer->id);
+            DB::commit();
+            Session::flash('success', 'Đặt hàng thanh công');
+            Session::flash();   //delete session cart
+        } catch (\Exception $err) {
+            DB::rollBack();
+            Session::flash('error', 'Đặt hàng lỗi. Vui lòng thử lại...');
+            return false;
+        }
+    }
+    protected function infoProductCart($carts, $customer_id)
+    {
+        $productID = array_keys($carts);
+        $products = Product::select('id','name','price','sale','image')
+                    ->whereIn('id', $productID)
+                    ->get();
+        $data = [];
+        foreach ($products as $key => $product) {
+            $data[] = [
+                'customer_id' => $customer_id,
+                'product_id' => $product->id,
+                'quantity' => $carts[$product->id],
+                'price' => $product->sale != 0 ? $product->sale :$product->price
+            ];
+        }
+        return Cart::insert($data);
     }
 }

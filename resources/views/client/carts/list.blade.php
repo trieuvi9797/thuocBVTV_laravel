@@ -26,7 +26,7 @@
 
     <!-- Shoping Cart Section Begin -->
 @if(count($products) != 0)
-    <form action="" method="POST">   
+    <form action="">   
     <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
@@ -85,7 +85,7 @@
                         <ul>
                             <li>Tổng tiền <span>{{ number_format($total, 0, '', '.') }} VNĐ</span></li>
                         </ul>
-                        <a href="/client/carts/create" class="primary-btn">THANH TOÁN</a>
+                        <a href="/tao-don-hang" class="primary-btn">THANH TOÁN</a>
                     </div>
                 </div>
             </div>

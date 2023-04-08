@@ -53,8 +53,11 @@ class CartController extends Controller
     
     public function create()
     {
+        $products = $this->cartService->getProduct();
         return view('client.carts.create', [
-            'title' => 'Tạo đơn hàng'
+            'title' => 'Tạo đơn hàng',
+            'products' => $products,
+            'carts' => Session::get('carts')
         ]);
     }
 
@@ -63,8 +66,8 @@ class CartController extends Controller
      */
     public function addCart(Request $request)
     {
-        // $this->cartService->addCart($request);
-        // return redirect()->back();
+        $this->cartService->addCart($request);
+        return redirect()->back();
     }
 
     /**
