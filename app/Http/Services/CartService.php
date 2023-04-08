@@ -47,7 +47,7 @@ class CartService
         Session::put('carts', $request->input('num_product'));
         return true;
     }
-    public function delete($id)
+    public function remove($id)
     {
         $carts = Session::get('carts');
         unset($carts[$id]);

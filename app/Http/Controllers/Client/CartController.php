@@ -42,9 +42,9 @@ class CartController extends Controller
         return redirect('/carts');
     }
 
-    public function destroy($id = 0)
+    public function remove($id = 0)
     {
-        $result = $this->cartService->delete($id);
+        $result = $this->cartService->remove($id);
         if($result === false){
             return redirect()->back();
         }
@@ -53,15 +53,18 @@ class CartController extends Controller
     
     public function create()
     {
-        //
+        return view('client.carts.create', [
+            'title' => 'Tạo đơn hàng'
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function addCart(Request $request)
     {
-        //
+        // $this->cartService->addCart($request);
+        // return redirect()->back();
     }
 
     /**

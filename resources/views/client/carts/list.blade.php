@@ -85,7 +85,7 @@
                         <ul>
                             <li>Tổng tiền <span>{{ number_format($total, 0, '', '.') }} VNĐ</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">THANH TOÁN</a>
+                        <a href="/client/carts/create" class="primary-btn">THANH TOÁN</a>
                     </div>
                 </div>
             </div>

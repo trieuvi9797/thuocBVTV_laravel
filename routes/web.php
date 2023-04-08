@@ -94,4 +94,6 @@ Route::get('san-pham/{id}-{slug}.html', [ClientProductController::class, 'produc
 Route::post('add-cart', [CartController::class, 'index']);
 Route::get('/carts', [CartController::class, 'show']);
 Route::post('/update-cart', [CartController::class, 'update']);
-Route::get('/carts/delete/{id}', [CartController::class, 'destroy']);
+Route::get('/carts/delete/{id}', [CartController::class, 'remove']);
+Route::get('/createCarts', [CartController::class, 'create']);
+Route::post('addCarts', [CartController::class, 'addCart']);

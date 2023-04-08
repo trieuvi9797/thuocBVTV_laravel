@@ -68,9 +68,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="primary-btn">Thêm vào giỏ hàng
-                                {{-- <a href="#" class="primary-btn"></a> --}}
-                            </button>
+                            <button type="submit" class="primary-btn">Thêm vào giỏ hàng</button>
                             <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                             <input type="hidden" name="product_id" value="{{ $productDetails->id }}">
                         </form>
@@ -83,7 +81,7 @@
                                 @endif
                                 <span></span>
                             </li>
-                            <li><b>Vận chuyển</b> <span>01-02 ngày. <samp>Free pickup today</samp></span></li>
+                            <li><b>Vận chuyển</b> <span>01-02 ngày. <samp>Miễn phí</samp></span></li>
                             <li><b>Chia sẽ</b>
                                 <div class="share">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
