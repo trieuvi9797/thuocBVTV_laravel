@@ -65,17 +65,16 @@
 
                             <h4>Đơn hàng của bạn</h4>
                             <div class="checkout__order__products">Sản phẩm <span>Tổng cộng</span></div>
+                            @endforeach
                             <ul>
                                 
                                 <li>{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}
                                      <span>{{ number_format($total, 0, '', '.') }} VNĐ</span>
                                 </li>
-                                
                             </ul>
-                            @endforeach
                             <div class="checkout__order__subtotal">Phí vận chuyển <span></span></div>
                             <div class="checkout__order__total">Thành tiền 
-                                <span>{{ number_format($total, 0, '', '.') }} VNĐ</span>
+                                <span>{{ number_format($total , 0, '', '.') }} VNĐ</span>
                             </div>
                             <div class="checkout__input__checkbox">
                                 <label for="paypal">

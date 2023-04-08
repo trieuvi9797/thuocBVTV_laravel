@@ -11,14 +11,14 @@
  
 {{-- Login fail --}}
 @if (Session::has('error'))
-    <div class="alert alert-danger">
+    <div class="text-center alert alert-danger">
         {{ Session::get('error') }}
     </div>
 @endif
 
-{{-- Login success 
+{{-- Login success  --}}
 @if (Session::has('success'))
-    <div class="alert alert-success">
+    <div class="text-center alert alert-success">
         {{ Session::get('success') }}
     </div>
-@endif --}}
+@endif

@@ -76,7 +76,7 @@ class CartService
             $this->getProduct($carts, $customer->id);
             DB::commit();
             Session::flash('success', 'Đặt hàng thanh công');
-            Session::flash();   //delete session cart
+            Session::forget();   //delete session cart
         } catch (\Exception $err) {
             DB::rollBack();
             Session::flash('error', 'Đặt hàng lỗi. Vui lòng thử lại...');
