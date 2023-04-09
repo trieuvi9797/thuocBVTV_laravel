@@ -63,9 +63,10 @@ class CartService
         try {
             DB::beginTransaction();
             $carts = Session::get('carts');
-            if(is_null($carts))
-                return false;
 
+            if (is_null($carts))
+                return false;
+                
             $customer = Customer::create([
                 'name' => $request->input('name'),
                 'phone' => $request->input('phone'),
@@ -73,29 +74,28 @@ class CartService
                 'address' => $request->input('address'),
                 'note' => $request->input('note')
             ]);
-            $this->getProduct($carts, $customer->id);
+            dd($customer);
+            $this->infoProductCart($carts, $customer->id);
             DB::commit();
-            Session::flash('success', 'Đặt hàng thanh công');
-            Session::forget();   //delete session cart
+            Session::forget();
+            Session::flash('success', 'Đặt hàng thành công.');
         } catch (\Exception $err) {
-            DB::rollBack();
-            Session::flash('error', 'Đặt hàng lỗi. Vui lòng thử lại...');
-            return false;
+            DB::rollback();
+            Session::flash('error', 'Đặt hàng chưa được. Vui lòng kiểm tra lại.');
         }
     }
     protected function infoProductCart($carts, $customer_id)
     {
         $productID = array_keys($carts);
-        $products = Product::select('id','name','price','sale','image')
-                    ->whereIn('id', $productID)
-                    ->get();
-        $data = [];
+        $products = Product::select('id', 'name', 'price', 'sale', 'image')
+                        ->whereIn('id', $productID)
+                        ->get();
         foreach ($products as $key => $product) {
             $data[] = [
                 'customer_id' => $customer_id,
                 'product_id' => $product->id,
                 'quantity' => $carts[$product->id],
-                'price' => $product->sale != 0 ? $product->sale :$product->price
+                'price' => $product->sale != 0 ? $product->sale : $product->price
             ];
         }
         return Cart::insert($data);

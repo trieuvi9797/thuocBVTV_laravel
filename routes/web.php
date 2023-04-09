@@ -91,9 +91,14 @@ Route::get('danh-muc/{id}-{slug}', [ClientCategoryController::class, 'parentCate
 Route::get('san-pham.html', [ClientProductController::class, 'index']);
 Route::get('san-pham/{id}-{slug}.html', [ClientProductController::class, 'productDetail']);
 
-Route::post('add-cart', [CartController::class, 'index']);
-Route::get('/carts', [CartController::class, 'show']);
-Route::post('/update-cart', [CartController::class, 'update']);
-Route::get('/carts/delete/{id}', [CartController::class, 'remove']);
-Route::get('/tao-don-hang', [CartController::class, 'create']);
-Route::post('addCarts', [CartController::class, 'addCart']);
+// Route::post('add-cart', [CartController::class, 'index']);
+// Route::get('carts', [CartController::class, 'show']);
+// Route::post('/update-cart', [CartController::class, 'update']);
+// Route::get('/carts/delete/{id}', [CartController::class, 'remove']);
+// Route::post('carts', [CartController::class, 'addCart']);
+
+Route::get('/gio-hang',[CartController::class, 'index']);
+Route::get('/gio-hang-them/{row_id}',[CartController::class, 'addCart']);
+Route::get('/gio-hang-xoa/{row_id}',[CartController::class, 'remove']);
+Route::get('/gio-hang-tang/{row_id}',[CartController::class, 'upQuantity']);
+Route::get('/gio-hang-giam/{row_id}',[CartController::class, 'downQuantity']);

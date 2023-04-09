@@ -25,54 +25,50 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Shoping Cart Section Begin -->
-@if(count($products) != 0)
-    <form action="">   
+@if(count($content) != 0)
+    <form action="" method="POST">   
     <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-9">
-                    <div class="shoping__cart__table">
-                        @php
-                            $total = 0;    
-                        @endphp
+                <div class="col-12 col-md-8">
+                    <div class="shoping__cart__table">                        
                         <table>
                             <thead>
                                 <tr>
                                     <th class="shoping__product">Sản phẩm</th>
-                                    <th>Giá</th>
+                                    <th>Đơn giá</th>
                                     <th>Số lượng</th>
-                                    <th>Cộng</th>
+                                    <th style="width:140px">Thành tiền</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($products as $product)
+                                @foreach ($content as $item)
                                 @php
-                                    $priceSale = $product->sale > 0 ? $product->price-($product->price*$product->sale/100) : $product->price; 
-                                    $price = $product->sale != 0 ? $priceSale : $product->price;
-                                    $priceEnd = $price * $carts[$product->id];
-                                    $total += $priceEnd;
+                                    $priceSale = $item->sale > 0 ? $item->price-($item->price*$item->sale/100) : $item->price; 
                                 @endphp 
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="{{ $product->image }}" width="100px" height="100px" alt="">
-                                        <h5>{{ $product->name }}</h5>
+                                        <img src="{{ $item->options->image }}" width="100px" height="100px" alt="">
+                                        <h5>{{ $item->name }}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        {!! number_format($price, 0, '', '.') !!}
+                                        {!! number_format($priceSale, 0, '', '.') !!} đ
                                     </td>
                                     <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" name="num_product[{{ $product->id }}]" value="{{ $carts[$product->id] }}">
-                                            </div>
+                                        <div class="quantity-pro">
+                                            <a class="minus" href="/gio-hang-giam/{{ $item->rowId }}">-</a>
+                                            <input type="text" name="qty" value="{{ $item->qty }}">
+                                            <a class="minus" href="/gio-hang-tang/{{ $item->rowId }}">+</a>
+                                            {{-- <div class="pro-qty">
+                                            </div> --}}
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        {!! number_format($priceEnd, 0, '', '.') !!}
+                                        {{ number_format($priceSale*$item->qty, 0, '', '.') }} đ
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                        <a class="btn btn-outline-danger" href="/carts/delete/{{ $product->id }}">Xóa</a>
+                                        <a class="btn btn-outline-danger" href="/gio-hang-xoa/{{ $item->rowId }}">Xóa</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -80,12 +76,16 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-6 col-md-4">
                     <div class="shoping__checkout">
+                        <h5>Tổng tiền giỏ hàng</h5>
                         <ul>
-                            <li>Tổng tiền <span>{{ number_format($total, 0, '', '.') }} VNĐ</span></li>
+                            <li>Tổng tiền sản phẩm<span>{{ number_format($priceSale*$item->qty, 0, '', '.') }} đ</span></li>
+                            <li>Thuế VAT (10%)<span>{{ number_format($priceSale*$item->qty, 0, '', '.') }} đ</span></li>
+                            <li>Phí vận chuyển<span>Miễn phí</span></li>
+                            <li>Tổng thanh toán<span>{{ number_format($priceSale*$item->qty, 0, '', '.') }} đ</span></li>
                         </ul>
-                        <a href="/tao-don-hang" class="primary-btn">THANH TOÁN</a>
+                        <a href="#" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
                     </div>
                 </div>
             </div>

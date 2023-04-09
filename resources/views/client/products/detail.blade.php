@@ -64,11 +64,13 @@
                             <div class="product__details__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input type="text" name="quantity_Products" value="1">
+                                        <input type="text" name="qty" value="1">
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="primary-btn">Thêm vào giỏ hàng</button>
+                            <a href="/gio-hang-them/{{ $productDetails->id }}" class="primary-btn">
+                                Thêm vào giỏ hàng
+                            </a>
                             <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                             <input type="hidden" name="product_id" value="{{ $productDetails->id }}">
                         </form>

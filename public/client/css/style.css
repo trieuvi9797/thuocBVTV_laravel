@@ -174,14 +174,24 @@ ol {
 .site-btn {
 	font-size: 14px;
 	color: #ffffff;
-	font-weight: 800;
+	font-weight: 700;
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 13px 30px 12px;
 	background: #7fad39;
 	border: none;
 }
-
+.check-out{
+	font-size: 14px;
+	color: #ffffff;
+	font-weight: 700;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 13px 30px 12px;
+	background: #7fad39;
+	border: none;
+	width: 100%;
+}
 /* Preloder */
 
 #preloder {
@@ -1875,7 +1885,15 @@ ol {
 	background: #f5f5f5;
 	margin-bottom: 5px;
 }
-
+.quantity-pro {
+	width: 100px;
+	height: 36px;
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	background: #f5f5f5;
+	margin-bottom: 5px;
+}
 .pro-qty input {
 	height: 100%;
 	width: 100%;
@@ -1887,6 +1905,16 @@ ol {
 	text-align: center;
 }
 
+.quantity-pro input {
+	height: 100%;
+	width: 100%;
+	font-size: 16px;
+	color: #6f6f6f;
+	width: 50px;
+	border: none;
+	background: #f5f5f5;
+	text-align: center;
+}
 .pro-qty .qtybtn {
 	width: 35px;
 	font-size: 16px;
@@ -2052,20 +2080,20 @@ ol {
 	width: 225px;
 }
 
-.shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty {
+.shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty .quantity-pro{
 	width: 120px;
 	height: 40px;
 }
 
-.shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty input {
+.shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty .quantity-pro input {
 	color: #1c1c1c;
 }
 
-.shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty input::placeholder {
+.shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty .quantity-pro input::placeholder {
 	color: #1c1c1c;
 }
 
-.shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty .qtybtn {
+.shoping__cart__table table tbody tr td.shoping__cart__quantity .pro-qty .quantity-pro .qtybtn {
 	width: 15px;
 }
 
@@ -2333,15 +2361,26 @@ ol {
 	font-weight: 700;
 	border-bottom: 1px solid #e1e1e1;
 	border-top: 1px solid #e1e1e1;
-	padding-bottom: 15px;
-	margin-bottom: 15px;
-	padding-top: 15px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+}
+.checkout__order .checkout__order__ship {
+	font-size: 18px;
+	color: #1c1c1c;
+	font-weight: 700;
+	border-bottom: 1px solid #e1e1e1;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
 }
 
 .checkout__order .checkout__order__subtotal span {
 	float: right;
 }
-
+.checkout__order .checkout__order__ship span {
+	float: right;
+}
 .checkout__order .checkout__input__checkbox label {
 	padding-left: 20px;
 }

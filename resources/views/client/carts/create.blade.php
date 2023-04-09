@@ -55,20 +55,11 @@
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
-                            @foreach ($products as $product)
-                                @php
-                                    $priceSale = $product->sale > 0 ? $product->price-($product->price*$product->sale/100) : $product->price; 
-                                    $price = $product->sale != 0 ? $priceSale : $product->price;
-                                    $priceEnd = $price * $carts[$product->id];
-                                    $total += $priceEnd;
-                                @endphp
-
                             <h4>Đơn hàng của bạn</h4>
                             <div class="checkout__order__products">Sản phẩm <span>Tổng cộng</span></div>
                             @endforeach
                             <ul>
-                                
-                                <li>{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}
+                                <li>
                                      <span>{{ number_format($total, 0, '', '.') }} VNĐ</span>
                                 </li>
                             </ul>
