@@ -58,7 +58,7 @@ class CartService
         Session::put('carts', $carts);
         return true;
     }
-    public function addCart($request)
+    public function order($request)
     {
         try {
             DB::beginTransaction();

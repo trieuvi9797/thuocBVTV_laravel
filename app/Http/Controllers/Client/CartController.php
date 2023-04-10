@@ -106,5 +106,15 @@ class CartController extends Controller
         }
         return redirect('/gio-hang');
     }
-
+    public function addOrder()
+    {
+        return view('client.carts.create',[
+            'title' => 'Đơn hàng của bạn',
+            'content' => Cart::content()
+        ]);
+    }
+    public function createOrder(Request $request)
+    {
+        
+    }
 }

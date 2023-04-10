@@ -2264,6 +2264,7 @@ ol {
 
 .checkout__input__checkbox {
 	margin-bottom: 10px;
+	margin-top: 8px;
 }
 
 .checkout__input__checkbox label {
@@ -2291,7 +2292,7 @@ ol {
 .checkout__input__checkbox label .checkmark {
 	position: absolute;
 	left: 0;
-	top: 4px;
+	top: 0;
 	height: 16px;
 	width: 14px;
 	border: 1px solid #a6a6a6;
@@ -2320,11 +2321,11 @@ ol {
 	padding-top: 30px;
 }
 
-.checkout__order h4 {
+.checkout__order h3 {
 	color: #1c1c1c;
 	font-weight: 700;
-	border-bottom: 1px solid #e1e1e1;
-	padding-bottom: 20px;
+	border-bottom: 5px solid #e1e1e1;
+	padding-bottom: 10px;
 	margin-bottom: 20px;
 }
 
@@ -2359,8 +2360,6 @@ ol {
 	font-size: 18px;
 	color: #1c1c1c;
 	font-weight: 700;
-	border-bottom: 1px solid #e1e1e1;
-	border-top: 1px solid #e1e1e1;
 	padding-bottom: 10px;
 	margin-bottom: 10px;
 	padding-top: 10px;
@@ -2369,7 +2368,15 @@ ol {
 	font-size: 18px;
 	color: #1c1c1c;
 	font-weight: 700;
-	border-bottom: 1px solid #e1e1e1;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+}
+
+.checkout__order .checkout__order__tax {
+	font-size: 18px;
+	color: #1c1c1c;
+	font-weight: 700;
 	padding-bottom: 10px;
 	margin-bottom: 10px;
 	padding-top: 10px;
@@ -2381,6 +2388,9 @@ ol {
 .checkout__order .checkout__order__ship span {
 	float: right;
 }
+.checkout__order .checkout__order__tax span {
+	float: right;
+}
 .checkout__order .checkout__input__checkbox label {
 	padding-left: 20px;
 }
@@ -2390,7 +2400,9 @@ ol {
 	color: #1c1c1c;
 	font-weight: 700;
 	border-bottom: 1px solid #e1e1e1;
+	border-top: 1px solid #e1e1e1;
 	padding-bottom: 15px;
+	padding-top: 15px;
 	margin-bottom: 25px;
 }
 

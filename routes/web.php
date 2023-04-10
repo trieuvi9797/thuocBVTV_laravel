@@ -102,3 +102,5 @@ Route::get('/gio-hang-them/{row_id}',[CartController::class, 'addCart']);
 Route::get('/gio-hang-xoa/{row_id}',[CartController::class, 'remove']);
 Route::get('/gio-hang-tang/{row_id}',[CartController::class, 'upQuantity']);
 Route::get('/gio-hang-giam/{row_id}',[CartController::class, 'downQuantity']);
+Route::get('/dat-hang', [CartController::class, 'addOrder']);
+Route::post('/dat-hang', [CartController::class, 'createOrder']);

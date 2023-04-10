@@ -38,4 +38,10 @@ class Product extends Model
         }
         return $query;
     }//globalScope
+
+    
+    public function BillDetail()
+    {
+        return $this->hasMany(BillDetail::class, 'product_id', 'id');
+    }
 }   

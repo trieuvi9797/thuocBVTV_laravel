@@ -81,11 +81,11 @@
                         <h5>Tổng tiền giỏ hàng</h5>
                         <ul>
                             <li>Tổng tiền sản phẩm<span>{{ number_format($priceSale*$item->qty, 0, '', '.') }} đ</span></li>
-                            <li>Thuế VAT (10%)<span>{{ number_format($priceSale*$item->qty, 0, '', '.') }} đ</span></li>
+                            <li>Thuế VAT (10%)<span>{{ Cart::tax() }} đ</span></li>
                             <li>Phí vận chuyển<span>Miễn phí</span></li>
-                            <li>Tổng thanh toán<span>{{ number_format($priceSale*$item->qty, 0, '', '.') }} đ</span></li>
+                            <li>Tổng thanh toán<span>{{ Cart::total() }} đ</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
+                        <a href="/dat-hang" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
                     </div>
                 </div>
             </div>

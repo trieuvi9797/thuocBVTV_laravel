@@ -28,8 +28,8 @@
 <section class="checkout spad">
     <div class="container">
         <div class="checkout__form">
-            <h4>Thông tin đơn hàng</h4>
             <form action="" method="post">
+                <h4>Thông tin đơn hàng</h4>
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="checkout__input">
@@ -54,23 +54,28 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <div class="checkout__order">
-                            <h4>Đơn hàng của bạn</h4>
-                            <div class="checkout__order__products">Sản phẩm <span>Tổng cộng</span></div>
-                            @endforeach
-                            <ul>
-                                <li>
-                                     <span>{{ number_format($total, 0, '', '.') }} VNĐ</span>
-                                </li>
-                            </ul>
-                            <div class="checkout__order__subtotal">Phí vận chuyển <span></span></div>
-                            <div class="checkout__order__total">Thành tiền 
-                                <span>{{ number_format($total , 0, '', '.') }} VNĐ</span>
+                        <div class="checkout__order">                            
+                            <h3>Đơn hàng của bạn</h3>
+                            <div class="checkout__order__subtotal">Tổng tiền sản phẩm 
+                                <span>{{ Cart::subtotal() }} đ</span>
+                            </div>
+                            <div class="checkout__order__tax">Thuế VAT (10%) 
+                                <span>{{ Cart::tax() }} đ</span>
+                            </div>
+                            <div class="checkout__order__ship">Phí vận chuyển <span>Miễn phí</span></div>
+                            <div class="checkout__order__total">Tổng thanh toán 
+                                <span>{{ Cart::total() }} đ</span>
                             </div>
                             <div class="checkout__input__checkbox">
-                                <label for="paypal">
-                                    Paypal
-                                    <input type="checkbox" id="paypal">
+                                <label for="COD">
+                                    COD
+                                    <input type="checkbox" id="COD">
+                                    <span class="checkmark"></span>
+                                </label>
+                            <div class="checkout__input__checkbox">
+                                <label for="Momo">
+                                    Ví điện tử Momo
+                                    <input type="checkbox" id="Momo">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
