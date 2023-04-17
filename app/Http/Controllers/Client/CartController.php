@@ -11,6 +11,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -113,41 +114,68 @@ class CartController extends Controller
         }
         return redirect('/gio-hang');
     }
-    public function addOrder()
+    public function getCheckout()
     {
+        $user = Auth::user();
         return view('client.carts.create',[
             'title' => 'Đơn hàng của bạn',
-            'content' => Cart::content()
+            'content' => Cart::content(),
+            'user' => $user,
         ]);
     }
-    public function createOrder(Request $request)
+    
+    public function postCheckout(Request $request)
     {
-       
-        $customer = new Customer();
-        $customer->name = $request->name;
-        $customer->phone = $request->phone;
-        $customer->email = $request->email;
-        $customer->address = $request->address;
-        $customer->note = $request->note;
-        $customer->save();
+        $this->validate($request, [
+			'phone' => ['required', 'max:191', 'digit:9'],
+			'address' => ['required', 'max:191'],
+		]);
+        //Kiêm tra xem số lượng mỗi sản phẩm có còn trong kho hàng nữa không
+        $flag = true;
+        $list_soil_out = "";
+        foreach (Cart::content() as $row) {
+            $rowId = $row->rowId;
+            $product_qty = Product::where('id',$row->id)->select('quantity')->get()->first();
+            $quantity_repository = $product_qty->quantity;
+            //Nếu số lượng trong kho bằng 0 thì xóa sản phẩm đó ra khỏi cart
+            if($row->qty > $quantity_repository)
+            {
+                $product = Product::find($row->id);
+                $name_pro = $product->name;
+                $list_soil_out .= " " . $row->name . " số lượng trong kho còn " . $quantity_repository . " sản phẩm <br/>";
+                $flag = false;
+                //update lại số lượng sản phẩm trong cart bằng số lượng trong kho.
+                Cart::update($rowId,['qty'=>$quantity_repository]);
+            }
+        }
+            //nếu có những sản phẩm đã hết, hoặc số lượng ít hơn lựa chọn thì thông báo cho người dùng
+        if($flag == false){
+            return redirect('create')->with('error',"Bạn vui lòng kiểm tra lại giỏ hàng: <br/>".$list_soil_out);
+        }
+        else{
+            $customer = new Customer;
+            $customer->name       = $request->name;
+            $customer->phone      = $request->phone;
+            $customer->email      = $request->email;
+            $customer->address    = $request->address;
+            if(Auth::check()) { $customer->user_id = Auth::user()->id;} 
         
-        $bill = new Bill();
-        $bill->customer_id = $request->id;
-        $bill->active = 1;
-        $bill->save();
-        dd($bill);
+            if($customer->save())
+                {   //lưu thong tin dơn hàng    
+                    $customer_id       = Customer::max('id');   
+                    $bill = new Bills;
+                    $bill->customer_id = $customer_id;
 
-        foreach (Cart::content() as $value) {
-            $detail = new BillDetail();
-            $detail->bill_id = $bill->id;
-            $detail->product_id = $value->id;
-            $detail->quantity = $value->qty;
-            $detail->price = $value->price;
-            $detail->save();
-       }
+                    $total_price = Cart::subtotal(0,'','');
 
-       return redirect('/dat-hang-thanh-cong');
-
+                    $coupon_value = 0; //set coupon defult
+                    if(session('coupon'))
+                    {
+                        //Kiểm tra xem có nhập mã giảm giá không
+                        $bill->coupon_id = session('coupon');
+                        $coupon = Coupon::find(session('coupon'));
+                        $coupon_value = $coupon->value;
+                    }
 
         // $result = $this->cartService->createOrder($request);
         // if($result === false){

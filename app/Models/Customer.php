@@ -9,15 +9,13 @@ class Customer extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name' ,
-        'email',
-        'password',
         'phone',
         'address',
-        'note'
+        'note',
+        'user_id'
     ];
-    public function carts()
+    public function user()
     {
-        return $this->hasMany(Cart::class, 'customer_id', 'id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

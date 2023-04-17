@@ -30,25 +30,25 @@
 							@csrf
 							<div class="email mb-3">
 								<label class="sr-only" for="signup-v">Họ và tên:</label>
-								<input id="signup-name" name="name" type="text" class="form-control signup-name" placeholder="Full name" :value="old('name')" required autocomplete="name">
+								<input id="signup-name" name="name" type="text" class="form-control signup-name" :value="old('name')" required autocomplete="name">
 							</div>
 							<div class="email mb-3">
 								<label class="sr-only" for="signup-email">Email</label>
-								<input id="signup-email" name="email" type="email" class="form-control signup-email" placeholder="Email" :value="old('email')" required>
+								<input id="signup-email" name="email" type="email" class="form-control signup-email" :value="old('email')" required>
 							</div>
 							<div class="password mb-3">
 								<label class="sr-only" for="signup-password">Mật khẩu</label>
-								<input id="signup-password" name="password" type="password" class="form-control signup-password" placeholder="Create a password" required autocomplete="new-password">
+								<input id="signup-password" name="password" type="password" class="form-control signup-password" required autocomplete="new-password">
 							</div>
 							<div class="password mb-3">
 								<label class="sr-only" for="signup-password">Xác nhận mật khẩu</label>
-								<input id="signup-password" name="password_confirmation" type="password" class="form-control signup-password" placeholder="Create a password" required autocomplete="new-password">
+								<input id="signup-password" name="password_confirmation" type="password" class="form-control signup-password" required autocomplete="new-password">
 							</div>
 							<div class="extra mb-3">
 								<div class="form-check">
-									<input class="form-check-input" type="checkbox" value="" id="RememberPassword">
+									<input class="form-check-input" type="checkbox" value="" id="RememberPassword" name="remember">
 									<label class="form-check-label" for="RememberPassword">
-									I agree to Portal's <a href="#" class="app-link">Terms of Service</a> and <a href="#" class="app-link">Privacy Policy</a>.
+									Nhớ mật khẩu
 									</label>
 								</div>
 							</div><!--//extra-->

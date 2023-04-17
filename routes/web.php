@@ -99,26 +99,17 @@ Route::get('san-pham/{id}-{slug}.html', [ClientProductController::class, 'produc
 // Route::get('/carts/delete/{id}', [CartController::class, 'remove']);
 // Route::post('carts', [CartController::class, 'addCart']);
 
-Route::get('/gio-hang',[CartController::class, 'index']);
-Route::get('/gio-hang-them/{row_id}',[CartController::class, 'addCart']);
-Route::get('/gio-hang-xoa/{row_id}',[CartController::class, 'remove']);
-Route::get('/gio-hang-tang/{row_id}',[CartController::class, 'upQuantity']);
-Route::get('/gio-hang-giam/{row_id}',[CartController::class, 'downQuantity']);
+Route::middleware('auth')->group(function () {
+    Route::get('/gio-hang',[CartController::class, 'index']);
+    Route::get('/gio-hang-them/{row_id}',[CartController::class, 'addCart']);
+    Route::get('/gio-hang-xoa/{row_id}',[CartController::class, 'remove']);
+    Route::get('/gio-hang-tang/{row_id}',[CartController::class, 'upQuantity']);
+    Route::get('/gio-hang-giam/{row_id}',[CartController::class, 'downQuantity']);
 
-Route::get('/dat-hang', [CartController::class, 'addOrder']);
-Route::post('/dat-hang', [CartController::class, 'createOrder']);
-Route::get('/dat-hang-thanh-cong', [CartController::class, 'successOrder']);
-
-// Route::get('/dang-ky', [AuthController::class, 'create'])->name('register');
-Route::post('/dang-ky', [AuthController::class, 'create'])->name('register');
-
-// Route::get('/dang-nhap', [AuthController::class, 'show_Login'])->name('show-login');
-Route::post('/dang-nhap', [AuthController::class, 'login'])->name('login-client');
-
-Route::post('/dang-xuat', [AuthController::class, 'logout'])->name('logout.client');
-
-Route::get('/ho-so', [AuthController::class, 'show_profile'])->name('show-profile');
-Route::post('/ho-so', [AuthController::class, 'profile'])->name('profile');
+    Route::get('/dat-hang', [CartController::class, 'getCheckout']);
+    Route::post('/dat-hang', [CartController::class, 'postCheckout']);
+    Route::get('/dat-hang-thanh-cong', [CartController::class, 'successOrder']);
+});
 
 
 // --------

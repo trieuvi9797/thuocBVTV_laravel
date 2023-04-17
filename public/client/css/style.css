@@ -389,7 +389,7 @@ ol {
 
 .header__top__right__language ul {
 	background: #222222;
-	width: 100px;
+	width: 140px;
 	text-align: left;
 	padding: 5px 0;
 	position: absolute;
@@ -406,13 +406,14 @@ ol {
 }
 
 .header__top__right__language ul li {
+	padding: 5px 0;
 	list-style: none;
 }
 
 .header__top__right__language ul li a {
 	font-size: 14px;
 	color: #ffffff;
-	padding: 5px 10px;
+	padding: 10px 10px;
 }
 
 .header__top__right__auth {

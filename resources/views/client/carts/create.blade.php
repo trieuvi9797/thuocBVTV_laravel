@@ -35,15 +35,15 @@
                         @csrf
                         <div class="checkout__input">
                             <p>Họ và Tên<span>*</span></p>
-                            <input type="text" name="name"required>
+                            <input type="text" name="name" value="{{ $user->name }}" required>
                         </div>
                         <div class="checkout__input">
                             <p>Số điện thoại<span>*</span></p>
-                            <input type="number" name="phone" required>
+                            <input type="number" name="phone" id="phone" required>
                         </div>
                         <div class="checkout__input">
                             <p>Email<span>*</span></p>
-                            <input type="text" name="email"required>
+                            <input type="text" name="email" value="{{ $user->email }}"required>
                         </div>
                         <div class="checkout__input">
                             <p>Địa chỉ nhận hàng<span>*</span></p>
@@ -81,8 +81,8 @@
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-                        {{-- <button type="submit" class="site-btn"></button> --}}
-                        <a href="/dat-hang" class="primary-btn-order" onclick="event.preventDefault();document.getElementById('checkoutform').submit();">Đặt hàng</a>
+                        <a href="/dat-hang" class="primary-btn-order">Đặt hàng</a>
+                        {{-- <a href="/dat-hang" class="primary-btn-order" onclick="event.preventDefault();document.getElementById('checkoutform').submit();">Đặt hàng</a> --}}
                     </div>
                 </div>
             </div>
@@ -90,4 +90,32 @@
     </div>
 </section>
 <!-- Checkout Section End -->
+@endsection
+
+@section('phone')
+<script>
+function kiemTraSDT(event) {
+            var dt = document.getElementById("phone").value;
+            var dt2 = document.getElementById("phone");
+            var kt =
+                /^(0?)[0-9]{9}$/.test(
+                    dt
+                );
+            if (dt.length != "10") {
+                event.preventDefault();
+                dt2.setCustomValidity("Phải nhập đủ 10 số");
+                dt2.reportValidity();
+                return false;
+            } else if (kt == false) {
+                event.preventDefault();
+                dt2.setCustomValidity("Định dạng số điện thoại không đúng");
+                dt2.reportValidity();
+                return false;
+            } else {
+                dt2.setCustomValidity("");
+                dt2.reportValidity();
+                return true;
+            }
+        }
+</script>
 @endsection

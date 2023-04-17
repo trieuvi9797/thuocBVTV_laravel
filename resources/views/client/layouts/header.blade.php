@@ -117,10 +117,27 @@
                                 <a href="{{ $info->twitter }}"><i class="fa fa-twitter"></i></a>                                
                                 <a href="{{ $info->telegram }}"><i class="fa fa-telegram" aria-hidden="true"></i></a>
                             </div>
-                            @auth                                
+                            @auth   
+                            @if(Auth::user()->user_type=='AD')                             
                             <div class="header__top__right__language">
-                                <a href=""><i class="fa fa-user"></i> {{ Auth::user()->name }}</a>
-                            </div>                            
+                                <i class="fa fa-user"></i>
+                                <div> {{ Auth::user()->name }}</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="/admin">Trang quản trị</a></li>
+                                </ul>
+                            </div>
+                            @else
+                            <div class="header__top__right__language">
+                                <i class="fa fa-user"></i>
+                                <div> {{ Auth::user()->name }}</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="#">Tài khoản của tôi</a></li>
+                                    <li><a href="#">Đổi mật khẩu</a></li>
+                                </ul>
+                            </div>    
+                            @endif             
                             <div class="header__top__right__auth">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
