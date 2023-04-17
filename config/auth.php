@@ -12,6 +12,9 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
+//    Auth::guard('cus')->attempt();
+
+
 
     'defaults' => [
         'guard' => 'web',

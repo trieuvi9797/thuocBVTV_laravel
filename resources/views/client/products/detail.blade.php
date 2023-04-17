@@ -60,7 +60,38 @@
                         @endif
                         <form action="/add-cart" method="post">
                             @csrf
-
+                            <ul>
+                            @if (($productDetails->quantity) < 1)
+                                <li>
+                                    <b>Số lượng kho</b> 
+                                    <span style="color:red">Hết hàng</span>
+                                </li>
+                                <li><b>Vận chuyển</b> <span>01-02 ngày. <samp>Miễn phí</samp></span></li>
+                                <li><b>Chia sẽ</b>
+                                    <div class="share">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-instagram"></i></a>
+                                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                            @else
+                            <ul>
+                                <li>
+                                    <b>Số lượng kho</b> 
+                                    <span>{{ $productDetails->quantity }}</span>
+                                </li>
+                                <li><b>Vận chuyển</b> <span>01-02 ngày. <samp>Miễn phí</samp></span></li>
+                                <li><b>Chia sẽ</b>
+                                    <div class="share">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-instagram"></i></a>
+                                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    </div>
+                                </li>                                    
+                            </ul>
                             <div class="product__details__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
@@ -72,27 +103,10 @@
                                 Thêm vào giỏ hàng
                             </a>
                             <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            @endif
                             <input type="hidden" name="product_id" value="{{ $productDetails->id }}">
                         </form>
-                        <ul>
-                            <li><b>Số lượng kho</b> 
-                                @if (($productDetails->quantity) >0)
-                                    <span>{{ $productDetails->quantity }}</span>
-                                @else    
-                                   <span style="color:red">Hết hàng</span>
-                                @endif
-                                <span></span>
-                            </li>
-                            <li><b>Vận chuyển</b> <span>01-02 ngày. <samp>Miễn phí</samp></span></li>
-                            <li><b>Chia sẽ</b>
-                                <div class="share">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                            </li>
-                        </ul>
+                        
                     </div>
                 </div>
                 <div class="col-lg-12">

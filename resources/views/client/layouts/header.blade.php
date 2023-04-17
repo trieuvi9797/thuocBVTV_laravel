@@ -117,18 +117,23 @@
                                 <a href="{{ $info->twitter }}"><i class="fa fa-twitter"></i></a>                                
                                 <a href="{{ $info->telegram }}"><i class="fa fa-telegram" aria-hidden="true"></i></a>
                             </div>
+                            @auth                                
                             <div class="header__top__right__language">
-                                <img src="/client/img/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Vietnamese</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
+                                <a href=""><i class="fa fa-user"></i> {{ Auth::user()->name }}</a>
+                            </div>                            
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Đăng nhập</a>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                        Đăng xuất
+                                    </a>
+                                </form>
                             </div>
+                            @else
+                            <div class="header__top__right__auth">
+                                <a href="{{ route('login') }}"> Đăng nhập</a>
+                            </div>
+                            @endauth
                         </div>
                     </div>
                     @endforeach

@@ -85,15 +85,14 @@
                             <li>Phí vận chuyển<span>Miễn phí</span></li>
                             <li>Tổng thanh toán<span>{{ Cart::total() }} đ</span></li>
                         </ul>
-                        <a href="/dat-hang" class="primary-btn">TIẾN HÀNH THANH TOÁN</a>
+                        <a href="/dat-hang" class="primary-btn">THANH TOÁN</a>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="/san-pham.html" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
-                        <input type="submit" value="Cập nhật giỏ hàng" class="primary-btn cart-btn cart-btn-right" formaction="/update-cart">
+                        <a href="/san-pham.html" class="primary-btn cart-btn"><< Tiếp tục mua hàng</a>
                         @csrf 
                     </div>
                 </div>

@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bill_actives', function (Blueprint $table) {
-            $table->id();
-            $table->string('active');
-            $table->timestamps();
+        Schema::table('customers', function (Blueprint $table) {
+            $table->timestamp('email_verified_at')->nullable();
+			$table->string('password');
         });
     }
 
@@ -23,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bill_actives');
+        Schema::table('customers', function (Blueprint $table) {
+            //
+        });
     }
 };

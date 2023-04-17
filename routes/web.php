@@ -7,10 +7,12 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\InfoPageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\CategoryController as ClientCategoryController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ProductController as ClientProductController;
+// use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +25,9 @@ use App\Http\Controllers\Client\ProductController as ClientProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/users/login/store', [LoginController::class, 'store']);
@@ -102,5 +104,33 @@ Route::get('/gio-hang-them/{row_id}',[CartController::class, 'addCart']);
 Route::get('/gio-hang-xoa/{row_id}',[CartController::class, 'remove']);
 Route::get('/gio-hang-tang/{row_id}',[CartController::class, 'upQuantity']);
 Route::get('/gio-hang-giam/{row_id}',[CartController::class, 'downQuantity']);
+
 Route::get('/dat-hang', [CartController::class, 'addOrder']);
 Route::post('/dat-hang', [CartController::class, 'createOrder']);
+Route::get('/dat-hang-thanh-cong', [CartController::class, 'successOrder']);
+
+// Route::get('/dang-ky', [AuthController::class, 'create'])->name('register');
+Route::post('/dang-ky', [AuthController::class, 'create'])->name('register');
+
+// Route::get('/dang-nhap', [AuthController::class, 'show_Login'])->name('show-login');
+Route::post('/dang-nhap', [AuthController::class, 'login'])->name('login-client');
+
+Route::post('/dang-xuat', [AuthController::class, 'logout'])->name('logout.client');
+
+Route::get('/ho-so', [AuthController::class, 'show_profile'])->name('show-profile');
+Route::post('/ho-so', [AuthController::class, 'profile'])->name('profile');
+
+
+// --------
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+
+require __DIR__.'/auth.php';
+// -----
