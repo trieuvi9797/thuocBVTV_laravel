@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('client.home', [
-            'title' => 'VTNN Khai Mai',
+            'title' => 'VTNN Hai Lúa',
             'categories' => $this->category->show(),
             'slider' => $this->slider->show(),
             'products' => $this->product->show(),

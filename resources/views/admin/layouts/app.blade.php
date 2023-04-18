@@ -8,9 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Admin Dashboard VTNN Khai Mai">
+    <meta name="description" content="Admin Dashboard VTNN HAI LÚA">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
-    <link rel="shortcut icon" href="{{ asset('/LogoVTNN.jpg') }}"> 
+    <link rel="shortcut icon" href="{{ asset('/admins/asets/images/Logo.jpg') }}"> 
 
     <!-- FontAwesome JS-->
     <script defer src="/admins/assets/plugins/fontawesome/js/all.min.js"></script>

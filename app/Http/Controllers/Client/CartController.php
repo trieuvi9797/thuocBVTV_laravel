@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\CartService;
+use App\Jobs\SendMail;
 use App\Models\Bill;
 use App\Models\BillDetail;
 use App\Models\Customer;
@@ -197,6 +198,7 @@ class CartController extends Controller
                                                 'quantity' => $qty_remaining,
                                                 'sold'     => $sold ]);
                         }
+                    SendMail::dispatch($customer->email)->delay(now()->addSeconds(2));
                     // dispatch(new SendBillInfoMail($customer, Cart::content(), $total_price, $coupon_value));
                     Cart::destroy();
                     return redirect('/dat-hang-thanh-cong')->with('success',"Thanh toán thành công. Bạn có thể kiểm tra email thanh toán để xem đơn hàng");

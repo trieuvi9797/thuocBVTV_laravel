@@ -5,10 +5,10 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.html"><img src="/client/img/logo.png" alt=""></a>
-                        </div>                        
                         @foreach ($infoPage as $info)
+                        <div class="footer__about__logo">
+                            <a href="/"><img src="{{ $info->logo }}" alt=""></a>
+                        </div>                        
                         <ul>
                             <li>Địa chỉ: {{ $info->address }}</li>
                             <li>Số điện thoại: {{ $info->phone }}</li>

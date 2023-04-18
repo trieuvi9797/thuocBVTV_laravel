@@ -3,7 +3,7 @@
     <div class="sidepanel-inner d-flex flex-column">
         <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
         <div class="app-branding">
-            <a class="app-logo" href="/admins/main"><img class="logo-icon me-2" src="/admins/assets/images/logo.png" alt="logo"></a>
+            <a class="app-logo" href="/admins/main"><img class="logo-icon me-2" src="/admins/assets/images/logo.jpg" alt="logo"></a>
         </div><!--//app-branding-->  
         <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
             <ul class="app-menu list-unstyled accordion" id="menu-accordion">

@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="VTNN - KHAI MAI">
-    <meta name="keywords" content="VTNN - KHAI MAI">
+    <meta name="description" content="VTNN - HAI LÚA">
+    <meta name="keywords" content="VTNN - HAI LÚA">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/client/img/LogoVTNN.jpg"> 
+    <link rel="shortcut icon" href="/client/Logo.jpg"> 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}</title>
 
@@ -33,15 +33,15 @@
 
 <body>
     <!-- Page Preloder Loading -->
-    {{-- <div id="preloder">
+    <div id="preloder">
         <div class="loader"></div>
-    </div> --}}
+    </div>
 
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="/"><img src="/client/img/logo.png" alt=""></a>
+            <a href="/"><img src="/client/Logo.jpg" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -51,18 +51,41 @@
             <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <div class="humberger__menu__widget">
+            @auth   
+            @if(Auth::user()->user_type=='AD')                             
             <div class="header__top__right__language">
-                <img src="/client/img/language.png" alt="">
-                <div>English</div>
+                <i class="fa fa-user"></i>
+                <div> {{ Auth::user()->name }}</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
-                    <li><a href="#">Vietnamese</a></li>
-                    <li><a href="#">English</a></li>
+                    <li><a href="/admin">Trang quản trị</a></li>
                 </ul>
             </div>
+            @else
+            <div class="header__top__right__language">
+                <i class="fa fa-user"></i>
+                <div> {{ Auth::user()->name }}</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">Tài khoản của tôi</a></li>
+                    <li><a href="#">Đổi mật khẩu</a></li>
+                    <li><a href="#">Đơn hàng của tôi</a></li>
+                </ul>
+            </div>    
+            @endif  
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i>Đăng nhập</a>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                        Đăng xuất
+                    </a>
+                </form>
             </div>
+            @else
+            <div class="header__top__right__auth">
+                <a href="{{ route('login') }}"> Đăng nhập</a>
+            </div>
+            @endauth
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
@@ -135,6 +158,7 @@
                                 <ul>
                                     <li><a href="#">Tài khoản của tôi</a></li>
                                     <li><a href="#">Đổi mật khẩu</a></li>
+                                    <li><a href="#">Đơn hàng của tôi</a></li>   
                                 </ul>
                             </div>    
                             @endif             
@@ -162,7 +186,7 @@
                 <div class="col-lg-3">
                     @foreach ($infoPage as $info)
                     <div class="header__logo">
-                        <a href=""><img src="{{ $info->logo }}" alt=""></a>
+                        <a href="/"><img src="{{ $info->logo }}" alt=""></a>
                     </div>
                     @endforeach
                 </div>
