@@ -58,8 +58,7 @@
                         @if ($productDetails->sale != 0) 
                             <del>{{ $productDetails->price  }} VNĐ</del>
                         @endif
-                        <form action="/add-cart" method="post">
-                            @csrf
+                        
                             <ul>
                             @if (($productDetails->quantity) < 1)
                                 <li>
@@ -92,6 +91,8 @@
                                     </div>
                                 </li>                                    
                             </ul>
+                            <form action="/gio-hang-them/{{ $productDetails->id }}" method="post">
+                                @csrf
                             <div class="product__details__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
@@ -99,9 +100,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="/gio-hang-them/{{ $productDetails->id }}" class="primary-btn">
+                            {{-- <a href="/gio-hang-them/{{ $productDetails->id }}" class="primary-btn">
                                 Thêm vào giỏ hàng
-                            </a>
+                            </a> --}}
+                            <button type="submit" class="primary-btn">Thêm vào giỏ hàng</button>
+                            {{-- <a type="submit"  class="primary-btn">Thêm vào giỏ hàng</a> --}}
                             <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                             @endif
                             <input type="hidden" name="product_id" value="{{ $productDetails->id }}">

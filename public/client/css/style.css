@@ -580,6 +580,15 @@ ol {
 	display: none;
 }
 
+.success-thanks span {
+	color: #3CC032;
+	font-weight: 700;
+	font-size: 180%;
+}
+.success-thanks p{
+	margin: 20px 0;
+}
+
 /*---------------------
   Hero
 -----------------------*/

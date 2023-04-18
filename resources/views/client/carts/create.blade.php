@@ -23,7 +23,6 @@
     </div>
 </section>
 <!-- Breadcrumb Section End -->
-
 <!-- Checkout Section Begin -->
 <section class="checkout spad">
     <div class="container">
@@ -31,7 +30,7 @@
             <h4>Thông tin đơn hàng</h4>
             <div class="row">
                 <div class="col-lg-8 col-md-6">
-                    <form action="" method="post" id="checkoutform">
+                    <form action="{{ route('dathang') }}" method="POST" id="checkoutform">
                         @csrf
                         <div class="checkout__input">
                             <p>Họ và Tên<span>*</span></p>
@@ -39,7 +38,7 @@
                         </div>
                         <div class="checkout__input">
                             <p>Số điện thoại<span>*</span></p>
-                            <input type="number" name="phone" id="phone" required>
+                            <input type="number" name="phone" id="phone" required onchange="kiemTraSDT(event)">
                         </div>
                         <div class="checkout__input">
                             <p>Email<span>*</span></p>
@@ -81,8 +80,9 @@
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-                        <a href="/dat-hang" class="primary-btn-order">Đặt hàng</a>
-                        {{-- <a href="/dat-hang" class="primary-btn-order" onclick="event.preventDefault();document.getElementById('checkoutform').submit();">Đặt hàng</a> --}}
+                        {{-- <button type="submit" class="primary-btn-order">Đặt hàng</button> --}}
+                        {{-- <a href="{{ route('dathang') }}" class="primary-btn-order">Đặt hàng</a> --}}
+                        <a href="{{ route('dathang') }}" class="primary-btn-order" onclick="event.preventDefault();document.getElementById('checkoutform').submit();">Đặt hàng</a>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
 <!-- Checkout Section End -->
 @endsection
 
-@section('phone')
+{{-- @section('phone') --}}
 <script>
 function kiemTraSDT(event) {
             var dt = document.getElementById("phone").value;
@@ -118,4 +118,4 @@ function kiemTraSDT(event) {
             }
         }
 </script>
-@endsection
+{{-- @endsection --}}

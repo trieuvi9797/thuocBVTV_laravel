@@ -187,9 +187,9 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="/carts"><i class="fa fa-shopping-bag"></i> <span>{{ Cart::count() ?? 0 }}</span></a></li>
+                            <li><a href="/gio-hang"><i class="fa fa-shopping-bag"></i> <span>{{ Cart::count() ?? 0 }}</span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        <div class="header__cart__price">Giỏ hàng: <span>{{ Cart::total() }} đ</span></div>
                     </div>
                 </div>
             </div>

@@ -101,14 +101,14 @@ Route::get('san-pham/{id}-{slug}.html', [ClientProductController::class, 'produc
 
 Route::middleware('auth')->group(function () {
     Route::get('/gio-hang',[CartController::class, 'index']);
-    Route::get('/gio-hang-them/{row_id}',[CartController::class, 'addCart']);
+    Route::post('/gio-hang-them/{row_id}',[CartController::class, 'addCart']);
     Route::get('/gio-hang-xoa/{row_id}',[CartController::class, 'remove']);
     Route::get('/gio-hang-tang/{row_id}',[CartController::class, 'upQuantity']);
     Route::get('/gio-hang-giam/{row_id}',[CartController::class, 'downQuantity']);
 
     Route::get('/dat-hang', [CartController::class, 'getCheckout']);
-    Route::post('/dat-hang', [CartController::class, 'postCheckout']);
-    Route::get('/dat-hang-thanh-cong', [CartController::class, 'successOrder']);
+    Route::post('/dat-hang', [CartController::class, 'postCheckout'])->name('dathang');
+    Route::get('/dat-hang-thanh-cong', [CartController::class, 'successfull'])->name('successfull');
 });
 
 

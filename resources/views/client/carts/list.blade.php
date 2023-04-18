@@ -60,8 +60,6 @@
                                             <a class="minus" href="/gio-hang-giam/{{ $item->rowId }}">-</a>
                                             <input type="text" name="qty" value="{{ $item->qty }}">
                                             <a class="minus" href="/gio-hang-tang/{{ $item->rowId }}">+</a>
-                                            {{-- <div class="pro-qty">
-                                            </div> --}}
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">

@@ -11,19 +11,14 @@ class Bill extends Model
 
     protected $fillable = [
         'customer_id',
-        'bill_active_id',
+        'active',
     ];
 
     public function Customer()
     {
         return $this->belongsTo(Customer::class, 'customer_id', 'id');
     }
-    
-    public function BillActive()
-    {
-        return $this->belongsTo(BillActive::class, 'bill_active_id', 'id');
-    }
-    
+        
     public function BillDetail()
     {
         return $this->belongsTo(BillDetail::class, 'bill_id', 'id');

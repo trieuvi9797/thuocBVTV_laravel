@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -73,14 +74,15 @@ class CartController extends Controller
         ]);
     }
 
-    public function addCart($id)
+    public function addCart($id, Request $request)
     {
         $product = Product::where('id', $id)->first();
+        $qty = (int)$request->input('qty');
         Cart::add([
             'id' => $product->id,
             'name' => $product->name,
             'price' => $product->price,
-            'qty' => 1,
+            'qty' => $qty,
             'weight' => 0,
             'options' => [
                 'image' => $product->image
@@ -88,6 +90,7 @@ class CartController extends Controller
         ]);
             return redirect('/gio-hang');
     }
+    
     public function remove($row_id)
     {
         Cart::remove($row_id);
@@ -127,7 +130,7 @@ class CartController extends Controller
     public function postCheckout(Request $request)
     {
         $this->validate($request, [
-			'phone' => ['required', 'max:191', 'digit:9'],
+			'phone' => ['required', 'max:191'],
 			'address' => ['required', 'max:191'],
 		]);
         //Kiêm tra xem số lượng mỗi sản phẩm có còn trong kho hàng nữa không
@@ -154,39 +157,71 @@ class CartController extends Controller
         }
         else{
             $customer = new Customer;
-            $customer->name       = $request->name;
-            $customer->phone      = $request->phone;
-            $customer->email      = $request->email;
-            $customer->address    = $request->address;
+            $customer->name    = $request->name;
+            $customer->email   = $request->email;
+            $customer->phone   = $request->phone;
+            $customer->address = $request->address;
+            $customer->note    = $request->note;
+         
             if(Auth::check()) { $customer->user_id = Auth::user()->id;} 
         
             if($customer->save())
                 {   //lưu thong tin dơn hàng    
-                    $customer_id       = Customer::max('id');   
-                    $bill = new Bills;
+                    $customer_id = Customer::max('id');   
+                    $bill = new Bill();
                     $bill->customer_id = $customer_id;
-
-                    $total_price = Cart::subtotal(0,'','');
-
-                    $coupon_value = 0; //set coupon defult
-                    if(session('coupon'))
-                    {
-                        //Kiểm tra xem có nhập mã giảm giá không
-                        $bill->coupon_id = session('coupon');
-                        $coupon = Coupon::find(session('coupon'));
-                        $coupon_value = $coupon->value;
-                    }
-
-        // $result = $this->cartService->createOrder($request);
-        // if($result === false){
-        //     return redirect()->back();
-        // }
+                    $total_price = Cart::total(0,'','');
+                    $bill->total_price = $total_price;
+                    if($bill->save())
+                    {   //lưu thông tin chi tiết đơn hàng
+                        $bill_id  = Bill::max('id');
+                        foreach(Cart::content() as $cart)
+                        {
+                            $detail_bill             = new BillDetail();
+                            $detail_bill->bill_id    = $bill_id;
+                            $detail_bill->product_id = $cart->id;
+                            $detail_bill->quantity   = $cart->qty;
+                            // $detail_bill->price      = $cart->price;
+                            $detail_bill->price      = $cart->subtotal(0,'','');
+                            $detail_bill->save();
+    
+                            $productID = Product::where('id',$cart->id)->select('quantity')->get()->first();
+                            $quantity = $productID->quantity;
+                            $qty_remaining = $quantity - $cart->qty; //sl kho - sl moi mua
+                            $qty_buy = $productID->sold;
+                            $sold = $qty_buy + $cart->qty; // sl da ban
+                            //cập nhật lại số lượng hàng trong kho
+                            $quantity = DB::table('products')
+                                            ->where('id',$cart->id)
+                                            ->update([
+                                                'quantity' => $qty_remaining,
+                                                'sold'     => $sold ]);
+                        }
+                    // dispatch(new SendBillInfoMail($customer, Cart::content(), $total_price, $coupon_value));
+                    Cart::destroy();
+                    return redirect('/dat-hang-thanh-cong')->with('success',"Thanh toán thành công. Bạn có thể kiểm tra email thanh toán để xem đơn hàng");
+                }else{
+                    return redirect()->back()->with('error',"Không thể lưu lại thông tin đơn hàng");
+                }
+            }else{
+                 return redirect()->back()->with('error',"Không thể lưu lại thông tin khách hàng");
+            }
+        }   
     }
-    public function successOrder()
+    
+    public function successfull()
     {
-        Cart::destroy();
-        return view('client.carts.thanks', [
-            'title' => 'Đặt hàng thành công.'
+        return view('client.bills.successfull',[
+            'title' => 'Đặt hàng thành công',
+        ]);
+    }
+
+    public function myBill()
+    {
+        $bill = Bill::orderByDesc('id')->paginate(5);
+        return view('client.carts.myBIll', [
+            'title' => 'Đơn hàng của tôi.',
+            'bills' => $bill
         ]);
     }
 }
