@@ -18,4 +18,8 @@ class Customer extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function bill()
+    {
+        return $this->hasOne(Bill::class, 'customer_id', 'id');
+    }
 }

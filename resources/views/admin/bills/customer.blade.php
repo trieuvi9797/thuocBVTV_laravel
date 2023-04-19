@@ -1,4 +1,5 @@
 @extends('admin.layouts.app')
+
 @section('content')
 <div class="app-content pt-3 p-md-3 p-lg-4">
     <div class="container-xl">
@@ -13,15 +14,12 @@
             <div class="col-auto">
                  <div class="page-utilities">
                     <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
-                        
-                        <div class="col-auto">
-                            
+                        <div class="col-auto">                            
                             <select class="form-select w-auto" >
                                   <option selected value="option-1">All</option>
                                   <option value="option-2">This week</option>
                                   <option value="option-3">This month</option>
                                   <option value="option-4">Last 3 months</option>
-                                  
                             </select>
                         </div>
                         <div class="col-auto">						    
@@ -46,30 +44,38 @@
                         <table class="table app-table-hover mb-0 text-left">
                             <thead>
                                 <tr>
-                                    <th>Tên danh mục</th>
-                                    <th>Danh mục cha</th>
-                                    <th>Ngày cập nhật</th>
-                                    <th>&nbsp;</th>
+                                    <th style="width: 50px">Mã ĐH</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Ngày đặt hàng</th>
+                                    <th>Tổng tiền</th>
+                                    <th style="text-align:center">Xử lý đơn hàng</th>
+                                    <th>Chi tiết</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
-                                {!! \App\Helpers\Helper::categories($list_category) !!}
-                                {{-- <tr>
-                                    <td></td>                                        
-                                    <td></td>                                        
-                                    <td></td>  
+                                @foreach ($bills as $bill)
+                                <?php $customer = App\Models\Customer::find($bill->customer_id); ?>
+                                <tr>
+                                    <td>{{ $bill->id }}</td>                                        
+                                    <td>{{ $customer->name }}</td>                                        
+                                    <td>{{ $customer->phone }}</td>  
+                                    <td>{{ $customer->email }}</td>  
+                                    <td>{{ $bill->created_at }}</td>  
+                                    <td>{{ number_format($bill->total_price) }} đ</td>  
                                     <td>
-                                        <a href="" class="btn btn-outline-warning" style="float: right">Sửa</a>
-                                    </td>
+                                        <select class="form-select form-select-sm ms-auto d-inline-flex w-auto">
+                                            <option value="0" selected>Chờ xử lý</option>
+                                            <option value="1">Đang vận chuyển</option>
+                                            <option value="2">Thành công</option>
+                                        </select>
+                                    </td>  
                                     <td>
-                                        <form action="" id="form-delete" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                        </form>
-                                        <button class="btn btn-outline-danger"  type="submit">Xóa</button>
-                                    </td>                                     
-                                </tr> --}}
+                                        <a class="btn btn-outline-info" href="/admin/bills/view/{{ $bill->id }}">Xem</a>
+                                    </td>                                 
+                                </tr>
+                                @endforeach
                             </tbody>
                             {{-- @endforeach --}}
                         </table>
@@ -77,13 +83,9 @@
                 </div><!--//app-card-body-->
             </div><!--//app-card-->
             <nav aria-label="Page navigation">
-                {{-- {!!  $list_category->links()  !!} --}}
+                {!!  $bills->links()  !!}
             </nav>           
         </div><!--//tab-content-->
     </div><!--//container-fluid-->
- 
-@endsection
-@section('script')
-
 
 @endsection

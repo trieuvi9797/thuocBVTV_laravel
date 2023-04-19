@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Admin\BillController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Users\LoginController;
@@ -79,6 +81,10 @@ Route::middleware(['auth'])->group(function(){
             Route::get('edit/{infoPage}', [InfoPageController::class, 'edit']);
             Route::post('edit/{infoPage}', [InfoPageController::class, 'update']);
             Route::DELETE('destroy', [InfoPageController::class, 'destroy']);
+        });
+        Route::prefix('bills')->group(function(){
+            Route::get('customer', [BillController::class, 'index'])->name('bill.customer');
+            Route::get('view/{id}', [BillController::class, 'show'])->name('detail.customer');
         });
     });
 

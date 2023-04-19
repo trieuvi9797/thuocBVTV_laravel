@@ -1,5 +1,4 @@
-<h1>co 1 don hang moi</h1>
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -65,4 +64,4 @@
 	<p>{{ config('app.name', 'Laravel') }}</p>
 </body>
 
-</html> --}}
+</html>

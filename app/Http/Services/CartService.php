@@ -60,4 +60,12 @@ class CartService
     //     Session::put('carts', $carts);
     //     return true;
     // }
+    public function getCustomerBill($customer)
+    {
+        return $customer->bill()->select('id', 'active', 'total_price')->orderByDesc('id')->paginate(10);
+    }
+    public function getBillDetail($id)
+    {
+        return BillDetail::where('bill_id', $id)->orderByDesc('id')->paginate(10);
+    }
 }
