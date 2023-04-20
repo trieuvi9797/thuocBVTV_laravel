@@ -48,11 +48,54 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function productNew()
     {
-        
+        $category = $this->categoryService->getParent();
+        $products = $this->productService->productNew();
+        $productSale = $this->productService->getProductSale();
+        $productNew = $this->productService->getProductNew();
+        $productSold = $this->productService->getProductSold();
+        return view('client.products.new', [
+            'title' => 'Sản phẩm mới nhất',
+            'products' => $products,
+            'productSale' => $productSale,
+            'productSold' => $productSold,
+            'productNew' => $productNew,
+            'category' => $category
+        ]);
     }
-
+    public function productSold()
+    {
+        $category = $this->categoryService->getParent();
+        $products = $this->productService->productSold();
+        $productSale = $this->productService->getProductSale();
+        $productNew = $this->productService->getProductNew();
+        $productSold = $this->productService->getProductSold();
+        return view('client.products.sold', [
+            'title' => 'Sản phẩm bán chạy',
+            'products' => $products,
+            'productSale' => $productSale,
+            'productSold' => $productSold,
+            'productNew' => $productNew,
+            'category' => $category
+        ]);
+    }
+    public function productSale()
+    {
+        $category = $this->categoryService->getParent();
+        $products = $this->productService->productSale();
+        $productSale = $this->productService->getProductSale();
+        $productNew = $this->productService->getProductNew();
+        $productSold = $this->productService->getProductSold();
+        return view('client.products.sale', [
+            'title' => 'Sản phẩm khuyến mãi',
+            'products' => $products,
+            'productSale' => $productSale,
+            'productSold' => $productSold,
+            'productNew' => $productNew,
+            'category' => $category
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      */

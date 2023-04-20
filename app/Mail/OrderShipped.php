@@ -16,9 +16,15 @@ class OrderShipped extends Mailable
     /**
      * Create a new message instance.
      */
+    // protected $customer;
+    // protected $bill;
+    // protected $cart;
+
     public function __construct()
     {
-        //
+        // $this->customer = $customer;
+        // $this->bill = $bill;
+        // $this->cart = $cart;
     }
 
     /**
@@ -27,7 +33,7 @@ class OrderShipped extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Order Shipped',
+            subject: 'Đặt hàng thành công',
         );
     }
 
@@ -37,8 +43,7 @@ class OrderShipped extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'client.mail.success',
-        );
+            view: 'client.mail.success');
     }
 
     /**

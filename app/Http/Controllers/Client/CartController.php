@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
@@ -22,50 +23,7 @@ class CartController extends Controller
     {
         $this->cartService = $cartService;
     }
-    // public function index(Request $request)
-    // {
-    //     $result = $this->cartService->create($request);
-    //     if($result === false){
-    //         return redirect()->back();
-    //     }
-    //     return redirect('/carts');
-    // }
-
-    // public function show()
-    // {
-    //     $products = $this->cartService->getProduct();
-    //     return view('client.carts.list',[
-    //         'title' => 'Giở hàng',
-    //         'products' => $products,
-    //         'carts' => Session::get('carts')
-    //     ]);
-    // }
-    // public function update(Request $request)
-    // {
-    //     $result = $this->cartService->update($request);
-    //     if($result === false){
-    //         return redirect()->back();
-    //     }
-    //     return redirect('/carts');
-    // }
-
-    // public function remove($id = 0)
-    // {
-    //     $result = $this->cartService->remove($id);
-    //     if($result === false){
-    //         return redirect()->back();
-    //     }
-    //     return redirect('/carts');
-    // }
     
-    // public function addCart(Request $request)
-    // {
-    //     $result = $this->cartService->addCart($request);
-    //     if($result === false){
-    //         return redirect()->back();
-    //     }
-    //     return redirect('/');
-    // }
 
     public function index()
     {
@@ -188,7 +146,7 @@ class CartController extends Controller
     
                             $productID = Product::where('id',$cart->id)->select('quantity')->get()->first();
                             $quantity = $productID->quantity;
-                            $qty_remaining = $quantity - $cart->qty; //sl kho - sl moi mua
+                            $qty_remaining = $quantity - $cart->qty; //sl ton = sl kho - sl moi mua
                             $qty_buy = $productID->sold;
                             $sold = $qty_buy + $cart->qty; // sl da ban
                             //cập nhật lại số lượng hàng trong kho
@@ -199,7 +157,6 @@ class CartController extends Controller
                                                 'sold'     => $sold ]);
                         }
                     SendMail::dispatch($customer->email)->delay(now()->addSeconds(2));
-                    // dispatch(new SendBillInfoMail($customer, Cart::content(), $total_price, $coupon_value));
                     Cart::destroy();
                     return redirect('/dat-hang-thanh-cong')->with('success',"Thanh toán thành công. Bạn có thể kiểm tra email thanh toán để xem đơn hàng");
                 }else{
@@ -220,10 +177,16 @@ class CartController extends Controller
 
     public function myBill()
     {
-        $bill = Bill::orderByDesc('id')->paginate(5);
-        return view('client.carts.myBIll', [
+        $id = Auth::user()->id;
+        $customer = Customer::where('user_id', $id)->orderByDesc('id')->paginate(10);
+        dd( $customer);
+        $billDetail = BillDetail::where('id', $id)->orderByDesc('id')->paginate(5);
+        // $customer = Customer::find($bill->customer_id);
+        return view('client.bills.myBill', [
             'title' => 'Đơn hàng của tôi.',
-            'bills' => $bill
+            'bills' => $bill,
+            'billDetails' => $billDetail,
+            'customers' => $customer,
         ]);
     }
 }

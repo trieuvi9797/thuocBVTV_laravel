@@ -70,4 +70,24 @@ class ProductService
         ->limit(8)
         ->get();
     }
+    public function productNew()
+    {
+        return Product::select('id', 'name', 'price', 'sale', 'image')
+                        ->orderByDesc('id')
+                        ->paginate(16);
+    }
+    public function productSold()
+    {
+        return Product::select('id', 'name', 'price', 'sale', 'image')
+                        ->where('sold','>',0)
+                        ->orderByDesc('sold')                        
+                        ->paginate(16);
+    }
+    public function productSale()
+    {
+        return Product::select('id', 'name', 'price', 'sale', 'image')
+                        ->where('sale', '>', 0)
+                        ->orderByDesc('sale')
+                        ->paginate(16);
+    }
 }

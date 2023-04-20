@@ -37,51 +37,26 @@
                                  <th>Đơn giá</th>
                                  <th>Số lượng</th>
                                  <th style="width:140px">Thành tiền</th>
-                                 <th></th>
                              </tr>
                          </thead>
                          <tbody>
-                             @foreach ($content as $item)
-                             @php
-                                 $priceSale = $item->sale > 0 ? $item->price-($item->price*$item->sale/100) : $item->price; 
-                             @endphp 
                              <tr>
                                  <td class="shoping__cart__item">
-                                     <img src="{{ $item->options->image }}" width="100px" height="100px" alt="">
-                                     <h5>{{ $item->name }}</h5>
+                                     <img src="{{ $billDetails->product->image }}" width="100px" height="100px" alt="">
+                                     <h5>{{ $billDetails->product->name }}</h5>
                                  </td>
                                  <td class="shoping__cart__price">
-                                     {!! number_format($priceSale, 0, '', '.') !!} đ
+                                     {!! number_format($billDetails->price, 0, '', '.') !!} đ
                                  </td>
-                                 <td class="shoping__cart__quantity">
-                                     <div class="quantity-pro">
-                                         <a class="minus" href="/gio-hang-giam/{{ $item->rowId }}">-</a>
-                                         <input type="text" name="qty" value="{{ $item->qty }}">
-                                         <a class="minus" href="/gio-hang-tang/{{ $item->rowId }}">+</a>
-                                     </div>
-                                 </td>
+                                 <td class="shoping__cart__total">{{ $billDetails->quantity }}</td>
                                  <td class="shoping__cart__total">
-                                     {{ number_format($priceSale*$item->qty, 0, '', '.') }} đ
-                                 </td>
-                                 <td class="shoping__cart__item__close">
-                                     <a class="btn btn-outline-danger" href="/gio-hang-xoa/{{ $item->rowId }}">Xóa</a>
+                                     {{ number_format($billDetails->price * $billDetails->quantity, 0, '', '.') }} đ
                                  </td>
                              </tr>
-                             @endforeach
                          </tbody>
                      </table>
-                 </div>
-             </div>
-             <div class="col-6 col-md-4">
-                 <div class="shoping__checkout">
-                     <h5>Tổng tiền giỏ hàng</h5>
-                     <ul>
-                         <li>Tổng tiền sản phẩm<span>{{ number_format($priceSale*$item->qty, 0, '', '.') }} đ</span></li>
-                         <li>Thuế VAT (10%)<span>{{ Cart::tax() }} đ</span></li>
-                         <li>Phí vận chuyển<span>Miễn phí</span></li>
-                         <li>Tổng thanh toán<span>{{ Cart::total() }} đ</span></li>
-                     </ul>
-                     <a href="/dat-hang" class="primary-btn">THANH TOÁN</a>
+                     <h5>Tổng tiền: <span>{!! number_format($bills->total_price, 0, '', '.') !!} đ</span></h5>
+
                  </div>
              </div>
          </div>

@@ -57,10 +57,11 @@
                                     <th colspan="3"></th>
                                 </tr>
                             </thead>
+                            <?php $stt = 1; ?>
                             @foreach ($products as $item)
                             <tbody>
                                 <tr>
-                                    <td>{{ $item->id }}</td>                                        
+                                    <td>{{ $stt }}</td>                                        
                                     <td>{{ $item->name }}</td>                                        
                                     <td><img src="{{ $item->image }}" width="80px" height="80px" alt=""></td>                                        
                                     <td>{{ $item->category->name }}</td>                                        
@@ -76,6 +77,7 @@
                                         <a class="btn btn-outline-danger" href="" onclick="removeRow({{ $item->id }},'/admin/products/destroy')">Xóa</a>
                                     </td>
                                 </tr>
+                                <?php $stt++; ?>
                             </tbody>
                             @endforeach
                         </table>

@@ -92,10 +92,10 @@
                 <li class="active"><a href="">Trang chủ</a></li>
                 <li><a href="">Sản phẩm</a>
                     <ul class="header__menu__dropdown">
-                        <li><a href="">SP mới nhất</a></li>
-                        <li><a href="">SP bán chạy</a></li>
-                        <li><a href="">SP Khuyến mãi</a></li>
-                        <li><a href="">Kiểm tra đơn hàng</a></li>
+                        <li><a href="{{ route('product_New') }}">SP mới nhất</a></li>
+                        <li><a href="{{ route('product_Sold') }}">SP bán chạy</a></li>
+                        <li><a href="{{ route('product_Sale') }}">SP Khuyến mãi</a></li>
+                        <li><a href="{{ route('myBill') }}">Kiểm tra đơn hàng</a></li>
                     </ul>
                 </li>
                 <li><a href="">Tin tức</a></li>
@@ -196,10 +196,10 @@
                             <li class="active"><a href="/">Trang chủ</a></li>
                             <li><a href="/san-pham.html">Sản phẩm</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="">SP mới nhất</a></li>
-                                    <li><a href="">SP bán chạy</a></li>
-                                    <li><a href="">SP Khuyến mãi</a></li>
-                                    <li><a href="">Kiểm tra đơn hàng</a></li>
+                                    <li><a href="{{ route('product_New') }}">SP mới nhất</a></li>
+                                    <li><a href="{{ route('product_Sold') }}">SP bán chạy</a></li>
+                                    <li><a href="{{ route('product_Sale') }}">SP Khuyến mãi</a></li>
+                                    <li><a href="{{ route('myBill') }}">Kiểm tra đơn hàng</a></li>
                                 </ul>
                             </li>
                             <li><a href="">Tin tức</a></li>

@@ -97,13 +97,10 @@ Route::get('danh-muc/{id}-{slug}.html', [ClientCategoryController::class, 'index
 Route::get('danh-muc/{id}-{slug}', [ClientCategoryController::class, 'parentCategory']);
 
 Route::get('san-pham.html', [ClientProductController::class, 'index']);
+Route::get('san-pham-moi-nhat', [ClientProductController::class, 'productNew'])->name('product_New');
+Route::get('san-pham-ban-chay', [ClientProductController::class, 'productSold'])->name('product_Sold');
+Route::get('san-pham-khuyen-mai', [ClientProductController::class, 'productSale'])->name('product_Sale');
 Route::get('san-pham/{id}-{slug}.html', [ClientProductController::class, 'productDetail']);
-
-// Route::post('add-cart', [CartController::class, 'index']);
-// Route::get('carts', [CartController::class, 'show']);
-// Route::post('/update-cart', [CartController::class, 'update']);
-// Route::get('/carts/delete/{id}', [CartController::class, 'remove']);
-// Route::post('carts', [CartController::class, 'addCart']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/gio-hang',[CartController::class, 'index']);
@@ -115,19 +112,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dat-hang', [CartController::class, 'getCheckout']);
     Route::post('/dat-hang', [CartController::class, 'postCheckout'])->name('dathang');
     Route::get('/dat-hang-thanh-cong', [CartController::class, 'successfull'])->name('successfull');
+    Route::get('/don-hang-cua-toi', [CartController::class, 'myBill'])->name('myBill');
 });
-
-
-// --------
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 require __DIR__.'/auth.php';
 // -----
