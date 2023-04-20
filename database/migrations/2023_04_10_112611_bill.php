@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Customer::class)->constrained()->cascadeOnDelete();
-            $table->bigInteger('active');
+            $table->integer('active');
             $table->timestamps();
         });
     }

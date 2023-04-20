@@ -1,7 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('content')	    
-
+@section('content')
 <div class="app-content pt-3 p-md-3 p-lg-4">
     <div class="container-xl">
         @if (session('message'))
@@ -10,15 +9,15 @@
 
         <div class="row g-3 mb-4 align-items-center justify-content-between">
             <div class="col-auto">
-                <h1 class="app-page-title mb-0">Danh sách</h1>
+                <h1 class="app-page-title mb-0">Danh sách đơn hàng mới</h1>
             </div>
             <div class="col-auto">
                  <div class="page-utilities">
                     <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
-                        <div class="col-auto">                             
-                            <a class="btn app-btn-secondary" href="{{ route('bill.new') }}">
-                                Đơn hàng mới
-                            </a>
+                        <div class="col-auto"> 
+                            <a class="btn app-btn-secondary" href="{{ route('bill.customer') }}">
+                                Tất cả
+                            </a>                            
                             <a class="btn app-btn-secondary" href="{{ route('bill.ship') }}">
                                 Đang vận chuyển
                             </a>

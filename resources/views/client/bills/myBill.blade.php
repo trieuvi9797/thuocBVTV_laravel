@@ -5,7 +5,6 @@
     </div>
 </section>
 <!-- Hero Section End -->
-
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="/client/img/breadcrumb.jpg">
     <div class="container">
@@ -23,6 +22,9 @@
     </div>
 </section>
 <!-- Breadcrumb Section End -->
+@php
+    $customer_ID = $customers->id;    
+@endphp
  <!-- Shoping Cart Section Begin -->
  @if($bills)
  <section class="shoping-cart spad">
@@ -41,22 +43,33 @@
                          </thead>
                          <tbody>
                              <tr>
-                                 <td class="shoping__cart__item">
+                                 {{-- <td class="shoping__cart__item">
                                      <img src="{{ $billDetails->product->image }}" width="100px" height="100px" alt="">
                                      <h5>{{ $billDetails->product->name }}</h5>
-                                 </td>
-                                 <td class="shoping__cart__price">
+                                 </td> --}}
+                                 {{-- <td class="shoping__cart__price">
                                      {!! number_format($billDetails->price, 0, '', '.') !!} đ
                                  </td>
                                  <td class="shoping__cart__total">{{ $billDetails->quantity }}</td>
                                  <td class="shoping__cart__total">
                                      {{ number_format($billDetails->price * $billDetails->quantity, 0, '', '.') }} đ
-                                 </td>
+                                 </td> --}}
                              </tr>
                          </tbody>
                      </table>
                      <h5>Tổng tiền: <span>{!! number_format($bills->total_price, 0, '', '.') !!} đ</span></h5>
-
+                     <div class="col-6 col-md-4">
+                        <div class="shoping__checkout">
+                            <h5>Thông tin đơn hàng</h5>
+                            <ul>
+                                <li>Tên KH: <span>{{ $customers->name }}</span></li>
+                                <li>Số điện thoại: <span>{{ $customers->phone }} đ</span></li>
+                                <li>Ngaày mua hàng: <span>{{ $bills->created_at }} đ</span></li>
+                                <li>Địa chỉ nhận hàng: <span>{{ $customers->address }}</span></li>
+                                <li>Tổng thanh toán: <span>{{ $bills->total_price }} đ</span></li>
+                            </ul>
+                        </div>
+                    </div>
                  </div>
              </div>
          </div>

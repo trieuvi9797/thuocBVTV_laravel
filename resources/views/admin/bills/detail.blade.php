@@ -14,15 +14,20 @@
             <div class="col-auto">
                  <div class="page-utilities">
                     <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
-                        <div class="col-auto">						    
-                            <a class="btn app-btn-primary" href="/admin/categories/create">
+                        <div class="col-auto">						
+                            @if ($bills->active == 0)
+                            <a class="btn app-btn-primary" href="/admin/bills/active/{{ $bills->id }}">
                                 <i class="fa fa-check"></i>
                                 Xác nhận ĐH
                             </a>
-                            <a class="btn app-btn-primary" href="/admin/categories/create">
+                            @elseif($bills->active == 1)
+                            <a class="btn app-btn-primary" href="/admin/bills/active/{{ $bills->id }}">
                                 <i class="fa fa-truck"></i>
-                                Đang vận chuyển
+                                Tiến hành vận chuyển
                             </a>
+                            @elseif($bills->active == 2)
+                            
+                            @endif    
                         </div>
                     </div><!--//row-->
                 </div><!--//table-utilities-->

@@ -85,6 +85,11 @@ Route::middleware(['auth'])->group(function(){
         Route::prefix('bills')->group(function(){
             Route::get('customer', [BillController::class, 'index'])->name('bill.customer');
             Route::get('view/{id}', [BillController::class, 'show'])->name('detail.customer');
+            Route::get('active/{id}', [BillController::class, 'activeBill'])->name('active.bill');
+            Route::get('new', [BillController::class, 'billNew'])->name('bill.new');
+            Route::get('ship', [BillController::class, 'billShip'])->name('bill.ship');
+            Route::get('done', [BillController::class, 'billDone'])->name('bill.done');
+            // Route::get('alert', [BillController::class, 'billAlert'])->name('bill.alert');
         });
     });
 

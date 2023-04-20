@@ -23,4 +23,12 @@ class Bill extends Model
     {
         return $this->hasMany(BillDetail::class, 'bill_id', 'id');
     }
+    
+    public function scopeSearch($query) //them localScope
+    {
+        if($key = request()->key){
+            $query = $query->where('name', 'like', '%'.$key.'%');
+        }
+        return $query;
+    }//globalScope
 }

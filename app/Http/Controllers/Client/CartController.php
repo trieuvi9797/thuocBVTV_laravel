@@ -177,16 +177,19 @@ class CartController extends Controller
 
     public function myBill()
     {
-        $id = Auth::user()->id;
-        $customer = Customer::where('user_id', $id)->orderByDesc('id')->paginate(10);
-        dd( $customer);
-        $billDetail = BillDetail::where('id', $id)->orderByDesc('id')->paginate(5);
-        // $customer = Customer::find($bill->customer_id);
-        return view('client.bills.myBill', [
-            'title' => 'Đơn hàng của tôi.',
-            'bills' => $bill,
-            'billDetails' => $billDetail,
-            'customers' => $customer,
-        ]);
+    //     $userID = Auth::user()->id;
+    //     $customer_ID = Customer::where('user_id',$userID)->select('id')->get();
+    //     $bill = Bill::where('customer_id',$customer_ID)->get();
+    //     dd($bill);
+    //     $customer = Customer::orderByDesc('id')->get();
+    //     // dd($bill);
+    //     // $billDetail = BillDetail::orderByDesc('id')->paginate(5);
+
+    //     return view('client.bills.myBill', [
+    //         'title' => 'Đơn hàng của tôi.',
+    //         'bills' => $bill,
+    //         // 'billDetails' => $billDetail,
+    //         'customers' => $customer,
+    //     ]);
     }
 }
