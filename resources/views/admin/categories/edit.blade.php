@@ -18,9 +18,9 @@
                             @enderror
                         </div>
                             <div class="mb-3">
-                                <label class="form-label">Danh mục cha:</label>
+                                <label class="form-label">Danh mục:</label>
                                 <select name="parent_id" class="form-control">
-                                        <option value="">---Chọn danh mục cha---</option>
+                                        <option value="">---Chọn danh mục---</option>
                                     @foreach ($parentCategories as $item)
                                         <option value="{{ $item->id }}" {{ $category->parent_id == $item->id ? 'selected' : '' }} >
                                             {{ $item->name }}

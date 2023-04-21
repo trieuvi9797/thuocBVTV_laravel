@@ -17,6 +17,7 @@
                     <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
                         <div class="col-auto">                             
                             <a class="btn app-btn-secondary" href="{{ route('bill.new') }}">
+                                <i class="fa-regular fa-cart-plus"></i>
                                 Đơn hàng mới
                             </a>
                             <a class="btn app-btn-secondary" href="{{ route('bill.ship') }}">

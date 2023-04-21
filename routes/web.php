@@ -1,19 +1,24 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BillController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\InfoPageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\CategoryController as ClientCategoryController;
+use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ProductController as ClientProductController;
+use App\Http\Controllers\Client\UserController;
+
 // use App\Http\Controllers\ProfileController;
 
 /*
@@ -91,6 +96,18 @@ Route::middleware(['auth'])->group(function(){
             Route::get('done', [BillController::class, 'billDone'])->name('bill.done');
             // Route::get('alert', [BillController::class, 'billAlert'])->name('bill.alert');
         });
+        Route::prefix('contacts')->group(function(){
+            Route::get('index', [AdminContactController::class, 'index']);
+        });
+        Route::prefix('users')->group(function(){
+            Route::get('index', [AdminController::class, 'index']);
+            Route::get('create', [AdminController::class, 'create']);
+            Route::post('create', [AdminController::class, 'store']);
+            Route::get('show/{product}', [AdminController::class, 'show']);
+            Route::get('edit/{product}', [AdminController::class, 'edit']);
+            Route::post('edit/{product}', [AdminController::class, 'update']);
+            Route::DELETE('destroy', [AdminController::class, 'destroy']);
+        });
     });
 
 });
@@ -107,6 +124,9 @@ Route::get('san-pham-ban-chay', [ClientProductController::class, 'productSold'])
 Route::get('san-pham-khuyen-mai', [ClientProductController::class, 'productSale'])->name('product_Sale');
 Route::get('san-pham/{id}-{slug}.html', [ClientProductController::class, 'productDetail']);
 
+Route::get('/lien-he.html', [ContactController::class, 'index']);
+Route::post('/lien-he.html', [ContactController::class, 'store']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/gio-hang',[CartController::class, 'index']);
     Route::post('/gio-hang-them/{row_id}',[CartController::class, 'addCart']);
@@ -118,6 +138,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/dat-hang', [CartController::class, 'postCheckout'])->name('dathang');
     Route::get('/dat-hang-thanh-cong', [CartController::class, 'successfull'])->name('successfull');
     Route::get('/don-hang-cua-toi', [CartController::class, 'myBill'])->name('myBill');
+
+    Route::get('/ho-so-cua-toi', [UserController::class, 'index'])->name('profile.user');
 });
 
 require __DIR__.'/auth.php';

@@ -18,14 +18,7 @@
             <div class="col-auto">
                  <div class="page-utilities">
                     <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
-                        <div class="col-auto">                          
-                            <select class="form-select w-auto" >
-                                  <option selected value="option-1">All</option>
-                                  <option value="option-2">This week</option>
-                                  <option value="option-3">This month</option>
-                                  <option value="option-4">Last 3 months</option>
-                            </select>
-                        </div>
+                        
                         <div class="col-auto">						    
                             <a class="btn app-btn-primary" href="/admin/products/create">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -61,7 +54,7 @@
                             @foreach ($products as $item)
                             <tbody>
                                 <tr>
-                                    <td>{{ $stt }}</td>                                        
+                                    <td>{{ $stt++; }}</td>                                        
                                     <td>{{ $item->name }}</td>                                        
                                     <td><img src="{{ $item->image }}" width="80px" height="80px" alt=""></td>                                        
                                     <td>{{ $item->category->name }}</td>                                        
@@ -77,7 +70,6 @@
                                         <a class="btn btn-outline-danger" href="" onclick="removeRow({{ $item->id }},'/admin/products/destroy')">Xóa</a>
                                     </td>
                                 </tr>
-                                <?php $stt++; ?>
                             </tbody>
                             @endforeach
                         </table>

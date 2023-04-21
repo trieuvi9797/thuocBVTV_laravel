@@ -79,7 +79,7 @@
                             <li class="submenu-item"><a class="submenu-link" href="/admin/sliders/index">Slider</a></li>
                             <li class="submenu-item"><a class="submenu-link" href="/admin/infoPages/index">Thông tin trang</a></li>
                             <li class="submenu-item"><a class="submenu-link" href="/admin/posts/index">Bài viết</a></li>
-                            <li class="submenu-item"><a class="submenu-link" href="#">Liện hệ</a></li>
+                            <li class="submenu-item"><a class="submenu-link" href="/admin/contacts/index">Liện hệ</a></li>
                             <li class="submenu-item"><a class="submenu-link" href="#">Trang tin tức</a></li>
                         </ul>
                     </div>

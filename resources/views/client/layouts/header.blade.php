@@ -46,9 +46,9 @@
         <div class="humberger__menu__cart">
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>{{ Cart::count() ?? 0 }}</span></a></li>
             </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
+            <div class="header__cart__price">Giỏ hàng: <span>{{ Cart::total() }} đ</span></div>
         </div>
         <div class="humberger__menu__widget">
             @auth   
@@ -89,8 +89,8 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="">Trang chủ</a></li>
-                <li><a href="">Sản phẩm</a>
+                <li class="active"><a href="/">Trang chủ</a></li>
+                <li><a href="/san-pham.html">Sản phẩm</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="{{ route('product_New') }}">SP mới nhất</a></li>
                         <li><a href="{{ route('product_Sold') }}">SP bán chạy</a></li>
@@ -99,7 +99,7 @@
                     </ul>
                 </li>
                 <li><a href="">Tin tức</a></li>
-                <li><a href="">Liên hệ</a></li>
+                <li><a href="/lien-he.html">Liên hệ</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -156,7 +156,7 @@
                                 <div> {{ Auth::user()->name }}</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Tài khoản của tôi</a></li>
+                                    <li><a href="{{ route('profile.user') }}">Hồ sơ của tôi</a></li>
                                     <li><a href="#">Đổi mật khẩu</a></li>
                                     <li><a href="#">Đơn hàng của tôi</a></li>   
                                 </ul>
@@ -199,11 +199,10 @@
                                     <li><a href="{{ route('product_New') }}">SP mới nhất</a></li>
                                     <li><a href="{{ route('product_Sold') }}">SP bán chạy</a></li>
                                     <li><a href="{{ route('product_Sale') }}">SP Khuyến mãi</a></li>
-                                    <li><a href="{{ route('myBill') }}">Kiểm tra đơn hàng</a></li>
                                 </ul>
                             </li>
                             <li><a href="">Tin tức</a></li>
-                            <li><a href="">Liên hệ</a></li>
+                            <li><a href="/lien-he.html">Liên hệ</a></li>
                         </ul>
                     </nav>
                 </div>
