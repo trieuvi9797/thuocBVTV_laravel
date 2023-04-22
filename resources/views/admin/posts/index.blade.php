@@ -1,5 +1,4 @@
 @extends('admin.layouts.app')
-@section('title', 'Danh mục')
 
     
 @section('content')
@@ -17,29 +16,8 @@
             <div class="col-auto">
                  <div class="page-utilities">
                     <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
-                        <div class="col-auto">
-                            <form class="table-search-form row gx-1 align-items-center">
-                                <div class="col-auto">
-                                    <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search">
-                                </div>
-                                <div class="col-auto">
-                                    <button type="submit" class="btn app-btn-secondary">Search</button>
-                                </div>
-                            </form>
-                            
-                        </div><!--//col-->
-                        <div class="col-auto">
-                            
-                            <select class="form-select w-auto" >
-                                  <option selected value="option-1">All</option>
-                                  <option value="option-2">This week</option>
-                                  <option value="option-3">This month</option>
-                                  <option value="option-4">Last 3 months</option>
-                                  
-                            </select>
-                        </div>
                         <div class="col-auto">						    
-                            <a class="btn app-btn-primary" href="/admin/categories/create">
+                            <a class="btn app-btn-primary" href="/admin/posts/create">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -60,38 +38,37 @@
                         <table class="table app-table-hover mb-0 text-left">
                             <thead>
                                 <tr>
-                                    <th>Tên danh mục</th>
-                                    <th>Danh mục cha</th>
-                                    <th>Ngày cập nhật</th>
-                                    <th style="width:150px">Sửa | Xóa &nbsp;</th>
+                                    <th>STT</th>
+                                    <th>Tiêu đề</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Tác giả</th>
+                                    <th>Ngày đăng</th>
+                                    <th style="width: 22%"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
-                                {!! \App\Helpers\Helper::categories($list_category) !!}
-                                {{-- <tr>
-                                    <td></td>                                        
-                                    <td></td>                                        
-                                    <td></td>  
-                                    <td>
-                                        <a href="" class="btn btn-outline-warning" style="float: right">Sửa</a>
-                                    </td>
-                                    <td>
-                                        <form action="" id="form-delete" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                        </form>
-                                        <button class="btn btn-outline-danger"  type="submit">Xóa</button>
-                                    </td>                                     
-                                </tr> --}}
+                                @php  $stt = 1;  @endphp
+                                @foreach ($posts as $item)
+                                    <tr>
+                                        <td>{{ $stt++; }}</td>
+                                        <td>{{ $item->title }}</td>
+                                        <td><img src="{{ $item->image }}" width="80px" height="80px" alt=""></td>
+                                        <td>{{ $item->author }}</td>
+                                        <td>{{ $item->created_at }}</td>
+                                        <td>
+                                            <a class="btn btn-outline-info" href="/admin/posts/show/{{ $item->id }}">Chi tiết</a>
+                                            <a class="btn btn-outline-warning" href="/admin/posts/edit/{{ $item->id }}">Sửa</a>
+                                            <a class="btn btn-outline-danger" href="" onclick="removeRow({{ $item->id }},'/admin/posts/destroy')">Xóa</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
-                            {{-- @endforeach --}}
                         </table>
                     </div><!--//table-responsive-->                  
                 </div><!--//app-card-body-->
             </div><!--//app-card-->
             <nav aria-label="Page navigation">
-                {!!  $list_category->links()  !!}
+                {!!  $posts->links()  !!}
             </nav>           
         </div><!--//tab-content-->
     </div><!--//container-fluid-->

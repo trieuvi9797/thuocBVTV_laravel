@@ -1,22 +1,20 @@
 @extends('client.layouts.app')
-
-@section('content')
-    
+@section('content') 
 {{--  --}}
-    </div>
+</div>
 </section>
 <!-- Hero Section End -->
 
-  <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="/client/img/breadcrumb.jpg">
+ <!-- Breadcrumb Section Begin -->
+ <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Sản Phẩm</h2>
+                    <h2>Bài viết - Tin tức về nông nghiệp</h2><br>
                     <div class="breadcrumb__option">
-                        <a href="trang-chu.html">Trang chủ</a>
-                        <span>Sản phẩm</span>
+                        <a href="/">Trang chủ</a>
+                        <span>Tin tức</span>
                     </div>
                 </div>
             </div>
@@ -24,9 +22,8 @@
     </div>
 </section>
 <!-- Breadcrumb Section End -->
-
-<!-- Product Section Begin -->
-<section class="product spad">
+<!-- Blog Section Begin -->
+<section class="blog spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-5">
@@ -38,23 +35,6 @@
                             <li><a href="/danh-muc/{{ $categories->id }}-{{ Str::slug($categories->name), '-'}}.html">{{ $categories->name }}</a></li>
                         </ul>
                         @endforeach
-                    </div>
-                    <div class="sidebar__item">
-                        <h4>Price</h4>
-                        <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="10" data-max="540">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" id="minamount">
-                                    <input type="text" id="maxamount">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="sidebar__item">
                         <div class="latest-product__text">
@@ -78,27 +58,50 @@
                         <div class="latest-product__text">
                             <h4>Sản phẩm bán chạy</h4>
                             <div class="latest-product__slider owl-carousel">
-                                    @foreach ($productSold as $sold)
-                                    <div class="latest-prdouct__slider__item">
-                                        <a href="san-pham/{id}-{slug}.html" class="latest-product__item">
-                                            <div class="latest-product__item__pic">
-                                                <img src="{{ $sold->image }}" alt="">
-                                            </div>
-                                            <div class="latest-product__item__text">
-                                                <h6>{{ $sold->name }}</h6>
-                                                <span>{!! \App\Helpers\Helper::price($sold->price) !!} VNĐ</span>
-                                            </div>
-                                        </a>                                    
-                                    </div>
-                                    @endforeach                                
+                                @foreach ($productSold as $sold)
+                                <div class="latest-prdouct__slider__item">
+                                    <a href="san-pham/{id}-{slug}.html" class="latest-product__item">
+                                        <div class="latest-product__item__pic">
+                                            <img src="{{ $sold->image }}" alt="">
+                                        </div>
+                                        <div class="latest-product__item__text">
+                                            <h6>{{ $sold->name }}</h6>
+                                            <span>{!! \App\Helpers\Helper::price($sold->price) !!} VNĐ</span>
+                                        </div>
+                                    </a>                                    
                                 </div>
+                                @endforeach                                
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            @include('client.products.list')
+            <div class="col-lg-8 col-md-7">
+                <div class="row">
+                    @foreach ($post as $item)
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <img src="{{ $item->image }}" width="350px" height="250px" alt="">
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    <li><i class="fa fa-calendar-o"></i> {{ ($item->created_at)->toDateString() }}</li>
+                                </ul>
+                                <h5><a href="/tin-tuc/{{ $item->id }}">{{ $item->title }}</a></h5>
+                                <p>{{ $item->description_short }}</p>
+                                <a href="/tin-tuc/{{ $item->id }}" class="blog__btn"> XEM THÊM <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="product__pagination blog__pagination">
+                    {{ $post->links() }}
+                </div>
+            </div>
         </div>
     </div>
 </section>
-<!-- Product Section End -->
+<!-- Blog Section End -->
 @endsection

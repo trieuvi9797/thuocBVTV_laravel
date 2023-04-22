@@ -9,7 +9,6 @@
         <div class="app-card-body">
             <div class="row g-4 settings-section">
                 <div class="col-12 col-md-4">
-                    <h4 class="section-title">Hình sản phẩm</h4>
                     <div  id="image_show">            
                         <img src="{{ $product->image }}" id="show-image" alt="" width="300px" height="300px">
                     </div>

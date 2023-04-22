@@ -98,7 +98,7 @@
                         <li><a href="{{ route('myBill') }}">Kiểm tra đơn hàng</a></li>
                     </ul>
                 </li>
-                <li><a href="">Tin tức</a></li>
+                <li><a href="/tin-tuc">Tin tức</a></li>
                 <li><a href="/lien-he.html">Liên hệ</a></li>
             </ul>
         </nav>
@@ -201,7 +201,7 @@
                                     <li><a href="{{ route('product_Sale') }}">SP Khuyến mãi</a></li>
                                 </ul>
                             </li>
-                            <li><a href="">Tin tức</a></li>
+                            <li><a href="/tin-tuc">Tin tức</a></li>
                             <li><a href="/lien-he.html">Liên hệ</a></li>
                         </ul>
                     </nav>

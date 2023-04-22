@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\InfoPageController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\AuthController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\CategoryController as ClientCategoryController;
 use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\PostController as ClientPostController;
 use App\Http\Controllers\Client\ProductController as ClientProductController;
 use App\Http\Controllers\Client\UserController;
 
@@ -80,12 +82,13 @@ Route::middleware(['auth'])->group(function(){
             Route::DELETE('destroy', [InfoPageController::class, 'destroy']);
         });
         Route::prefix('posts')->group(function(){
-            Route::get('index', [InfoPageController::class, 'index']);
-            Route::get('create', [SliderController::class, 'create']);
-            Route::post('create', [SliderController::class, 'store']);
-            Route::get('edit/{infoPage}', [InfoPageController::class, 'edit']);
-            Route::post('edit/{infoPage}', [InfoPageController::class, 'update']);
-            Route::DELETE('destroy', [InfoPageController::class, 'destroy']);
+            Route::get('index', [PostController::class, 'index']);
+            Route::get('create', [PostController::class, 'create']);
+            Route::post('create', [PostController::class, 'store']);
+            Route::get('show/{post}', [PostController::class, 'show']);
+            Route::get('edit/{post}', [PostController::class, 'edit']);
+            Route::post('edit/{post}', [PostController::class, 'update']);
+            Route::DELETE('destroy', [PostController::class, 'destroy']);
         });
         Route::prefix('bills')->group(function(){
             Route::get('customer', [BillController::class, 'index'])->name('bill.customer');
@@ -126,6 +129,10 @@ Route::get('san-pham/{id}-{slug}.html', [ClientProductController::class, 'produc
 
 Route::get('/lien-he.html', [ContactController::class, 'index']);
 Route::post('/lien-he.html', [ContactController::class, 'store']);
+
+Route::get('/tin-tuc', [ClientPostController::class, 'index'])->name('post');
+Route::get('/tin-tuc/{id}', [ClientPostController::class, 'show'])->name('post.detail');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/gio-hang',[CartController::class, 'index']);

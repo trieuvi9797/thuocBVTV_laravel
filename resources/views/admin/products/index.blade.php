@@ -47,10 +47,10 @@
                                     <th>Danh mục</th>
                                     <th>Giá</th>
                                     <th>Khuyến mãi</th>
-                                    <th colspan="3"></th>
+                                    <th ></th>
                                 </tr>
                             </thead>
-                            <?php $stt = 1; ?>
+                            @php $stt = 1; @endphp
                             @foreach ($products as $item)
                             <tbody>
                                 <tr>
@@ -62,11 +62,7 @@
                                     <td>{{ $item->price-($item->price*$item->sale/100) }} VNĐ</td>  {{-- gia-(gia*sale/100) --}}
                                     <td>
                                         <a class="btn btn-outline-info" href="/admin/products/show/{{ $item->id }}">Xem</a>
-                                    </td>
-                                    <td>
                                         <a class="btn btn-outline-warning" href="/admin/products/edit/{{ $item->id }}">Sửa</a>
-                                    </td>
-                                    <td>
                                         <a class="btn btn-outline-danger" href="" onclick="removeRow({{ $item->id }},'/admin/products/destroy')">Xóa</a>
                                     </td>
                                 </tr>
