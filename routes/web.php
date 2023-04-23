@@ -12,7 +12,6 @@ use App\Http\Controllers\Admin\InfoPageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\CategoryController as ClientCategoryController;
 use App\Http\Controllers\Client\ContactController;
@@ -37,9 +36,6 @@ use App\Http\Controllers\Client\UserController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
-Route::post('admin/users/login/store', [LoginController::class, 'store']);
 
 Route::middleware(['auth'])->group(function(){
     Route::prefix('admin')->group(function(){
@@ -120,6 +116,7 @@ Route::get('/trang-chu.html', [HomeController::class, 'index'])->name('home');
 
 Route::get('danh-muc/{id}-{slug}.html', [ClientCategoryController::class, 'index']);
 Route::get('danh-muc/{id}-{slug}', [ClientCategoryController::class, 'parentCategory']);
+Route::get('danh-muc/san-pham/{id}-{slug}', [ClientCategoryController::class, 'productCategory']);
 
 Route::get('san-pham.html', [ClientProductController::class, 'index']);
 Route::get('san-pham-moi-nhat', [ClientProductController::class, 'productNew'])->name('product_New');

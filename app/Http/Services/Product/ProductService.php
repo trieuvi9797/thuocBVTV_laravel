@@ -90,4 +90,11 @@ class ProductService
                         ->orderByDesc('sale')
                         ->paginate(16);
     }
+    public function getProduct_Category($id)
+    {
+        return Product::whereIn('category_id', $id)
+                        ->select('id', 'name', 'price', 'sale', 'image')
+                        ->orderByDesc('sale')
+                        ->paginate(16);
+    }
 }

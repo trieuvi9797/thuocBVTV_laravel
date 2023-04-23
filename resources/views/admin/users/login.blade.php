@@ -42,7 +42,7 @@
 					</div>
 					<h2 class="auth-heading text-center mb-5">Đăng nhập</h2>
 			        <div class="auth-form-container text-start">	
-                        @include('admin/layouts/alert')
+                @include('admin.layouts.alert')
                         <form class="auth-form login-form" action="/admin/users/login/store" method="POST">         
 							<div class="email mb-3">
 								<label class="sr-only" for="signin-email">Email</label>

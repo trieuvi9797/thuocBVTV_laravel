@@ -16,10 +16,8 @@
                     <h2>{{ $title }}</h2><br>
                     <div class="breadcrumb__option">
                         <a href="/">Trang chủ</a>
-                        <a href="/danh-muc/{{ $category->id }}-{{ Str::slug($category->name) }}.html">
-                            <span>{{ $title }}</span>
-
-                        </a>
+                        <span>Danh mục_ </span>
+                        <span> {{ $title }}</span>
                     </div>
                 </div>
             </div>
@@ -38,7 +36,7 @@
                         <h4>Danh mục thuốc</h4>
                         @foreach ($parentCategory as $parentCate)                            
                         <ul>
-                            <li><a href="/danh-muc/{{ $parentCate->id }}-{{ Str::slug($parentCate->name), '-'}}">{{ $parentCate->name }}</a></li>
+                            <li><a href="/danh-muc/san-pham/{{ $parentCate->id }}-{{ Str::slug($parentCate->name), '-'}}">{{ $parentCate->name }}</a></li>
                         </ul>
                         @endforeach
                     </div>

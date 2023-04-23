@@ -60,6 +60,32 @@ class CategoryController extends Controller
         ]);
     }
 
+    public function productCategory(Request $request, $id, $slug = '')
+    {
+        $parentCategory = Category::find($id);
+        $subCategory = Category::where('parent_id', $id)->get();
+        if (count($subCategory) > 0) {
+            foreach ($subCategory as $value)
+            $id_category[] = $value->id;
+        } else
+        $id_category = [];
+        $products = $this->productService->getProduct_Category($id_category);
+
+        $category = $this->categoryService->getParent();
+        $productSale = $this->productService->getProductSale();
+        $productNew = $this->productService->getProductNew();
+        $productSold = $this->productService->getProductSold();
+        return view('client.products.cate_prod', [
+            'title' => 'Sản phẩm',
+            'products' => $products,
+            'productSale' => $productSale,
+            'productSold' => $productSold,
+            'productNew' => $productNew,
+            'category' => $category,
+            'parentCategory' => $parentCategory,
+            'subCategory' => $subCategory
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      */

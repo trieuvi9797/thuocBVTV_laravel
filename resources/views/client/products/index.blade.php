@@ -24,7 +24,6 @@
     </div>
 </section>
 <!-- Breadcrumb Section End -->
-
 <!-- Product Section Begin -->
 <section class="product spad">
     <div class="container">
@@ -35,7 +34,7 @@
                         <h4>Danh mục thuốc</h4>
                         @foreach ($category as $categories)                            
                         <ul>
-                            <li><a href="/danh-muc/{{ $categories->id }}-{{ Str::slug($categories->name), '-'}}.html">{{ $categories->name }}</a></li>
+                            <li><a href="/danh-muc/san-pham/{{ $categories->id }}-{{ Str::slug($categories->name), '-'}}.html">{{ $categories->name }}</a></li>
                         </ul>
                         @endforeach
                     </div>
