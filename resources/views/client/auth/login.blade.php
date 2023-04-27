@@ -29,11 +29,11 @@
 							@csrf       
 							<div class="email mb-3">
 								<label class="sr-only" for="signin-email">Email</label>
-								<input id="signin-email" name="email" type="email" class="form-control signin-email" :value="old('email')"  required autofocus>
+								<input id="signin-email" name="email" type="email" class="form-control signin-email" :value="old('email')" placeholder="Email" required autofocus>
 							</div><!--//form-group-->
 							<div class="password mb-3">
 								<label class="sr-only" for="signin-password">Mật khẩu</label>
-								<input id="signin-password" name="password" type="password" class="form-control signin-password" required autocomplete="current-password">
+								<input id="signin-password" name="password" type="password" class="form-control signin-password" placeholder="Mật khẩu" required autocomplete="current-password">
 								<div class="extra mt-3 row justify-content-between">
 									<div class="col-6">
 										<div class="form-check">
@@ -45,7 +45,7 @@
 									</div><!--//col-6-->
 									<div class="col-6">
 										<div class="forgot-password text-end">
-											<a href="{{ route('password.request') }}">Quên mật khẩu?</a>
+											<a href="{{ route('user.forgotPass') }}">Quên mật khẩu?</a>
 										</div>
 									</div><!--//col-6-->
 								</div><!--//extra-->

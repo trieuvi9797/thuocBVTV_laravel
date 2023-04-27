@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $user = User::orderByDesc('id')->paginate(10);
+        $user = User::orderByDesc('id')->search()->paginate(10);
         return view('admin.users.index',[
             'title' => 'Tài khoản khách hàng',
             'users' => $user

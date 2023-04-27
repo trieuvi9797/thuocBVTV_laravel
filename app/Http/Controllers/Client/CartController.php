@@ -49,6 +49,20 @@ class CartController extends Controller
         ]);
             return redirect('/gio-hang');
     }
+
+    public function addProductCart($id)
+    {
+        // dd($id->quantity);
+        // $product_ID = Product::where('id', $id)->first();
+        // if($row->qty < $product_ID->quantity)
+        // {
+        //     Cart::update($row_id, $row->qty + 1);
+        //     Session::flash('error', 'Sản phẩm trong kho không đủ số lượng.');
+        //     return redirect('/gio-hang');
+        // }
+        
+        //     return redirect('/gio-hang');
+    }
     
     public function remove($row_id)
     {
@@ -177,19 +191,27 @@ class CartController extends Controller
 
     public function myBill()
     {
-    //     $userID = Auth::user()->id;
-    //     $customer_ID = Customer::where('user_id',$userID)->select('id')->get();
-    //     $bill = Bill::where('customer_id',$customer_ID)->get();
-    //     dd($bill);
-    //     $customer = Customer::orderByDesc('id')->get();
-    //     // dd($bill);
-    //     // $billDetail = BillDetail::orderByDesc('id')->paginate(5);
+        $userID = Auth::user()->id;
+        $customer_userID = Customer::where('user_id',$userID)->orderByDesc('id')->get();
+        if(count($customer_userID) > 0){
+            foreach($customer_userID as $value)
+            $id_customer[] = $value->id;
+        }else
+            $id_customer = [];
 
-    //     return view('client.bills.myBill', [
-    //         'title' => 'Đơn hàng của tôi.',
-    //         'bills' => $bill,
-    //         // 'billDetails' => $billDetail,
-    //         'customers' => $customer,
-    //     ]);
+        $bill_ID = Bill::whereIn('customer_id',$id_customer)->orderByDesc('id')->get();
+        if(count($bill_ID) > 0){
+            foreach($bill_ID as $value)
+            $id_billDetail[] = $value->id;
+        }else
+            $id_billDetail = [];
+
+        $billDetail = BillDetail::whereIn('bill_id',$id_billDetail)->orderByDesc('id')->get();
+        return view('client.bills.myBill', [
+            'title' => 'Đơn hàng của tôi',
+            'bills' => $bill_ID,
+            'billDetails' => $billDetail,
+            'customers' => $customer_userID,
+        ]);
     }
 }

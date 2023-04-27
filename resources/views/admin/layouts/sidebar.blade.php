@@ -8,7 +8,7 @@
         <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
             <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                 <li class="nav-item">       <!--Bảng điều khiển-->              
-                    <a class="nav-link {{ request()->Is('**') ? 'active' : '' }}" href="/admin">
+                    <a class="nav-link {{ request()->Is('*admin') ? 'active' : '' }}" href="/admin">
                         <span class="nav-icon">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z"/>
@@ -59,7 +59,7 @@
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
 
-                <li class="nav-item has-submenu">    <!--Bảng điều khiển-->                 
+                <li class="nav-item has-submenu">    <!--trang web-->                 
                     <a class="nav-link submenu-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-4" aria-expanded="false" aria-controls="submenu-4">
                         <span class="nav-icon">                         
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-columns-gap" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -84,7 +84,7 @@
                 </li><!--//nav-item-->
 
                 <li class="nav-item has-submenu">        <!--Tai khoan-->             
-                    <a class="nav-link {{ request()->Is('**') ? 'active' : '' }}" href="/admin/users/index" >
+                    <a class="nav-link {{ request()->Is('*user*') ? 'active' : '' }}" href="/admin/users/index" >
                         <span class="nav-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
                                 <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"/>

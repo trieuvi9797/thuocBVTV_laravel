@@ -30,19 +30,19 @@
 							@csrf
 							<div class="email mb-3">
 								<label class="sr-only" for="signup-v">Họ và tên:</label>
-								<input id="signup-name" name="name" type="text" class="form-control signup-name" :value="old('name')" required autocomplete="name">
+								<input id="signup-name" name="name" type="text" class="form-control signup-name" :value="old('name')" placeholder="Họ và tên" required autocomplete="name">
 							</div>
 							<div class="email mb-3">
 								<label class="sr-only" for="signup-email">Email</label>
-								<input id="signup-email" name="email" type="email" class="form-control signup-email" :value="old('email')" required>
+								<input id="signup-email" name="email" type="email" class="form-control signup-email" :value="old('email')" placeholder="Email" required>
 							</div>
 							<div class="password mb-3">
 								<label class="sr-only" for="signup-password">Mật khẩu</label>
-								<input id="signup-password" name="password" type="password" class="form-control signup-password" required autocomplete="new-password">
+								<input id="signup-password" name="password" type="password" class="form-control signup-password" placeholder="Mật khẩu" required autocomplete="new-password">
 							</div>
 							<div class="password mb-3">
 								<label class="sr-only" for="signup-password">Xác nhận mật khẩu</label>
-								<input id="signup-password" name="password_confirmation" type="password" class="form-control signup-password" required autocomplete="new-password">
+								<input id="signup-password" name="password_confirmation" type="password" class="form-control signup-password" placeholder="Xác nhận mật khẩu" required autocomplete="new-password">
 							</div>
 							<div class="extra mb-3">
 								<div class="form-check">

@@ -50,9 +50,7 @@
                                 <img src="{{ $product->image }}" alt="">
                             </div>
                             <ul class="featured__item__pic__hover">
-                                <li><a href="/san-pham/{{ $product->id }}-{{ \Str::slug($product->name, '-') }}.html"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="/san-pham/{{ $product->id }}-{{ \Str::slug($product->name, '-') }}.html"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="/san-pham/{{ $product->id }}-{{ \Str::slug($product->name, '-') }}.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li><a href="/them-vao-gio-hang/{{ $product->id }}"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="featured__item__text">

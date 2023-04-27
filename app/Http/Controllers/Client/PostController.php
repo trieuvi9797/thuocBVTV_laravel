@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::orderByDesc('id')->paginate(10);
+        $post = Post::orderByDesc('id')->search()->paginate(10);
         return view('client.posts.index',[
             'title' => 'Bài viết - Tin tức',
             'post' => $post,

@@ -130,6 +130,10 @@ Route::post('/lien-he.html', [ContactController::class, 'store']);
 Route::get('/tin-tuc', [ClientPostController::class, 'index'])->name('post');
 Route::get('/tin-tuc/{id}', [ClientPostController::class, 'show'])->name('post.detail');
 
+Route::get('/quen-mat-khau', [UserController::class, 'forgotPass'])->name('user.forgotPass');
+Route::post('/quen-mat-khau', [UserController::class, 'postForgotPass']);
+Route::get('/lay-mat-khau/{user}/{token}', [UserController::class, 'getPass'])->name('user.getPass');
+Route::post('/lay-mat-khau/{user}/{token}', [UserController::class, 'postGetPass']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/gio-hang',[CartController::class, 'index']);
@@ -137,6 +141,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/gio-hang-xoa/{row_id}',[CartController::class, 'remove']);
     Route::get('/gio-hang-tang/{row_id}',[CartController::class, 'upQuantity']);
     Route::get('/gio-hang-giam/{row_id}',[CartController::class, 'downQuantity']);
+    Route::get('/them-vao-gio-hang/{id}', [CartController::class, 'addProductCart']);
 
     Route::get('/dat-hang', [CartController::class, 'getCheckout']);
     Route::post('/dat-hang', [CartController::class, 'postCheckout'])->name('dathang');

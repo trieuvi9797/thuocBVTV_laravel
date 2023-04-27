@@ -46,4 +46,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Customer::class, 'user_id');
     }
+    public function scopeSearch($query) //them localScope
+    {
+        if($key = request()->key){
+            $query = $query->where('name', 'like', '%'.$key.'%');
+        }
+        return $query;
+    }//globalScope
 }

@@ -97,18 +97,7 @@ class ProductController extends Controller
             'category' => $category
         ]);
     }
-    /**
-     * Store a newly created resource in storage.
-     */
-    
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
-    {
-        //
-    }
+ 
 
     /**
      * Show the form for editing the specified resource.

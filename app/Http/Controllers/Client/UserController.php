@@ -17,4 +17,14 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
+
+    public function forgotPass()
+    {
+        return view('client.auth.forgot-pw');
+    }
+
+    // public function postForgotPass(User $user, $token)
+    // {
+    //     if($user->token)
+    // }
 }

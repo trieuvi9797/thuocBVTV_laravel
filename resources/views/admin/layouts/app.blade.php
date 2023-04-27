@@ -10,7 +10,7 @@
 
     <meta name="description" content="Admin Dashboard VTNN HAI LÚA">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
-    <link rel="shortcut icon" href="{{ asset('/admins/asets/images/Logo.jpg') }}"> 
+    <link rel="shortcut icon" href="{{ asset('/admins/assets/images/Logo.jpg') }}"> 
 
     <!-- FontAwesome JS-->
     <script defer src="/admins/assets/plugins/fontawesome/js/all.min.js"></script>

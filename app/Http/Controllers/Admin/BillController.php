@@ -19,7 +19,7 @@ class BillController extends Controller
     }
     public  function index()
     {
-        $bills = Bill::orderByDesc('id')->search()->paginate(10);
+        $bills = Bill::orderByDesc('id')->paginate(10);
         return view('admin.bills.customer', [
             'title' => 'Danh sách đơn hàng',
             'bills' => $bills

@@ -158,7 +158,7 @@
                                 <ul>
                                     <li><a href="{{ route('profile.user') }}">Hồ sơ của tôi</a></li>
                                     <li><a href="#">Đổi mật khẩu</a></li>
-                                    <li><a href="#">Đơn hàng của tôi</a></li>   
+                                    <li><a href="{{ route('myBill') }}">Đơn hàng của tôi</a></li>   
                                 </ul>
                             </div>    
                             @endif             
