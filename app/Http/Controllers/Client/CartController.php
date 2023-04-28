@@ -206,12 +206,21 @@ class CartController extends Controller
         }else
             $id_billDetail = [];
 
-        $billDetail = BillDetail::whereIn('bill_id',$id_billDetail)->orderByDesc('id')->get();
+        $billDetail = BillDetail::whereIn('bill_id',$id_billDetail)->orderByDesc('created_at')->get();
         return view('client.bills.myBill', [
             'title' => 'Đơn hàng của tôi',
             'bills' => $bill_ID,
             'billDetails' => $billDetail,
             'customers' => $customer_userID,
         ]);
+    }
+    
+    public function myBill_Detail($id)
+    {
+        $billDetail = BillDetail::where('bill_id', $id)->get();
+        return view('client.bills.billDetail',[
+            'title' => 'Chi tiết đơn hàng của tôi',
+            'billDetail' => $billDetail
+        ]); 
     }
 }

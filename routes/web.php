@@ -147,6 +147,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/dat-hang', [CartController::class, 'postCheckout'])->name('dathang');
     Route::get('/dat-hang-thanh-cong', [CartController::class, 'successfull'])->name('successfull');
     Route::get('/don-hang-cua-toi', [CartController::class, 'myBill'])->name('myBill');
+    Route::get('/don-hang-chi-tiet/{id}', [CartController::class, 'myBill_Detail']);
 
     Route::get('/ho-so-cua-toi', [UserController::class, 'index'])->name('profile.user');
 });

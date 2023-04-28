@@ -31,14 +31,15 @@
                 <div class="shoping__cart__table"> 
                     <table>
                          <thead>
-                             <tr>
-                                 <th>Ngày đặt hàng</th>
-                                 <th>Tổng đơn hàng</th>
-                                 <th>Chi tiết</th>
-                           </tr>
+                            <tr>
+                                <th class="shoping__product">Sản phẩm</th>
+                                <th>Đơn giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng cộng</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            @foreach ($bills as $item)
+                            @foreach ($billDetail as $item)
                             <tr>
                                 <td class="shoping__cart__price">{{ $item->created_at }}</td>
                                 <td class="shoping__cart__total">{{ $item->total_price }}</td>

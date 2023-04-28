@@ -30,7 +30,7 @@ class ProductService
         return Product::select('id', 'name', 'price', 'sale', 'image')
                         ->search()
                         ->orderByDesc('id')
-                        ->paginate(16);
+                        ->paginate(12);
     }
     public function getProductNew()
     {
