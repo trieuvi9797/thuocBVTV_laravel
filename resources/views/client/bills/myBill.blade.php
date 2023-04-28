@@ -5,6 +5,7 @@
     </div>
 </section>
 <!-- Hero Section End -->
+{{-- {{ dd($bills, $billDetails, $customers) }} --}}
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="/client/img/breadcrumb.jpg">
     <div class="container">
@@ -30,19 +31,41 @@
             <div class="col-12 col-md-8">
                 <div class="shoping__cart__table"> 
                     <table>
-                         <thead>
-                             <tr>
-                                 <th>Ngày đặt hàng</th>
-                                 <th>Tổng đơn hàng</th>
-                                 <th>Chi tiết</th>
-                           </tr>
+                        <thead>
+                            <tr>
+                                <th>Ngày đặt hàng</th>
+                                <th>Tổng đơn hàng</th>
+                                <th>Trạng thái đơn hàng</th>
+                                <th>Chi tiết</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($bills as $item)
                             <tr>
                                 <td class="shoping__cart__price">{{ $item->created_at }}</td>
-                                <td class="shoping__cart__total">{{ $item->total_price }}</td>
-                                <td><a class="btn btn-outline-info" href="/don-hang-chi-tiet/{{ $item->id }}">Xem</a></td>
+                                <td class="shoping__cart__total">{{ number_format($item->total_price, 0, '', '.') }} đ</td>
+                                @if ($item->active == 0)
+                                    <td class="shoping__cart__total">
+                                        <i class="fa fa-clock-o"></i>
+                                        <span>Chờ xử lý</span>
+                                    </td>
+                                @elseif($item->active == 1)
+                                    <td class="shoping__cart__total">
+                                        <i class="fa fa-truck"></i>
+                                        <span>Đang vận chuyển</span>
+                                    </td>
+                                @elseif($item->active == 2)
+                                    <td class="shoping__cart__total">
+                                        <i class="fa fa-check-square-o"></i>
+                                        <span>Xác nhận hàng</span>
+                                    </td>
+                                @endif
+                                <td class="shoping__cart__total">
+                                    <a class="btn btn-outline-info" href="/don-hang-chi-tiet/{{ $item->id }}">Xem</a>
+                                    @if ($item->active == 1)
+                                        <a class="btn btn-outline-info" href="/xac-nhan-da-nhan-hang/{{ $item->id }}">Xác nhận đã nhận hàng</a>
+                                    @endif
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

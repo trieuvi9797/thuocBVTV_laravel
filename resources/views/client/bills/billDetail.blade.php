@@ -23,7 +23,7 @@
 </section>
 <!-- Breadcrumb Section End -->
  <!-- Shoping Cart Section Begin -->
- @if(count($bills) > 0)
+ @if($bills)
  <section class="shoping-cart spad">
      <div class="container">
         <div class="row">                
@@ -35,21 +35,41 @@
                                 <th class="shoping__product">Sản phẩm</th>
                                 <th>Đơn giá</th>
                                 <th>Số lượng</th>
-                                <th>Tổng cộng</th>
+                                <th>Tổng tiền</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($billDetail as $item)
+                            @foreach ($billDetails as $item)
                             <tr>
-                                <td class="shoping__cart__price">{{ $item->created_at }}</td>
-                                <td class="shoping__cart__total">{{ $item->total_price }}</td>
-                                <td><a class="btn btn-outline-info" href="/don-hang-chi-tiet/{{ $item->id }}">Xem</a></td>
+                                <td class="shoping__cart__item">
+                                    <img src="{{ $item->product->image }}" width="100px" height="100px" alt="">
+                                    <h5>{{ $item->product->name }}</h5>
+                                </td>
+                                <td class="shoping__cart__price">
+                                    {{ number_format($item->product->price, 0 , '', '.') }} đ
+                                </td>
+                                <td class="shoping__cart__quantity">{{ $item->quantity }}</td>
+                                <td class="shoping__cart__total">{{ number_format($item->price, 0, '', '.') }} đ</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-            </div>    
+            </div> 
+            <div class="col-6 col-md-4">
+                <div class="shoping__checkout">
+                    <h5>Thông tin đặt hàng</h5>
+                    <ul>
+                        <li>Ngày đặt hàng:<span>{{ ($bills->created_at)->toDateString() }}</span></li>
+                        <li>Tên khách hàng:<span>{{ $customers->name }}</span></li>
+                        <li>Số điện thoại:<span>{{ $customers->phone }}</span></li>
+                        <li>Địa chỉ nhận hàng:<span>{{ $customers->address }}</span></li>
+                        <li>Ghi chú đơn hàng:<span>{{ $customers->note }}</span></li>
+                        <li>Thuế VAT <span>10%</span></li>
+                        <li>Tổng tiền đơn hàng:<span>{{ number_format($bills->total_price, 0, '', '.') }} đ</span></li>
+                    </ul>
+                </div>
+            </div>   
         </div>
         <div class="row">
              <div class="col-lg-12">

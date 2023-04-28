@@ -218,9 +218,49 @@ class CartController extends Controller
     public function myBill_Detail($id)
     {
         $billDetail = BillDetail::where('bill_id', $id)->get();
+        $bill = Bill::find($id);
+        $customer = Customer::find($bill->customer_id);
         return view('client.bills.billDetail',[
             'title' => 'Chi tiết đơn hàng của tôi',
-            'billDetail' => $billDetail
+            'billDetails' => $billDetail,
+            'bills' => $bill,
+            'customers' => $customer
         ]); 
+    }
+
+    public function myBill_Done($id)
+    {
+        $bill_ID = Bill::where('id',$id)->first();
+        if($bill_ID->active == 1){
+            DB::table('bills')->where('id',$id)->update(['active' => 2]);
+        }
+
+        // $billDetail = BillDetail::where('bill_id',$id)->get();
+        // $bill = Bill::find($id);
+        // $customer = Customer::find($bill->customer_id);
+
+
+        $userID = Auth::user()->id;
+        $customer_userID = Customer::where('user_id',$userID)->orderByDesc('id')->get();
+        if(count($customer_userID) > 0){
+            foreach($customer_userID as $value)
+            $id_customer[] = $value->id;
+        }else
+            $id_customer = [];
+
+        $IDbill = Bill::whereIn('customer_id',$id_customer)->orderByDesc('id')->get();
+        if(count($IDbill) > 0){
+            foreach($IDbill as $value)
+            $id_billDetail[] = $value->id;
+        }else
+            $id_billDetail = [];
+
+        $billDetail = BillDetail::whereIn('bill_id',$id_billDetail)->orderByDesc('created_at')->get();
+        return view('client.bills.myBill',[
+            'title' => 'Chi tiết đơn hàng',
+            'customers' => $customer_userID,
+            'bills' => $IDbill,
+            'billDetails' => $billDetail
+        ]);
     }
 }

@@ -9,7 +9,7 @@
                 <span>Cửa hàng Vật tư nông nghiệp</span>
                 <h2>HAI LÚA</h2>
                 <p>Tư vấn 24/7 - 0966884775</p>
-                <a href="/client/products.index" class="primary-btn">Mua ngay</a>
+                <a href="san-pham.html" class="primary-btn">Mua ngay</a>
             </div>
         </div>
         @endforeach
@@ -140,7 +140,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="latest-product__text">
-                        <h4>Đang khuyến mãi</h4>
+                        <h4>Khuyến mãi</h4>
                         <div class="latest-product__slider owl-carousel">
                             @foreach ($productSale as $sale)
                                 <div class="latest-prdouct__slider__item">
