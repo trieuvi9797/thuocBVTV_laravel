@@ -40,23 +40,6 @@
                         @endforeach
                     </div>
                     <div class="sidebar__item">
-                        <h4>Giá</h4>
-                        <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="10" data-max="540">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" id="minamount">
-                                    <input type="text" id="maxamount">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sidebar__item">
                         <div class="latest-product__text">
                             <h4>Sản phẩm mới nhất</h4>
                             <div class="latest-product__slider owl-carousel">
@@ -98,25 +81,6 @@
             </div>
             <div class="col-lg-9 col-md-7">
                 @if(count($products) > 0)
-                <div class="filter__item">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="filter__sort">
-                                <span>Sắp xếp theo</span>
-                                <select>
-                                    <option value="0">Giá tiền thấp - cao</option>
-                                    <option value="0">Giá tiền cao - thấp</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4" style="right:0">
-                            <div class="filter__option">
-                                <span class="icon_grid-2x2"></span>
-                                <span class="icon_ul"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     @foreach ($products as $product)
                     @php

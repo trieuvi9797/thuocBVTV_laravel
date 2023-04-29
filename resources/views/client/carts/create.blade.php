@@ -67,21 +67,6 @@
                         <div class="checkout__order__total">Tổng thanh toán 
                             <span>{{ Cart::total() }} đ</span>
                         </div>
-                        <div class="checkout__input__checkbox">
-                            <label for="COD">
-                                COD
-                                <input type="checkbox" id="COD">
-                                <span class="checkmark"></span>
-                            </label>
-                        <div class="checkout__input__checkbox">
-                            <label for="Momo">
-                                Ví điện tử Momo
-                                <input type="checkbox" id="Momo">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        {{-- <button type="submit" class="primary-btn-order">Đặt hàng</button> --}}
-                        {{-- <a href="{{ route('dathang') }}" class="primary-btn-order">Đặt hàng</a> --}}
                         <a href="{{ route('dathang') }}" class="primary-btn-order" onclick="event.preventDefault();document.getElementById('checkoutform').submit();">Đặt hàng</a>
                     </div>
                 </div>

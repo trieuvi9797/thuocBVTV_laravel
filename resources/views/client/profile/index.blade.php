@@ -25,7 +25,6 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <h4>Thông tin</h4>
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <h4>Tên khách hàng:</h4>

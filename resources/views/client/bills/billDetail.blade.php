@@ -27,7 +27,7 @@
  <section class="shoping-cart spad">
      <div class="container">
         <div class="row">                
-            <div class="col-12 col-md-8">
+            <div class="col-12 col-md-6">
                 <div class="shoping__cart__table"> 
                     <table>
                          <thead>
@@ -41,33 +41,48 @@
                         <tbody>
                             @foreach ($billDetails as $item)
                             <tr>
-                                <td class="shoping__cart__item">
+                                <td class="checkout__order__item">
                                     <img src="{{ $item->product->image }}" width="100px" height="100px" alt="">
                                     <h5>{{ $item->product->name }}</h5>
                                 </td>
-                                <td class="shoping__cart__price">
+                                <td class="checkout__order__price">
                                     {{ number_format($item->product->price, 0 , '', '.') }} đ
                                 </td>
-                                <td class="shoping__cart__quantity">{{ $item->quantity }}</td>
-                                <td class="shoping__cart__total">{{ number_format($item->price, 0, '', '.') }} đ</td>
+                                <td class="checkout__order__quantity">{{ $item->quantity }}</td>
+                                <td class="checkout__order__total">{{ number_format($item->price, 0, '', '.') }} đ</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div> 
-            <div class="col-6 col-md-4">
-                <div class="shoping__checkout">
-                    <h5>Thông tin đặt hàng</h5>
-                    <ul>
-                        <li>Ngày đặt hàng:<span>{{ ($bills->created_at)->toDateString() }}</span></li>
-                        <li>Tên khách hàng:<span>{{ $customers->name }}</span></li>
-                        <li>Số điện thoại:<span>{{ $customers->phone }}</span></li>
-                        <li>Địa chỉ nhận hàng:<span>{{ $customers->address }}</span></li>
-                        <li>Ghi chú đơn hàng:<span>{{ $customers->note }}</span></li>
-                        <li>Thuế VAT <span>10%</span></li>
-                        <li>Tổng tiền đơn hàng:<span>{{ number_format($bills->total_price, 0, '', '.') }} đ</span></li>
-                    </ul>
+            <div class="col-6 col-md-6">
+                <div class="checkout__order">
+                    <h3>Thông tin đặt hàng</h3>
+                    <div class="checkout__order__subtotal">Ngày đặt hàng:
+                        <span>{{ ($bills->created_at)->toDateString() }}</span>
+                    </div>
+                    <div class="checkout__order__subtotal">Tên khách hàng:
+                        <span>{{ $customers->name }}</span>
+                    </div>
+                    <div class="checkout__order__ship">Số điện thoại: 
+                        <span>{{ $customers->phone }}</span>
+                    </div>
+                    <div class="checkout__order__subtotal">Địa chỉ nhận hàng: 
+                        <span>{{ $customers->address }}</span>
+                    </div>
+                    <div class="checkout__order__ship">Ghi chú đơn hàng: 
+                        <span>{{ $customers->note }}</span>
+                    </div>
+                    <div class="checkout__order__ship">Thuế VAT 
+                        <span>10%</span>
+                    </div>
+                    <div class="checkout__order__total">Tổng tiền đơn hàng: 
+                        <span>{{ number_format($bills->total_price, 0, '', '.') }} đ</span>
+                    </div>
+                    @if ($bills->active == 1)
+                        <a href="/xac-nhan-da-nhan-hang/{{ $bills->id }}" class="primary-btn-order">Xác nhận đã nhận hàng</a>
+                    @endif
                 </div>
             </div>   
         </div>

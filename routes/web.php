@@ -148,7 +148,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dat-hang-thanh-cong', [CartController::class, 'successfull'])->name('successfull');
     Route::get('/don-hang-cua-toi', [CartController::class, 'myBill'])->name('myBill');
     Route::get('/don-hang-chi-tiet/{id}', [CartController::class, 'myBill_Detail']);
-    Route::get('/xan-nhan-da-nhan-hang/{id}', [CartController::class, 'myBill_Done']);
+    Route::get('/xac-nhan-da-nhan-hang/{id}', [CartController::class, 'myBill_Done']);
 
     Route::get('/ho-so-cua-toi', [UserController::class, 'index'])->name('profile.user');
 });

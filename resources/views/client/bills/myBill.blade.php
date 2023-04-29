@@ -28,7 +28,7 @@
  <section class="shoping-cart spad">
      <div class="container">
         <div class="row">                
-            <div class="col-12 col-md-8">
+            <div class="col-12">
                 <div class="shoping__cart__table"> 
                     <table>
                         <thead>
@@ -36,7 +36,7 @@
                                 <th>Ngày đặt hàng</th>
                                 <th>Tổng đơn hàng</th>
                                 <th>Trạng thái đơn hàng</th>
-                                <th>Chi tiết</th>
+                                <th style="width: 10%">Chi tiết</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,14 +57,11 @@
                                 @elseif($item->active == 2)
                                     <td class="shoping__cart__total">
                                         <i class="fa fa-check-square-o"></i>
-                                        <span>Xác nhận hàng</span>
+                                        <span>Đã nhận hàng</span>
                                     </td>
                                 @endif
                                 <td class="shoping__cart__total">
                                     <a class="btn btn-outline-info" href="/don-hang-chi-tiet/{{ $item->id }}">Xem</a>
-                                    @if ($item->active == 1)
-                                        <a class="btn btn-outline-info" href="/xac-nhan-da-nhan-hang/{{ $item->id }}">Xác nhận đã nhận hàng</a>
-                                    @endif
                                 </td>
                             </tr>
                             @endforeach

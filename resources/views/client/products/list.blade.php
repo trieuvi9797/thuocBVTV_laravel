@@ -1,24 +1,5 @@
         <div class="col-lg-9 col-md-7">
             @if(count($products) != 0)
-            <div class="filter__item">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="filter__sort">
-                            <span>Sắp xếp theo</span>
-                            <select>
-                                <option value="0">Giá tiền thấp - cao</option>
-                                <option value="0">Giá tiền cao - thấp</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4" style="right:0">
-                        <div class="filter__option">
-                            <span class="icon_grid-2x2"></span>
-                            <span class="icon_ul"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 @foreach ($products as $product)
                 @php
