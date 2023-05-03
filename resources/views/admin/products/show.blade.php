@@ -46,10 +46,6 @@
                                 <div class="mb-3">
                                     <label  class="form-label">Đã bán:</label>
                                     <a>{{ $product->sold }}</a>
-                                </div>                                
-                                <div class="mb-3">
-                                    <label  class="form-label">Lượt thích:</label>
-                                    <a>{{ $product->likes }}</a>
                                 </div>
                             </div>
                         </div>

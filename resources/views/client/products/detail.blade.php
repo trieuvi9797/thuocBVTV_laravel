@@ -43,14 +43,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
                         <h3>{{ $productDetails->name }}</h3>
-                        <div class="product__details__rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <span>(18 reviews)</span>
-                        </div>
+                        
                         @php
                             $priceSale = $productDetails->sale > 0 ? $productDetails->price-($productDetails->price*$productDetails->sale/100) : $productDetails->price;
                         @endphp
@@ -66,30 +59,14 @@
                                     <span style="color:red">Hết hàng</span>
                                 </li>
                                 <li><b>Vận chuyển</b> <span>01-02 ngày. <samp>Miễn phí</samp></span></li>
-                                <li><b>Chia sẽ</b>
-                                    <div class="share">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-instagram"></i></a>
-                                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    </div>
-                                </li>
                             </ul>
                             @else
                             <ul>
                                 <li>
                                     <b>Số lượng kho</b> 
-                                    <span>{{ $productDetails->quantity }}</span>
+                                    <span>Còn hàng</span>
                                 </li>
                                 <li><b>Vận chuyển</b> <span>01-02 ngày. <samp>Miễn phí</samp></span></li>
-                                <li><b>Chia sẽ</b>
-                                    <div class="share">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-instagram"></i></a>
-                                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    </div>
-                                </li>                                    
                             </ul>
                             <form action="/gio-hang-them/{{ $productDetails->id }}" method="post">
                                 @csrf
@@ -100,16 +77,16 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <a href="/gio-hang-them/{{ $productDetails->id }}" class="primary-btn">
-                                Thêm vào giỏ hàng
-                            </a> --}}
                             <button type="submit" class="primary-btn">Thêm vào giỏ hàng</button>
-                            {{-- <a type="submit"  class="primary-btn">Thêm vào giỏ hàng</a> --}}
-                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                             @endif
                             <input type="hidden" name="product_id" value="{{ $productDetails->id }}">
                         </form>
-                        
+                        <ul>
+                            <li><b>Danh mục thuốc:</b> <span>{{ $productDetails->category->name }}</span></li>
+                            <li><b>Lượt xem:</b> <span>{{ $productDetails->view }}</span></li>
+                            <li><b>Đã bán: </b> <span>{{ $productDetails->sold }}</span></li>
+                            
+                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -123,7 +100,6 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">
-                                    {{-- <h6>Products Infomation</h6> --}}
                                     {!! $productDetails->description !!}
                                 </div>
                             </div>
@@ -151,8 +127,6 @@
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="{{ $item->image }}">
                             <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
                                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>

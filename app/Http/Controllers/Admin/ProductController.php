@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\CreateFormRequest;
 use App\Http\Requests\Product\ProductRequest;
+use App\Http\Services\Category\CategoryService;
 use App\Http\Services\Product\ProductAdminService;
 use App\Models\Category;
 use App\Models\Product;
@@ -21,10 +22,11 @@ class ProductController extends Controller
     protected $product;
     protected $category;
 
-    public function __construct(Product $product, ProductAdminService $productService, Category $category)
+    public function __construct(Product $product, ProductAdminService $productService, CategoryService $category)
     {
         $this->productService = $productService;
         $this->product = $product;
+        $this->category = $category;
     }
 
     public function index()
@@ -37,9 +39,10 @@ class ProductController extends Controller
 
     public function create()
     {
+        $childCategories = Category::with('childrents')->where('parent_id',0)->get();
         return view('admin.products.create', [
             'title' => 'Thêm Sản Phẩm Mới',
-            'category' => $this->productService->getCategory()
+            'childCategories' => $childCategories
         ]);
         
     }
@@ -49,7 +52,7 @@ class ProductController extends Controller
         if($result){
             return redirect('/admin/products/index');
         }
-        return redirect()->back();
+        return redirect()->back()->with('error', 'Vui lòng chọn lại danh mục con.');
     }
 
     public function show(Product $product)

@@ -8,18 +8,6 @@ use App\Models\Product;
 
 class ProductService
 {
-
-    // public function get($page = null)
-    // {
-    //     return Product::select('id', 'name', 'price', 'sale', 'image')
-    //     ->orderByDesc('id')
-    //     ->when($page != null, function($query) use ($page){
-    //         $query->offset($page * self::LIMIT);
-    //     })
-    //     ->limit(self::LIMIT)
-    //     ->get();
-    // }
-
     public function getDetails($id)
     {
         return Product::where('id', $id)->with('category')->firstOrFail();

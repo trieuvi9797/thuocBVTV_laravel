@@ -90,8 +90,7 @@
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="{{ $product->image }}">
                                     <ul class="product__item__pic__hover">
-                                        <li><a href="san-pham/{id}-{slug}.html"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="/gio-hang"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><a href="/them-vao-gio-hang/{{ $product->id }}"><i class="fa fa-shopping-cart"></i></a></li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">

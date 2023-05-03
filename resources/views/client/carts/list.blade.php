@@ -31,6 +31,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-8">
+
+                @include('admin.layouts.alert')
+                
                     <div class="shoping__cart__table">                        
                         <table>
                             <thead>

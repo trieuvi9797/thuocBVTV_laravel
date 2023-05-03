@@ -52,7 +52,7 @@
                                 @elseif($item->active == 1)
                                     <td class="shoping__cart__total">
                                         <i class="fa fa-truck"></i>
-                                        <span>Đang vận chuyển</span>
+                                        <span>Đang chờ vận chuyển</span>
                                     </td>
                                 @elseif($item->active == 2)
                                     <td class="shoping__cart__total">

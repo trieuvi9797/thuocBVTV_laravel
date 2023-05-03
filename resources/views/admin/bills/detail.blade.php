@@ -18,7 +18,7 @@
                             @if ($bills->active == 0)
                             <a class="btn app-btn-primary" href="/admin/bills/active/{{ $bills->id }}">
                                 <i class="fa fa-check"></i>
-                                Xác nhận ĐH
+                                Xác nhận và gửi đơn hàng
                             </a>
                             @elseif($bills->active == 1)
                             <a class="btn app-btn-primary" href="/admin/bills/active/{{ $bills->id }}">

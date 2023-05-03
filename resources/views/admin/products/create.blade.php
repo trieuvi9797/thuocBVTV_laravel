@@ -1,11 +1,11 @@
 @extends('admin.layouts.app')
-@section('title', 'Thêm sản phẩm')
-
 @section('content')          
             
 <div class="app-content pt-3 p-md-3 p-lg-4">
     <h1 class="app-page-title">Thêm sản phẩm</h1>
     <div class="app-card app-card-settings shadow-sm p-4">
+        @include('admin.layouts.alert')
+
         <div class="app-card-body">
             <form action="" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -35,8 +35,16 @@
                             <label class="form-label">Danh mục:</label>
                             <select name="category_id" class="form-control">
                                 <option value="">-- Chọn danh mục --</option>
-                                @foreach($category as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>        
+                                @foreach($childCategories as $item)
+                                    <option value="">{{ $item->name }}</option>
+                                    {{-- <option value="">{{ $item->name }}</option>   --}}
+                                    @if ($item->childrents)
+                                        @foreach ($item->childrents as $sub_cate)
+                                            <option value="{{ $sub_cate->id }}">--{{ $sub_cate->name }}</option>  
+                                            
+                                        @endforeach
+                                        
+                                    @endif      
                                 @endforeach
                             </select>
                             @error('category_id')

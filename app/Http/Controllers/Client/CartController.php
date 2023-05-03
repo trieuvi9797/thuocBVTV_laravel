@@ -52,16 +52,22 @@ class CartController extends Controller
 
     public function addProductCart($id)
     {
-        // dd($id->quantity);
-        // $product_ID = Product::where('id', $id)->first();
-        // if($row->qty < $product_ID->quantity)
-        // {
-        //     Cart::update($row_id, $row->qty + 1);
-        //     Session::flash('error', 'Sản phẩm trong kho không đủ số lượng.');
-        //     return redirect('/gio-hang');
-        // }
-        
-        //     return redirect('/gio-hang');
+        $product = Product::where('id', $id)->first();
+        if($product->quantity == 0)
+            {
+                return redirect('/gio-hang')->with('error', 'Sản phẩm bạn đã chọn không đủ số lượng trong kho.');
+            }
+        Cart::add([
+            'id' => $product->id,
+            'name' => $product->name,
+            'price' => $product->price,
+            'qty' => 1,
+            'weight' => 0,
+            'options' => [
+                'image' => $product->image
+                ]
+            ]);
+        return redirect('/gio-hang');
     }
     
     public function remove($row_id)
