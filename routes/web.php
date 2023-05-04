@@ -106,6 +106,8 @@ Route::middleware(['auth'])->group(function(){
             Route::get('edit/{product}', [AdminController::class, 'edit']);
             Route::post('edit/{product}', [AdminController::class, 'update']);
             Route::DELETE('destroy', [AdminController::class, 'destroy']);
+            Route::get('resetPassword', [AdminController::class, 'resetPWadmin'])->name('reset.pw.Admin');
+            Route::post('resetPassword', [AdminController::class, 'postResetPWadmin'])->name('postReset.pw.Admin');
         });
     });
 
@@ -131,9 +133,9 @@ Route::get('/tin-tuc', [ClientPostController::class, 'index'])->name('post');
 Route::get('/tin-tuc/{id}', [ClientPostController::class, 'show'])->name('post.detail');
 
 Route::get('/quen-mat-khau', [UserController::class, 'forgotPass'])->name('user.forgotPass');
-Route::post('/quen-mat-khau', [UserController::class, 'postForgotPass']);
-Route::get('/lay-mat-khau/{user}/{token}', [UserController::class, 'getPass'])->name('user.getPass');
-Route::post('/lay-mat-khau/{user}/{token}', [UserController::class, 'postGetPass']);
+Route::post('/quen-mat-khau', [UserController::class, 'postForgotPass'])->name('user.link.forgotPass');
+Route::get('/lay-mat-khau/{token}', [UserController::class, 'showResetForm'])->name('user.resetPass');
+Route::post('/lay-mat-khau', [UserController::class, 'postResetPass'])->name('reset.password');
 
 Route::middleware('auth')->group(function () {
     Route::get('/gio-hang',[CartController::class, 'index']);

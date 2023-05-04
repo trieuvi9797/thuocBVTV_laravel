@@ -156,7 +156,12 @@
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
                                     <li><a href="{{ route('profile.user') }}">Hồ sơ của tôi</a></li>
-                                    <li><a href="#">Đổi mật khẩu</a></li>
+                                    <li>
+                                        <form action="" method="post">
+                                            @csrf
+                                            <a href="{{ route('user.link.forgotPass') }}">Đổi mật khẩu</a>
+                                        </form>
+                                    </li>
                                     <li><a href="{{ route('myBill') }}">Đơn hàng của tôi</a></li>   
                                 </ul>
                             </div>    

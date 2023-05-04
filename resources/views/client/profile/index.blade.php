@@ -35,7 +35,8 @@
                         @foreach ($user as $item)
                         <h4>{{ $item->name }}</h4>
                         <h4>{{ $item->email }}</h4>
-                        <h4><a href="">Đổi mật khẩu</a></h4>
+                        <h4>********</h4>
+                        {{-- <h4><a class="reset-password" href="">Đổi mật khẩu</a></h4> --}}
                         @endforeach
                         
                     </div> 

@@ -2,12 +2,12 @@
 <html lang="en"> 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="VTNN - KHAI MAI">
-    <meta name="keywords" content="VTNN - KHAI MAI">
+    <meta name="description" content="VTNN - Hai Lua">
+    <meta name="keywords" content="VTNN - Hai Lua">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/client/Logo.jpg"> 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{-- <title>{{ $title }}</title> --}}
+    <title>Quên mật khẩu</title>
 
     <!-- FontAwesome JS-->
     <script defer src="/admins/assets/plugins/fontawesome/js/all.min.js"></script>
@@ -27,11 +27,13 @@
 					<div class="auth-intro mb-4 text-center">Nhập địa chỉ email của bạn dưới đây. Chúng tôi sẽ gửi email cho bạn một liên kết đến một trang nơi bạn có thể dễ dàng tạo mật khẩu mới.</div>
 	
 					<div class="auth-form-container text-left">
+						@include('admin.layouts.alert')
 						
-						<form class="auth-form resetpass-form">                
+						<form class="auth-form resetpass-form" action="{{ route('user.link.forgotPass') }}" method="POST"> 
+							@csrf               
 							<div class="email mb-3">
 								<label class="sr-only" for="reg-email">Email</label>
-								<input id="reg-email" name="reg-email" type="email" class="form-control login-email" placeholder="Nhập Email của bạn..." required="required">
+								<input id="reg-email" name="email" type="email" class="form-control login-email" placeholder="Nhập Email của bạn..." required="required">
 							</div><!--//form-group-->
 							<div class="text-center">
 								<button type="submit" class="btn app-btn-primary btn-block theme-btn mx-auto">Gửi email xác nhận</button>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/client/Logo.jpg"> 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{-- <title>{{ $title }}</title> --}}
+    <title>Đăng nhập</title>
 
     <!-- FontAwesome JS-->
     <script defer src="/admins/assets/plugins/fontawesome/js/all.min.js"></script>
@@ -25,6 +25,8 @@
 				    <div class="app-auth-branding mb-4"><a class="app-logo" href="/login"><img class="logo-icon me-2" src="/admins/assets/images/logo.jpg" alt="logo"></a></div>
 					<h2 class="auth-heading text-center mb-5">Đăng nhập</h2>
 			        <div class="auth-form-container text-start">
+						@include('admin.layouts.alert')
+
 						<form class="auth-form login-form" method="post" action="{{ route('login') }}">  
 							@csrf       
 							<div class="email mb-3">

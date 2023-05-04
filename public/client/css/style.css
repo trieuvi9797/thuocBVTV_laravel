@@ -101,6 +101,12 @@ a:focus {
 	color: #ffffff;
 }
 
+.checkout__form h4 a:hover{
+	text-decoration: none;
+	outline: none;
+	color: #1c1c1c;
+}
+
 ul,
 ol {
 	padding: 0;
