@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use App\Http\Services\Slider\SliderService;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class SliderController extends Controller
 {
@@ -19,11 +19,14 @@ class SliderController extends Controller
 
     public function index()
     {
-        $slider = Slider::orderByDesc('id')->paginate(10);
-        return view('admin.sliders.index', [
-            'title' => 'Danh sách slider',
-            'sliders' => $slider
-        ]);
+        if(Auth::user()->user_type == 'AD'){
+            $slider = Slider::orderByDesc('id')->paginate(10);
+            return view('admin.sliders.index', [
+                'title' => 'Danh sách slider',
+                'sliders' => $slider
+            ]);
+        }
+        return redirect()->back();
     }
 
     /**
@@ -31,9 +34,12 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('admin.sliders.create', [
-            'title' => 'Thêm slider mới'
-        ]);
+        if(Auth::user()->user_type == 'AD'){
+            return view('admin.sliders.create', [
+                'title' => 'Thêm slider mới'
+            ]);
+        }
+        return redirect()->back();
     }
 
     /**
@@ -68,10 +74,13 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        return view('admin.sliders.edit', [
-            'title' => 'Cập nhật slider',
-            'slider' => $slider
-        ]);
+        if(Auth::user()->user_type == 'AD'){
+            return view('admin.sliders.edit', [
+                'title' => 'Cập nhật slider',
+                'slider' => $slider
+            ]);
+        }
+        return redirect()->back();
     }
 
     /**
@@ -97,9 +106,12 @@ class SliderController extends Controller
      */
     public function destroy(Request $request)
     {
-        $result = $this->slider->destroy($request);
-        if($result){
-            return redirect('/admin/sliders/index');
+        if(Auth::user()->user_type == 'AD'){
+            $result = $this->slider->destroy($request);
+            if($result){
+                return redirect('/admin/sliders/index');
+            }
+            return redirect()->back();
         }
         return redirect()->back();
     }

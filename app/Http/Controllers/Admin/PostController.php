@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\Post\PostService;
 use App\Traits\UploadImageTrait;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -26,11 +27,14 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderByDesc('id')->paginate(10);
-        return view('admin.posts.index',[
-            'title' => 'Bài viết - Tin tức',
-            'posts' => $posts
-        ]);
+        if(Auth::user()->user_type == 'AD'){
+            $posts = Post::orderByDesc('id')->paginate(10);
+            return view('admin.posts.index',[
+                'title' => 'Bài viết - Tin tức',
+                'posts' => $posts
+            ]);
+        }
+        return redirect()->back();
     }
 
     /**
@@ -38,9 +42,12 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create',[
-            'title' => 'Thêm bài viết - tin tức',
-        ]);
+        if(Auth::user()->user_type == 'AD'){
+            return view('admin.posts.create',[
+                'title' => 'Thêm bài viết - tin tức',
+            ]);
+        }
+        return redirect()->back();
     }
     
     /**
@@ -67,10 +74,13 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.posts.show',[
-            'title' => 'Chi tiết bài viết',
-            'post' => $post,
-        ]);
+        if(Auth::user()->user_type == 'AD'){
+            return view('admin.posts.show',[
+                'title' => 'Chi tiết bài viết',
+                'post' => $post,
+            ]);
+        }
+        return redirect()->back();
     }
 
     /**
@@ -78,10 +88,13 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit',[
-            'title' => 'Sửa bài viết - tin tức',
-            'post' => $post,
-        ]);
+        if(Auth::user()->user_type == 'AD'){
+            return view('admin.posts.edit',[
+                'title' => 'Sửa bài viết - tin tức',
+                'post' => $post,
+            ]);
+        }
+        return redirect()->back();
     }
 
     /**
@@ -101,13 +114,16 @@ class PostController extends Controller
      */
     public function destroy(Request $request)
     {
-        $result = $this->postService->delete($request);
-        if($result){
-            return response()->json([
-                'error' => false,
-                'message' => 'Xóa thành công sản phẩm.'
-            ]);
+        if(Auth::user()->user_type == 'AD'){
+            $result = $this->postService->delete($request);
+            if($result){
+                return response()->json([
+                    'error' => false,
+                    'message' => 'Xóa thành công sản phẩm.'
+                ]);
+            }
+            return response()->json(['error => true']);
         }
-        return response()->json(['error => true']);
+        return redirect()->back();
     }
 }

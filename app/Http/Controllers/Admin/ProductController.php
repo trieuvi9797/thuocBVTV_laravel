@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Traits\UploadImageTrait;
 use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,19 +32,25 @@ class ProductController extends Controller
 
     public function index()
     {
-        return view('admin.products.index', [
-            'title' => 'Danh Sách Sản Phẩm',
-            'products' => Product::orderByDesc('id')->search()->paginate(10)
-        ]);
+        if(Auth::user()->user_type == 'AD'){
+            return view('admin.products.index', [
+                'title' => 'Danh Sách Sản Phẩm',
+                'products' => Product::orderByDesc('id')->search()->paginate(10)
+            ]);
+        }
+        return redirect()->back();
     }
 
     public function create()
     {
-        $childCategories = Category::with('childrents')->where('parent_id',0)->get();
-        return view('admin.products.create', [
-            'title' => 'Thêm Sản Phẩm Mới',
-            'childCategories' => $childCategories
-        ]);
+        if(Auth::user()->user_type == 'AD'){
+            $childCategories = Category::with('childrents')->where('parent_id',0)->get();
+            return view('admin.products.create', [
+                'title' => 'Thêm Sản Phẩm Mới',
+                'childCategories' => $childCategories
+            ]);
+        }
+        return redirect()->back();
         
     }
     public function store(CreateFormRequest $request)
@@ -57,20 +64,26 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view('admin.products.show', [
-            'title' => 'Chi tiết sản phẩm',
-            'product' => $product,
-            'category' => $this->productService->getCategory(),
-        ]);
+        if(Auth::user()->user_type == 'AD'){
+            return view('admin.products.show', [
+                'title' => 'Chi tiết sản phẩm',
+                'product' => $product,
+                'category' => $this->productService->getCategory(),
+            ]);
+        }
+        return redirect()->back();
     }
 
     public function edit(Product $product)
     {
-        return view('admin.products.edit', [
-            'title' => 'Thêm Sản Phẩm Mới',
-            'product' => $product,
-            'category' => $this->productService->getCategory()
-        ]);
+        if(Auth::user()->user_type == 'AD'){
+            return view('admin.products.edit', [
+                'title' => 'Cập nhật Sản Phẩm',
+                'product' => $product,
+                'category' => $this->productService->getCategory()
+            ]);
+        }
+        return redirect()->back();
     }
 
     /**
@@ -90,13 +103,16 @@ class ProductController extends Controller
      */
     public function destroy(Request $request)
     {
-        $result = $this->productService->delete($request);
-        if($result){
-            return response()->json([
-                'error' => false,
-                'message' => 'Xóa thành công sản phẩm.'
-            ]);
+        if(Auth::user()->user_type == 'AD'){
+            $result = $this->productService->delete($request);
+            if($result){
+                return response()->json([
+                    'error' => false,
+                    'message' => 'Xóa thành công sản phẩm.'
+                ]);
+            }
+            return response()->json(['error => true']);
         }
-        return response()->json(['error => true']);
+        return redirect()->back();
     }
 }

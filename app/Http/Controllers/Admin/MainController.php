@@ -15,6 +15,6 @@ class MainController extends Controller
                 'title' => 'Trang quản trị',
             ]);
         }
-        return redirect()->back();
+        return redirect('/');
     }
 }

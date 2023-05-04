@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Client\Str;
 
 class UserController extends Controller
 {
@@ -23,8 +25,20 @@ class UserController extends Controller
         return view('client.auth.forgot-pw');
     }
 
-    // public function postForgotPass(User $user, $token)
-    // {
-    //     if($user->token)
-    // }
+    public function postForgotPass(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|exists:users'
+        ],[
+            'email.required' => 'Vui lòng nhập địa chỉ email hợp lệ.',
+            'email.exists' => 'Email này không tồn tại trong hệ thống!.',
+        ]);
+
+        $token = strtoupper(Str::random(10));
+        $user = User::where('email',$request->email)->first();
+        Mail::send('mail.check_forget', compact('user'), function ($email) use($user){
+            $email->subject('Lấy lại mật khẩu.');
+            $email->sender($user->email, $user->name);
+        });
+    }
 }
