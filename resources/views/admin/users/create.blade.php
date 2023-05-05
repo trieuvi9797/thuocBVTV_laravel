@@ -5,29 +5,29 @@
     <div class="container-xl">
         <div class="row g-3 mb-4 align-items-center justify-content-between">
             <div class="col-auto">
-                <h1 class="app-page-title mb-0">Đổi mật khẩu</h1>
+                <h1 class="app-page-title mb-0">Tạo tài khoản</h1>
             </div><!--//col-auto-->
         </div><!--//row-->
         <hr class="mb-4">
         <div class="row g-4 settings-section">
-			@include('admin.layouts.alert')
+            @include('admin.layouts.alert')
             
             <div class="col-12">
                 <div class="app-card app-card-settings shadow-sm p-4">
                     <div class="app-card-body">
-                        <form class="settings-form" method="POST" action="{{ route('postReset.pw.Admin') }}">
+                        <form class="settings-form" method="POST" action="{{ route('register.admin') }}">
                             @csrf
                             <div class="mb-3">
+                                <label for="name" class="form-label">Tên người dùng</label>
+                                <input type="text" name="name" class="form-control" id="name" value="" required>
+                            </div>
+                            <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control" id="email" value="{{ Auth::user()->email }}" disabled>
+                                <input type="email" name="email" class="form-control" id="email" value="" required>
                             </div>
                             <div class="mb-3">
-                                <label for="password_old" class="form-label">Mật khẩu cũ</label>
-                                <input type="password" name="password_old" class="form-control" id="password_old" value="" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password_new" class="form-label">Mật khẩu mới</label>
-                                <input type="password" name="password_new" class="form-control" id="password_new" value="" required>
+                                <label for="password" class="form-label">Mật khẩu</label>
+                                <input type="password" name="password" class="form-control" id="password" value="" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password_confirmation" class="form-label">Xác nhận mật khẩu</label>

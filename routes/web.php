@@ -100,12 +100,9 @@ Route::middleware(['auth'])->group(function(){
         });
         Route::prefix('users')->group(function(){
             Route::get('index', [AdminController::class, 'index']);
-            Route::get('create', [AdminController::class, 'create']);
-            Route::post('create', [AdminController::class, 'store']);
-            Route::get('show/{product}', [AdminController::class, 'show']);
-            Route::get('edit/{product}', [AdminController::class, 'edit']);
-            Route::post('edit/{product}', [AdminController::class, 'update']);
-            Route::DELETE('destroy', [AdminController::class, 'destroy']);
+            Route::get('create', [AdminController::class, 'create'])->name('register.admin');
+            Route::post('create', [AdminController::class, 'store'])->name('register.admin');
+            Route::get('profile_Admin', [AdminController::class, 'profileADmin'])->name('profile.admin');
             Route::get('resetPassword', [AdminController::class, 'resetPWadmin'])->name('reset.pw.Admin');
             Route::post('resetPassword', [AdminController::class, 'postResetPWadmin'])->name('postReset.pw.Admin');
         });

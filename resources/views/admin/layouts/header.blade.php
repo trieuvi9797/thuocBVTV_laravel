@@ -26,7 +26,7 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
-                            <li><a class="dropdown-item" href="">Tài khoản của tôi</a></li>
+                            <li><a class="dropdown-item" href="{{ route('profile.admin') }}">Tài khoản của tôi</a></li>
                             <li><a class="dropdown-item" href="{{ route('reset.pw.Admin') }}">Đổi mật khẩu</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>

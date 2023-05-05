@@ -88,8 +88,8 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="/">Trang chủ</a></li>
-                <li><a href="/san-pham.html">Sản phẩm</a>
+                <li class="{{ request()->Is('*/') ? 'active' : '' }}"><a href="/">Trang chủ</a></li>
+                <li class="{{ request()->Is('*san-pham*') ? 'active' : '' }}"><a href="/san-pham.html">Sản phẩm</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="{{ route('product_New') }}">SP mới nhất</a></li>
                         <li><a href="{{ route('product_Sold') }}">SP bán chạy</a></li>
@@ -97,8 +97,8 @@
                         <li><a href="{{ route('myBill') }}">Kiểm tra đơn hàng</a></li>
                     </ul>
                 </li>
-                <li><a href="/tin-tuc">Tin tức</a></li>
-                <li><a href="/lien-he.html">Liên hệ</a></li>
+                <li class="{{ request()->Is('*tin-tuc*') ? 'active' : '' }}"><a href="/tin-tuc">Tin tức</a></li>
+                <li class="{{ request()->Is('*lien-he*') ? 'active' : '' }}"><a href="/lien-he.html">Liên hệ</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -197,16 +197,16 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="/">Trang chủ</a></li>
-                            <li><a href="/san-pham.html">Sản phẩm</a>
+                            <li class="{{ request()->Is('*/') ? 'active' : '' }}"><a href="/">Trang chủ</a></li>
+                            <li class="{{ request()->Is('*san-pham*') ? 'active' : '' }}"><a href="/san-pham.html">Sản phẩm</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="{{ route('product_New') }}">SP mới nhất</a></li>
                                     <li><a href="{{ route('product_Sold') }}">SP bán chạy</a></li>
                                     <li><a href="{{ route('product_Sale') }}">SP Khuyến mãi</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/tin-tuc">Tin tức</a></li>
-                            <li><a href="/lien-he.html">Liên hệ</a></li>
+                            <li class="{{ request()->Is('*tin-tuc*') ? 'active' : '' }}"><a href="/tin-tuc">Tin tức</a></li>
+                            <li class="{{ request()->Is('*lien-he*') ? 'active' : '' }}"><a href="/lien-he.html">Liên hệ</a></li>
                         </ul>
                     </nav>
                 </div>
