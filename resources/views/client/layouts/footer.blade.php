@@ -22,14 +22,14 @@
                         <h6>Danh mục sản phẩm</h6>
                         <ul>
                         @foreach ($parentCategories as $parentCate)
-                            <li><a href="#">{{ $parentCate->name }}</a></li>
-                            @endforeach
+                            <li><a href="/danh-muc/san-pham/{{ $parentCate->id }}-{{ Str::slug($parentCate->name), '-'}}">{{ $parentCate->name }}</a></li>
+                        @endforeach
                         </ul>
                         <ul>
-                            <li><a href="#">Trang chủ</a></li>
-                            <li><a href="#">Sản phẩm</a></li>
-                            <li><a href="#">Tin Nông nghiệp</a></li>
-                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/san-pham.html">Sản phẩm</a></li>
+                            <li><a href="/tin-tuc">Tin Nông nghiệp</a></li>
+                            <li><a href="/lien-he.html">Liên hệ</a></li>
                         </ul>
                     </div>
                 </div>

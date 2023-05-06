@@ -50,8 +50,6 @@ class BillController extends Controller
             $bill = Bill::where('id',$id)->first();
             if($bill->active == 0){
                 DB::table('bills')->where('id',$id)->update(['active' => 1]);
-            }elseif($bill->active == 1){
-                DB::table('bills')->where('id',$id)->update(['active' => 2]);
             }
     
             $billDetail = BillDetail::where('bill_id',$id)->get();

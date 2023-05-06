@@ -18,15 +18,8 @@
                             @if ($bills->active == 0)
                             <a class="btn app-btn-primary" href="/admin/bills/active/{{ $bills->id }}">
                                 <i class="fa fa-check"></i>
-                                Xác nhận và gửi đơn hàng
-                            </a>
-                            @elseif($bills->active == 1)
-                            <a class="btn app-btn-primary" href="/admin/bills/active/{{ $bills->id }}">
-                                <i class="fa fa-truck"></i>
                                 Tiến hành vận chuyển
                             </a>
-                            @elseif($bills->active == 2)
-                            
                             @endif    
                         </div>
                     </div><!--//row-->
@@ -57,17 +50,17 @@
                         <div class="row">
                             <div class="col-md">
                                 <ul class="list-unstyled">
-                                    <li><strong>Mã đơn hàng:</strong>   {{ $bills->id }}</li>
-                                    <li><strong>Email:</strong>   {{ $customers->email }}</li>
-                                    <li><strong>Địa chỉ:</strong>   {{ $customers->address }}</li>
-                                    <li><strong>Ghi chú đơn hàng:</strong>   {{ $customers->note }}</li>
+                                    <li>Mã đơn hàng: <strong>{{ $bills->id }}</strong></li>
+                                    <li>Email: <strong>{{ $customers->email }}</strong></li>
+                                    <li>Địa chỉ: <strong>{{ $customers->address }}</strong></li>
+                                    <li>Ghi chú đơn hàng: <strong>{{ $customers->note }}</strong></li>
                                 </ul>
                             </div>
                             <div class="col-md">
                                 <ul class="list-unstyled">
-                                    <li><strong>Tên khách hàng:</strong>   {{ $customers->name }}</li>
-                                    <li><strong>Số điện thoại:</strong>   {{ $customers->phone }}</li>
-                                    <li><strong>Tổng tiền:</strong>   {{ number_format($bills->total_price) }} đ</li>
+                                    <li>Tên khách hàng: <strong>   {{ $customers->name }}</strong></li>
+                                    <li>Số điện thoại: <strong>   {{ $customers->phone }}</strong></li>
+                                    <li>Tổng tiền: <strong>   {{ number_format($bills->total_price) }} đ</strong></li>
                                 </ul>
                             </div>
                         </div>                          
@@ -91,9 +84,10 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @php $stt = 1; @endphp
                                 @foreach ($billDetails as $item)
                                 <tr>
-                                    <td>{{ $item->id }}</td>                                        
+                                    <td>{{ $stt++; }}</td>                                        
                                     <td>{{ $item->product->name }}</td>                                        
                                     <td><img src="{{ $item->product->image }}" width="80px" height="80px" alt=""></td>  
                                     <td>{{ $item->product->price }}</td>  

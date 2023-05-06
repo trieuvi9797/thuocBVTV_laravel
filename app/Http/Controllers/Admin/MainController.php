@@ -24,7 +24,7 @@ class MainController extends Controller
             $totalPriceBill = Bill::where('active', 2)->sum('total_price');
             
 
-            $todayDate = Carbon::now()->format('d-m-Y');
+            $todayDate = Carbon::now()->format('Y-m-d');
             $month = Carbon::now()->format('m');
             $year = Carbon::now()->format('Y');
             $totalBill = Bill::count();

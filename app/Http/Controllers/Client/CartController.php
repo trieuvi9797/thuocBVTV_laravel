@@ -54,9 +54,9 @@ class CartController extends Controller
     {
         $product = Product::where('id', $id)->first();
         if($product->quantity == 0)
-            {
-                return redirect('/gio-hang')->with('error', 'Sản phẩm bạn đã chọn không đủ số lượng trong kho.');
-            }
+        {
+            return redirect('/gio-hang')->with('error', 'Sản phẩm bạn đã chọn không đủ số lượng trong kho.');
+        }
         Cart::add([
             'id' => $product->id,
             'name' => $product->name,
@@ -82,10 +82,10 @@ class CartController extends Controller
         if($row->qty < $product->quantity)
         {
             Cart::update($row_id, $row->qty + 1);
-            Session::flash('error', 'Sản phẩm trong kho không đủ số lượng.');
+            Session::flash('success', 'Bạn vừa thêm sản phẩm vào giỏ hàng.');
             return redirect('/gio-hang');
         }
-        return redirect('/gio-hang');
+        return redirect('/gio-hang')->with('error', 'Sản phẩm bạn vừa chọn không đủ số lượng trong kho. Vui lòng chọn sản phẩm khác để thay thế hoặc liên hệ hotline để được tư vấn thêm.');
     }
     public function downQuantity($row_id)
     {
@@ -176,7 +176,21 @@ class CartController extends Controller
                                                 'quantity' => $qty_remaining,
                                                 'sold'     => $sold ]);
                         }
-                    SendMail::dispatch($customer->email)->delay(now()->addSeconds(2));
+                    // SendMail::dispatch($customer->email)->delay(now()->addSeconds(2));
+
+                    $billDetail = BillDetail::where('bill_id', $bill->id)->get();
+
+                    Mail::send('client.mail.success',[
+                        'detail_bill'=>$billDetail,
+                        'bill'=>$bill,
+                        'customer'=>$customer,
+                    ], function($message) use ($request){
+                        $message->to($request->email, $request->name)
+                                ->subject('Đơn hàng của bạn');
+                    });
+
+
+
                     Cart::destroy();
                     return redirect('/dat-hang-thanh-cong')->with('success',"Thanh toán thành công. Bạn có thể kiểm tra email thanh toán để xem đơn hàng");
                 }else{

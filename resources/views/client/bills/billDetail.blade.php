@@ -57,6 +57,9 @@
                 </div>
             </div> 
             <div class="col-6 col-md-6">
+                @if ($bills->active == 1)
+                <a href="/xac-nhan-da-nhan-hang/{{ $bills->id }}" class="primary-btn-order">Xác nhận đã nhận hàng</a>
+                @endif
                 <div class="checkout__order">
                     <h3>Thông tin đặt hàng</h3>
                     <div class="checkout__order__subtotal">Ngày đặt hàng:
@@ -80,9 +83,6 @@
                     <div class="checkout__order__total">Tổng tiền đơn hàng: 
                         <span>{{ number_format($bills->total_price, 0, '', '.') }} đ</span>
                     </div>
-                    @if ($bills->active == 1)
-                        <a href="/xac-nhan-da-nhan-hang/{{ $bills->id }}" class="primary-btn-order">Xác nhận đã nhận hàng</a>
-                    @endif
                 </div>
             </div>   
         </div>

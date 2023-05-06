@@ -29,10 +29,10 @@
     <form action="" method="POST">   
     <section class="shoping-cart spad">
         <div class="container">
+            @include('admin.layouts.alert')
             <div class="row">
                 <div class="col-12 col-md-8">
 
-                @include('admin.layouts.alert')
                 
                     <div class="shoping__cart__table">                        
                         <table>
