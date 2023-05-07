@@ -80,7 +80,7 @@ class BillController extends Controller
         if(Auth::user()->user_type == 'AD'){
             $bills = Bill::where('active', 1)->orderByDesc('id')->paginate(10);
             return view('admin.bills.ship', [
-                'title' => 'Danh sách đơn hàng mới',
+                'title' => 'Danh sách đơn hàng đang vận chuyển',
                 'bills' => $bills
             ]);
         }
@@ -91,7 +91,7 @@ class BillController extends Controller
         if(Auth::user()->user_type == 'AD'){
             $bills = Bill::where('active', 2)->orderByDesc('id')->paginate(10);
             return view('admin.bills.done', [
-                'title' => 'Danh sách đơn hàng mới',
+                'title' => 'Danh sách đơn hàng đã nhận',
                 'bills' => $bills
             ]);
         }

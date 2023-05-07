@@ -40,7 +40,7 @@
                 @endforeach
             </thead>
         </table>
-        <h2>Tổng Cộng: <strong>{{ number_format($bill->total_price, 0, '', '.') }}</strong></h2>
+        <h2>Tổng Cộng: <strong>{{ number_format($bill->total_price, 0, '', '.') }} đ</strong></h2>
     </div>
 </div>
     

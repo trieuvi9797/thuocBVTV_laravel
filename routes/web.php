@@ -129,6 +129,8 @@ Route::post('/lien-he.html', [ContactController::class, 'store']);
 Route::get('/tin-tuc', [ClientPostController::class, 'index'])->name('post');
 Route::get('/tin-tuc/{id}', [ClientPostController::class, 'show'])->name('post.detail');
 
+Route::get('/du-bao-thoi-tiet.html', [HomeController::class, 'weather'])->name('weather');
+
 Route::get('/quen-mat-khau', [UserController::class, 'forgotPass'])->name('user.forgotPass');
 Route::post('/quen-mat-khau', [UserController::class, 'postForgotPass'])->name('user.link.forgotPass');
 Route::get('/lay-mat-khau/{token}', [UserController::class, 'showResetForm'])->name('user.resetPass');

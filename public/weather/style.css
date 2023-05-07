@@ -1,0 +1,101 @@
+body {
+	margin: 0;
+	display: flex;/* sắp xếp bố cục linh hoạt */
+	justify-content: center; /*điều chỉnh các flew căn giữa*/
+	align-items: center;
+	height:100vh; /*vh: tỉ lệ theo chiều cao của khung nhìn*/
+	font-family: 'Open Sans', sans-serif;/* có font chữ chưa*/
+	background-image: url('https://source.unsplash.com/1600x900/?landscape');
+	font-size: 120%;
+}
+.Display{
+	color: white;
+    padding: 1em; /*dựa vào font-size của phần tử chính phần tử hiện tại*/
+    border-radius: 30px;
+    width: 100%;
+	height:100%;
+    margin: 1em;
+}
+.thoitiet{
+	position: absolute;
+	top: 20%;
+	left: 20%;
+	background: #555555d0;
+	color: white;
+	padding: 1em;
+	border-radius: 30px;
+	width: 55%;
+	height: auto;
+	margin: auto;
+}
+.search{
+  display: flex;
+  align-items: center;/*chỉ định căn chỉnh mặc định cho các mục bên trong vùng chứa linh hoạt*/
+  justify-content: center;/*căn chỉnh các mục của vùng chứa linh hoạt khi các mục không sử dụng tất cả không gian có sẵn trên trục chính (theo chiều ngang)*/
+}
+input.nhapten{
+	border: 1px solid black;
+	outline: none;
+	padding: 0.4em 1em;
+	border-radius: 24px;
+	background: white;
+	color: black;
+	font-family: inherit;
+	font-size: 105%;
+	width: 50%;
+}
+button{
+	margin: 0.5em;
+	border-radius: 50%;
+	border: none;
+	height: 44px;
+	width: 44px;
+	outline: none;
+	background: transparent;
+	cursor: pointer;/*con trỏ chuột khi đưa vào button có hình bàn tay chỉ*/
+}
+button:hover{
+	background: #66b2ff;
+}
+div .icon{
+	visibility: hidden;
+	height: 15%;
+	width: 15%;
+}
+.tenthanhpho{
+	margin:10px 0;
+	padding: 5px 0;
+	text-align: center;
+	font-size: 60pt;
+	color: #00CC00;
+	font-family: Open Sans;
+}
+.thongtin {
+	text-align: center;
+	margin:5px 0;
+	font-size:40px;
+	color: #FFFF33;
+	font-family: Open Sans;
+}
+#motathoitiet{
+	text-transform: capitalize;
+}
+div.myMap{
+	visibility: visible;
+	position:relative;
+	top: 20%;
+	right: 5%;
+}
+.Display .ToaDo{
+	display: none;
+}
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #b6e0ff;
+	color: black;
+	text-align: center;
+	clear: both;
+}

@@ -194,7 +194,7 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                     <nav class="header__menu">
                         <ul>
                             <li class="{{ request()->Is('*/') ? 'active' : '' }}"><a href="/">Trang chủ</a></li>
@@ -207,10 +207,11 @@
                             </li>
                             <li class="{{ request()->Is('*tin-tuc*') ? 'active' : '' }}"><a href="/tin-tuc">Tin tức</a></li>
                             <li class="{{ request()->Is('*lien-he*') ? 'active' : '' }}"><a href="/lien-he.html">Liên hệ</a></li>
+                            <li class="{{ request()->Is('*thoi-tiet*') ? 'active' : '' }}"><a href="/du-bao-thoi-tiet.html">Thời tiết</a></li>
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="header__cart">
                         <ul>
                             <li><a href="/gio-hang"><i class="fa fa-shopping-bag"></i> <span>{{ Cart::count() ?? 0 }}</span></a></li>

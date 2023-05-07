@@ -3647,3 +3647,76 @@ ol {
 		font-size: 24px;
 	}
 }
+
+/* wearther */
+.Display {
+	color: #cccccc;
+    padding: 1em; /*dựa vào font-size của phần tử chính phần tử hiện tại*/
+    border-radius: 10px;
+    width: 100%;
+	height:50%;
+    margin: 1em;
+}
+.search {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thoitiet{
+	position:relative;
+	top: 20%;
+	/* left: 10%; */
+	color: #000000;
+	padding: 1em;
+	width: 50%;
+	height: auto;
+	margin: auto;
+}
+input.nhapten{
+	border: 1px solid black;
+	outline: none;
+	padding: 0.4em 1em;
+	border-radius: 24px;
+	background: white;
+	color: black;
+	font-family: inherit;
+	font-size: 105%;
+	width: 50%;
+}
+
+.btn-weather{
+	margin: 0.5em;
+	border-radius: 50%;
+	border: none;
+	height: 44px;
+	width: 44px;
+	outline: none;
+	background: transparent;
+	cursor: pointer;
+}
+.btn-weather :hover{
+	background: #66b2ff;
+}
+div .icon{
+	visibility: hidden;
+	height: 15%;
+	width: 15%;
+}
+.tenthanhpho{
+	margin:5px 0;
+	padding: 5px 0;
+	text-align: center;
+	font-size: 20pt;
+	color: #000000;
+	font-family: Open Sans;
+}
+.thongtin {
+	text-align: center;
+	margin:2px 0;
+	font-size:20px;
+	color: #000000;
+	font-family: Open Sans;
+}
+#motathoitiet{
+	text-transform: capitalize;
+}

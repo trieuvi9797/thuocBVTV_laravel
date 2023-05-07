@@ -11,6 +11,7 @@ use App\Http\Services\Slider\SliderService;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Location;
 
 class HomeController extends Controller
 {
@@ -29,6 +30,9 @@ class HomeController extends Controller
     }
     public function index()
     {
+        // $ip = request()->ip();
+        // // $data = Location::get($ip);
+        // dd($ip);
         return view('client.home', [
             'title' => 'VTNN Hai Lúa',
             'categories' => $this->category->show(),
@@ -42,9 +46,11 @@ class HomeController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function weather()
     {
-        //
+        return view('client.weather', [
+            'title' => 'Dự báo thời tiết',
+        ]);
     }
 
     /**
