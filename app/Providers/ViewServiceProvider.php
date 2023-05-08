@@ -2,6 +2,7 @@
  
 namespace App\Providers;
 
+use App\Http\View\Composers\AdminComposer;
 use App\Http\View\Composers\CategoryComposer;
 use App\View\Composers\ProfileComposer;
 use Illuminate\Support\Facades;
@@ -22,5 +23,6 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composer('client.layouts.header', CategoryComposer::class);
         View::composer('client.layouts.footer', CategoryComposer::class);
+        View::composer('admin.layouts.sidebar', AdminComposer::class);
     }
 }

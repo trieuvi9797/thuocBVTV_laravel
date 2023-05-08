@@ -21,10 +21,11 @@ class BillController extends Controller
     public  function index()
     {
         if(Auth::user()->user_type == 'AD'){
-            $bills = Bill::orderByDesc('id')->paginate(10);
+            
+            $bills = Bill::orderByDesc('id')->paginate(20);
             return view('admin.bills.customer', [
                 'title' => 'Danh sách đơn hàng',
-                'bills' => $bills
+                'bills' => $bills,
             ]);
         }
         return redirect()->back();
@@ -67,7 +68,7 @@ class BillController extends Controller
     public function billNew()
     {
         if(Auth::user()->user_type == 'AD'){
-            $bills = Bill::where('active', 0)->orderByDesc('id')->paginate(10);
+            $bills = Bill::where('active', 0)->orderByDesc('id')->paginate(20);
             return view('admin.bills.new', [
                 'title' => 'Danh sách đơn hàng mới',
                 'bills' => $bills
@@ -78,7 +79,7 @@ class BillController extends Controller
     public function billShip()
     {
         if(Auth::user()->user_type == 'AD'){
-            $bills = Bill::where('active', 1)->orderByDesc('id')->paginate(10);
+            $bills = Bill::where('active', 1)->orderByDesc('id')->paginate(20);
             return view('admin.bills.ship', [
                 'title' => 'Danh sách đơn hàng đang vận chuyển',
                 'bills' => $bills
@@ -89,7 +90,7 @@ class BillController extends Controller
     public function billDone()
     {
         if(Auth::user()->user_type == 'AD'){
-            $bills = Bill::where('active', 2)->orderByDesc('id')->paginate(10);
+            $bills = Bill::where('active', 2)->orderByDesc('id')->paginate(20);
             return view('admin.bills.done', [
                 'title' => 'Danh sách đơn hàng đã nhận',
                 'bills' => $bills
@@ -97,15 +98,15 @@ class BillController extends Controller
         }
         return redirect()->back();
     }
-    public function billAlert()
-    {
-        if(Auth::user()->user_type == 'AD'){
-            $bills = Bill::where('active', 2)->orderByDesc('id')->paginate(10);
-            return view('admin.bills.done', [
-                'title' => 'Danh sách đơn hàng mới',
-                'bills' => $bills
-            ]);
-        }
-        return redirect()->back();
-    }
+    // public function billAlert()
+    // {
+    //     if(Auth::user()->user_type == 'AD'){
+    //         $bills = Bill::where('active', 2)->orderByDesc('id')->paginate(10);
+    //         return view('admin.bills.done', [
+    //             'title' => 'Danh sách đơn hàng mới',
+    //             'bills' => $bills
+    //         ]);
+    //     }
+    //     return redirect()->back();
+    // }
 }

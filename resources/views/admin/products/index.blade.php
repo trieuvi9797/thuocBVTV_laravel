@@ -58,8 +58,9 @@
                                     <td>{{ $item->name }}</td>                                        
                                     <td><img src="{{ $item->image }}" width="80px" height="80px" alt=""></td>                                        
                                     <td>{{ $item->category->name }}</td>                                        
-                                    <td>{{ $item->price }} VNĐ</td>  
-                                    <td>{{ $item->price-($item->price*$item->sale/100) }} VNĐ</td>  {{-- gia-(gia*sale/100) --}}
+                                    <td>{{ number_format($item->price, 0, '', '.') }}đ</td>  
+                                  {{--  <td>{{ number_format($item->price-($item->price*$item->sale/100), 0, '', '.') }} đ</td>   gia-(gia*sale/100) --}}
+                                    <td>{{ $item->sale }}%</td>  
                                     <td>
                                         <a class="btn btn-outline-info" href="/admin/products/show/{{ $item->id }}">Xem</a>
                                         <a class="btn btn-outline-warning" href="/admin/products/edit/{{ $item->id }}">Sửa</a>

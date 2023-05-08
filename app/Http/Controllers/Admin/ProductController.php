@@ -35,7 +35,7 @@ class ProductController extends Controller
         if(Auth::user()->user_type == 'AD'){
             return view('admin.products.index', [
                 'title' => 'Danh Sách Sản Phẩm',
-                'products' => Product::orderByDesc('id')->search()->paginate(10)
+                'products' => Product::orderByDesc('id')->search()->paginate(20)
             ]);
         }
         return redirect()->back();

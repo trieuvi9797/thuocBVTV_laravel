@@ -48,7 +48,7 @@
                 </li><!--//nav-item-->
 
                 <li class="nav-item has-submenu">   <!--Đơn hàng-->               
-                    <a class="nav-link {{ request()->Is('*bills*') ? 'active' : '' }}" href="/admin/bills/customer" >
+                    <a class="nav-link {{ request()->Is('*bills*') ? 'active' : '' }}" href="/admin/bills/new" >
                         <span class="nav-icon">                         
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-files" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M4 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4z"/>
@@ -56,6 +56,7 @@
                             </svg>
                         </span>
                         <span class="nav-link-text">Đơn hàng</span>
+                        <div class="bill__discount">{{ $totalBillNew }}</div>
                     </a><!--//nav-link-->
                 </li><!--//nav-item-->
 
