@@ -9,6 +9,7 @@ use App\Http\Services\Post\PostService;
 use App\Http\Services\Product\ProductService;
 use App\Http\Services\Slider\SliderService;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Location;
@@ -30,14 +31,12 @@ class HomeController extends Controller
     }
     public function index()
     {
-        // $ip = request()->ip();
-        // // $data = Location::get($ip);
-        // dd($ip);
         return view('client.home', [
             'title' => 'VTNN Hai Lúa',
             'categories' => $this->category->show(),
             'slider' => $this->slider->show(),
             'products' => $this->product->show(),
+            'productOLD' => $this->product->getProductOld(),
             'productsNew' => $this->product->getProductNew(),
             'productSold' => $this->product->getProductSold(),
             'productSale' => $this->product->getProductSale(),

@@ -26,6 +26,12 @@ class ProductService
                         ->orderByDesc('id')
                         ->limit(6)
                         ->get();
+    }public function getProductOld()
+    {
+        return Product::select('id', 'name', 'price', 'sale', 'image')
+                        ->orderBy('sold')
+                        ->limit(30)
+                        ->get();
     }
     public function getProductSold()
     {

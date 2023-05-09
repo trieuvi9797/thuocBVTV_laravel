@@ -53,7 +53,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Tổng tiền đơn hàng</h4>
+                            <h4 class="stats-type mb-1">Tổng doanh thu</h4>
                             <div class="stats-figure">{{ number_format($totalPriceBill, 0, '', '.') }} đ</div>
                         </div><!--//app-card-body-->
                         <a class="app-card-link-mask" href="/admin/bills/done"></a>
@@ -95,7 +95,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Tổng số sản phẩm</h4>
+                            <h4 class="stats-type mb-1">Tổng sản phẩm</h4>
                             <div class="stats-figure">{{ $totalProduct }}</div>
                         </div><!--//app-card-body-->
                         <a class="app-card-link-mask" href="/admin/products/index"></a>
@@ -105,7 +105,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Tổng số danh mục</h4>
+                            <h4 class="stats-type mb-1">Tổng danh mục</h4>
                             <div class="stats-figure">{{ $totalCategory }}</div>
                         </div><!--//app-card-body-->
                         <a class="app-card-link-mask" href="/admin/categories/index"></a>
@@ -114,7 +114,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Tổng số tài khoản</h4>
+                            <h4 class="stats-type mb-1">Tổng tài khoản</h4>
                             <div class="stats-figure">{{ $totalAllUser }}</div>
                         </div><!--//app-card-body-->
                         <a class="app-card-link-mask" href="/admin/users/index"></a>
@@ -123,7 +123,7 @@
                 <div class="col-6 col-lg-3">
                     <div class="app-card app-card-stat shadow-sm h-100">
                         <div class="app-card-body p-3 p-lg-4">
-                            <h4 class="stats-type mb-1">Tổng số bài viết</h4>
+                            <h4 class="stats-type mb-1">Tổng bài viết</h4>
                             <div class="stats-figure">{{ $totalPost }}</div>
                         </div><!--//app-card-body-->
                         <a class="app-card-link-mask" href="/admin/posts/index"></a>

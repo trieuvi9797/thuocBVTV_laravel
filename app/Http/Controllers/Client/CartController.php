@@ -27,47 +27,56 @@ class CartController extends Controller
 
     public function index()
     {
+        if(Auth::user()->user_type=='US'){
         return view('client.carts.list',[
             'title' => 'Giỏ hàng của bạn',
             'content' => Cart::content()
         ]);
+        }
+        return redirect()->back();
     }
 
     public function addCart($id, Request $request)
     {
-        $product = Product::where('id', $id)->first();
-        $qty = (int)$request->input('qty');
-        Cart::add([
-            'id' => $product->id,
-            'name' => $product->name,
-            'price' => $product->price,
-            'qty' => $qty,
-            'weight' => 0,
-            'options' => [
-                'image' => $product->image
-            ]
-        ]);
-            return redirect('/gio-hang');
+        if(Auth::user()->user_type=='US'){
+            $product = Product::where('id', $id)->first();
+            $qty = (int)$request->input('qty');
+            Cart::add([
+                'id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'qty' => $qty,
+                'weight' => 0,
+                'options' => [
+                    'image' => $product->image
+                ]
+            ]);
+                return redirect('/gio-hang');
+        }
+        return redirect()->back();
     }
 
     public function addProductCart($id)
     {
-        $product = Product::where('id', $id)->first();
-        if($product->quantity == 0)
-        {
-            return redirect('/gio-hang')->with('error', 'Sản phẩm bạn đã chọn không đủ số lượng trong kho.');
+        if(Auth::user()->user_type=='US'){
+            $product = Product::where('id', $id)->first();
+            if($product->quantity == 0)
+            {
+                return redirect('/gio-hang')->with('error', 'Sản phẩm bạn đã chọn không đủ số lượng trong kho.');
+            }
+            Cart::add([
+                'id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'qty' => 1,
+                'weight' => 0,
+                'options' => [
+                    'image' => $product->image
+                    ]
+                ]);
+            return redirect('/gio-hang');
         }
-        Cart::add([
-            'id' => $product->id,
-            'name' => $product->name,
-            'price' => $product->price,
-            'qty' => 1,
-            'weight' => 0,
-            'options' => [
-                'image' => $product->image
-                ]
-            ]);
-        return redirect('/gio-hang');
+        return redirect()->back();
     }
     
     public function remove($row_id)

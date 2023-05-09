@@ -16,12 +16,19 @@ class AuthAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->user_type == 'AD'){
-            return $next($request);
-        }
-        else{
-            session()->flush();
+        if(Auth::check())
+        {
+            if(Auth::user()->user_type == 'AD'){
+                return redirect()->route('admin');
+            }
+            else{
+                return redirect()->route('/');
+            }
+        } else{
             return redirect()->route('login');
+
         }
+        
+        return $next($request);
     }
 }
