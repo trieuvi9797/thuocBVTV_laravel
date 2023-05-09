@@ -77,6 +77,7 @@ class AdminController extends Controller
             'name.required' => 'Vui lòng nhập tên người dùng.',
             'email.required' => 'Vui lòng nhập vào email.',
             'email.email' => 'Vui lòng nhập đúng định dạng email.',
+            'email.unique' => 'Email đã tồn tại.',
             'password.required' => 'Vui lòng nhập vào mật khẩu.',
             'password.min' => 'Vui lòng nhập mật khẩu lớn hơn 6 kí tự.',
             'password_confirmation.required' => 'Vui lòng xác nhận lại mật khẩu.',

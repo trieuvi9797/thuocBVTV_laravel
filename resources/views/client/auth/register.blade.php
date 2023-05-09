@@ -26,7 +26,7 @@
 					<h2 class="auth-heading text-center mb-4">Đăng ký tài khoản</h2>					
 	
 					<div class="auth-form-container text-start mx-auto">
-						{{-- @include('admin.layouts.alert') --}}
+						@include('admin.layouts.alert')
 
 						<form class="auth-form auth-signup-form" method="POST" action="{{ route('register') }}">         
 							@csrf
